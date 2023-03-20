@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/background"
+    tools:context=".Learning">
+
+
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="50dp"
+            android:text="QUIZ"
+            android:id="@+id/quiz_button"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:background="@drawable/circle_button"
+            android:padding="15dp"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_margin="50dp"
+        android:text="CHAT GROUP"
+        android:id="@+id/chat_button"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:background="@drawable/circle_button"
+        android:padding="15dp"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_margin="50dp"
+        android:text="Profile and User Ranking"
+        android:id="@+id/profile_button"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:background="@drawable/circle_button"
+        android:padding="15dp"/>
+
+</LinearLayout>
