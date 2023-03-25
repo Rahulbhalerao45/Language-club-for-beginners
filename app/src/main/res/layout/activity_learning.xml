@@ -6,39 +6,52 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/background"
+    android:background="@drawable/background1"
     tools:context=".Learning">
 
 
 
+
+
         <Button
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_margin="50dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="40dp"
             android:text="QUIZ"
             android:id="@+id/quiz_button"
             android:textAppearance="?android:textAppearanceLarge"
             android:background="@drawable/circle_button"
-            android:padding="15dp"/>
+            android:padding="10dp"/>
 
     <Button
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_margin="50dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_margin="40dp"
         android:text="CHAT GROUP"
         android:id="@+id/chat_button"
         android:textAppearance="?android:textAppearanceLarge"
         android:background="@drawable/circle_button"
-        android:padding="15dp"/>
+        android:padding="10dp"/>
+
 
     <Button
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_margin="50dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_margin="40dp"
         android:text="Profile and User Ranking"
         android:id="@+id/profile_button"
         android:textAppearance="?android:textAppearanceLarge"
         android:background="@drawable/circle_button"
-        android:padding="15dp"/>
+        android:padding="10dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Return"
+        android:id="@+id/return3_button"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        app:cornerRadius = "100dp"/>
+
+
 
 </LinearLayout>

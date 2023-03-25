@@ -24,7 +24,7 @@ public class Translate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(Translate.this, "Back To Home", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(Translate.this, MainActivity.class);
                 startActivity(intent);
 

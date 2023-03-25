@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/background"
+    android:background="@drawable/background3"
     tools:context=".Quiz">
 
 
@@ -38,10 +38,11 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
         android:padding="8dp"
         android:id="@+id/main_quiz1"
+        android:hint="Question 1"
         android:drawableLeft="@drawable/baseline_person_pin_24"
         android:focusable="false"
         android:clickable="false"
@@ -51,10 +52,11 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:padding="8dp"
             android:id="@+id/main_quiz2"
+            android:hint="Question 2"
             android:drawableLeft="@drawable/baseline_person_pin_24"
             android:focusable="false"
             android:clickable="false"
@@ -64,10 +66,11 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:padding="8dp"
             android:id="@+id/main_quiz3"
+            android:hint="Queston 3"
             android:drawableLeft="@drawable/baseline_person_pin_24"
             android:focusable="false"
             android:clickable="false"
@@ -77,10 +80,11 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="30dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
             android:padding="8dp"
             android:id="@+id/main_quiz4"
+            android:hint="Question 4"
             android:drawableLeft="@drawable/baseline_person_pin_24"
             android:focusable="false"
             android:clickable="false"
@@ -89,10 +93,11 @@
             android:textColor="@color/black"/>
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="30dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
             android:padding="8dp"
             android:id="@+id/main_quiz5"
+            android:hint="Question 5"
             android:drawableLeft="@drawable/baseline_person_pin_24"
             android:focusable="false"
             android:clickable="false"
@@ -107,7 +112,7 @@
             android:text="Return"
             android:id="@+id/return_button"
             android:textSize="18sp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="8dp"
             app:cornerRadius = "20dp"/>
 
     </LinearLayout>

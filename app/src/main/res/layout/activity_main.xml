@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/background"
+    android:background="@drawable/background4"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/main_username"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:hint="Username"
                 android:drawableLeft="@drawable/baseline_person_24"
@@ -51,7 +51,7 @@
                 android:layout_height="50dp"
                 android:id="@+id/main_entertext"
                 android:background="@drawable/lavender_border"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:hint="EnterText"
                 android:drawableLeft="@drawable/baseline_keyboard_24"
@@ -60,17 +60,60 @@
 
 
 
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/main_selectlanguage"
-                android:background="@drawable/lavender_border"
-                android:layout_marginTop="40dp"
-                android:padding="8dp"
-                android:hint="SelectLanguage"
-                android:drawableLeft="@drawable/baseline_keyboard_24"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:hint="@string/select1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/auto_complete_txt1"
+                    android:inputType="none"/>
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:hint="@string/select2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/auto_complete_txt2"
+                    android:inputType="none"/>
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:hint="@string/select3"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/auto_complete_txt3"
+                    android:inputType="none"/>
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
 
             <Button
                 android:layout_width="match_parent"
@@ -78,7 +121,7 @@
                 android:text="Translate"
                 android:id="@+id/main_button"
                 android:textSize="18sp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 app:cornerRadius = "20dp"/>
 
             <Button
@@ -87,7 +130,7 @@
                 android:text="More Learning option"
                 android:id="@+id/more_button"
                 android:textSize="18sp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 app:cornerRadius = "20dp"/>
 
 

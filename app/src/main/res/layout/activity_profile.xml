@@ -6,18 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/background4"
-    tools:context=".Chatgroup">
+    android:background="@drawable/background6"
+    tools:context=".Profile">
 
     <Button
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_margin="50dp"
-        android:text="CHAT GROUP"
-        android:id="@+id/chat_button"
+        android:text="Profile and Ranking"
+        android:id="@+id/profile_button"
         android:textAppearance="?android:textAppearanceLarge"
         android:background="@drawable/circle_button"
         android:padding="15dp"/>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,9 +39,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
-                android:id="@+id/main_chat1"
-                android:textAlignment="center"
-                android:hint="Chat here"
+                android:id="@+id/main_profile1"
+                android:hint="USERNAME"
                 android:drawableLeft="@drawable/baseline_person_pin_24"
                 android:focusable="false"
                 android:clickable="false"
@@ -53,24 +53,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
-                android:id="@+id/main_chat2"
-                android:textAlignment="center"
-                android:hint="Chat here"
-                android:drawableRight="@drawable/baseline_person_pin_24"
-                android:focusable="false"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:padding="8dp"
-                android:id="@+id/main_chat3"
-                android:textAlignment="center"
-                android:hint="Chat here"
+                android:id="@+id/main_profile2"
+                android:hint="LANGUAGE"
                 android:drawableLeft="@drawable/baseline_person_pin_24"
                 android:focusable="false"
                 android:clickable="false"
@@ -83,10 +67,9 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
-                android:id="@+id/main_chat4"
-                android:textAlignment="center"
-                android:hint="Chat here"
-                android:drawableRight="@drawable/baseline_person_pin_24"
+                android:id="@+id/main_profile3"
+                android:hint="User Ranking in %"
+                android:drawableLeft="@drawable/baseline_person_pin_24"
                 android:focusable="false"
                 android:clickable="false"
                 android:cursorVisible="false"
@@ -98,9 +81,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
-                android:id="@+id/main_chat5"
-                android:textAlignment="center"
-                android:hint="Chat here"
+                android:id="@+id/main_profile4"
+                android:hint="Search History"
                 android:drawableLeft="@drawable/baseline_person_pin_24"
                 android:focusable="false"
                 android:clickable="false"
@@ -112,9 +94,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="Return"
-                android:id="@+id/return1_button"
+                android:id="@+id/return2_button"
                 android:textSize="18sp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
+                app:cornerRadius = "20dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Logout"
+                android:id="@+id/logout_button"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
                 app:cornerRadius = "20dp"/>
 
         </LinearLayout>

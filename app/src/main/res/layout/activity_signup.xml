@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/background"
+    android:background="@drawable/background1"
     tools:context=".SignupActivity">
 
     <androidx.cardview.widget.CardView
@@ -58,17 +58,28 @@
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
 
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/signup_language"
-                android:background="@drawable/lavender_border"
-                android:layout_marginTop="20dp"
-                android:padding="8dp"
-                android:hint="Language"
-                android:drawableLeft="@drawable/baseline_language_24"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:hint="@string/select"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/auto_complete_txt"
+                    android:inputType="none"/>
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
 
             <EditText
                 android:layout_width="match_parent"
@@ -90,6 +101,7 @@
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:hint="Password"
+                android:inputType="textPassword"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>

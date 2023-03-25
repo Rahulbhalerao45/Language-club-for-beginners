@@ -23,7 +23,7 @@ public class Chatgroup extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(Chatgroup.this, "Back To Learning Options!!!", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(Chatgroup.this, Learning.class);
                 startActivity(intent);
             }

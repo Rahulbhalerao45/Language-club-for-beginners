@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/background"
+    android:background="@drawable/background4"
     tools:context=".LoginActivity">
 
     <androidx.cardview.widget.CardView
@@ -17,6 +17,8 @@
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp">
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,6 +26,8 @@
             android:layout_gravity="center_horizontal"
             android:padding="24dp"
             android:background="@drawable/lavender_border">
+
+
 
             <TextView
                 android:layout_width="match_parent"
@@ -60,6 +64,7 @@
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:hint="Password"
+                android:inputType="textPassword"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>

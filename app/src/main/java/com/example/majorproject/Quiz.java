@@ -23,7 +23,7 @@ public class Quiz extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(Quiz.this, "Back To Learning Options!!!", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(Quiz.this, Learning.class);
                 startActivity(intent);
             }
