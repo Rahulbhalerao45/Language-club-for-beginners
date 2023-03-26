@@ -87,35 +87,33 @@ public class LoginActivity extends AppCompatActivity {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
         Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
 
-
-
-
-
         checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 if (snapshot.exists()){
-                    loginUsername.setError(null);
-                    String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
+                    for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                        String passwordFromDB = userSnapshot.child("password").getValue(String.class);
+                        if (passwordFromDB.equals(userPassword)) {
+                            loginUsername.setError(null);
+                            loginPassword.setError(null);
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 
-                    if (!Objects.equals(passwordFromDB, userPassword)){
-                        loginUsername.setError(null);
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
-                    }else{
-                        loginPassword.setError("Invalid Credentials");
-                        loginPassword.requestFocus();
+                            intent.putExtra("USERNAME", userUsername);
+                            startActivity(intent);
+                        } else {
+                            loginPassword.setError("Invalid Password");
+                            loginPassword.requestFocus();
+                        }
                     }
-                }else{
-                    loginUsername.setError("Users does not exists");
+                } else {
+                    loginUsername.setError("User does not exist");
                     loginUsername.requestFocus();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // Handle database error
             }
         });
     }
