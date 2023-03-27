@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 reference = database.getReference("history");
                 String entertext = mainEnterText.getText().toString();
                 HelperClass1 helperClass1 = new HelperClass1(username, entertext, selectedLanguage1, selectedLanguage2, selectedLanguage3);
-                reference.child(username).setValue(helperClass1);
+                reference.child(username).push().setValue(helperClass1);
                 Intent intent = new Intent(MainActivity.this, Translate.class);
                 intent.putExtra("LANGUAGE1", selectedLanguage1);
                 intent.putExtra("LANGUAGE2", selectedLanguage2);
@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Learning.class);
+                intent.putExtra("USERNAME", username);
                 startActivity(intent);
             }
         });

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/background3"
+    android:background="@drawable/background6"
     tools:context=".Quiz">
 
 
@@ -14,6 +14,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/main_username4"
+            android:layout_marginTop="20dp"
+            android:padding="8dp"
+            android:hint="Username"
+            android:drawableLeft="@drawable/baseline_person_24"
+            android:drawablePadding="8dp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/question_text"

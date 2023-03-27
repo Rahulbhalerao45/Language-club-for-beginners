@@ -6,8 +6,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/background4"
+    android:background="@drawable/background6"
     tools:context=".Chatgroup">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/main_username3"
+        android:layout_marginTop="20dp"
+        android:padding="8dp"
+        android:hint="Username"
+        android:drawableLeft="@drawable/baseline_person_24"
+        android:drawablePadding="8dp"
+        android:textColor="@color/black"/>
+
 
     <Button
         android:layout_width="150dp"
@@ -32,6 +44,8 @@
             android:layout_gravity="center_horizontal"
             android:padding="24dp"
             android:background="@drawable/lavender_border">
+
+
 
             <EditText
                 android:layout_width="match_parent"
