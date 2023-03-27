@@ -16,6 +16,10 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText mainUsername, mainEnterText;
@@ -83,8 +87,10 @@ public class MainActivity extends AppCompatActivity {
                 database = FirebaseDatabase.getInstance();
                 reference = database.getReference("history");
                 String entertext = mainEnterText.getText().toString();
-                HelperClass1 helperClass1 = new HelperClass1(username, entertext, selectedLanguage1, selectedLanguage2, selectedLanguage3);
-                reference.child(username).push().setValue(helperClass1);
+                String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                HelperClass2 helperClass2 = new HelperClass2(username, entertext, selectedLanguage1, selectedLanguage2, selectedLanguage3, currentDate, currentTime);
+                reference.child(username).push().setValue(helperClass2);
                 Intent intent = new Intent(MainActivity.this, Translate.class);
                 intent.putExtra("LANGUAGE1", selectedLanguage1);
                 intent.putExtra("LANGUAGE2", selectedLanguage2);
