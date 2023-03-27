@@ -4,5 +4,6 @@
     <string name="select1">Select Language1</string>
     <string name="select2">Select Language2</string>
     <string name="select3">Select Language3</string>
+    <string name="select4">Select Language</string>
     <string name="app_name1">checkone</string>
 </resources>

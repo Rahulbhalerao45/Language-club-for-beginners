@@ -9,16 +9,6 @@
     android:background="@drawable/background6"
     tools:context=".Profile">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:id="@+id/main_username5"
-        android:layout_marginTop="20dp"
-        android:padding="8dp"
-        android:hint="Username"
-        android:drawableLeft="@drawable/baseline_person_24"
-        android:drawablePadding="8dp"
-        android:textColor="@color/black"/>
 
     <Button
         android:layout_width="150dp"
@@ -48,30 +38,30 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:id="@+id/main_username5"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
-                android:id="@+id/main_profile1"
-                android:hint="USERNAME"
-                android:drawableLeft="@drawable/baseline_person_pin_24"
-                android:focusable="false"
-                android:clickable="false"
-                android:cursorVisible="false"
+                android:hint="Username"
+                android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
 
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:padding="8dp"
-                android:id="@+id/main_profile2"
-                android:hint="LANGUAGE"
-                android:drawableLeft="@drawable/baseline_person_pin_24"
-                android:focusable="false"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:hint="@string/select"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/auto_complete_txt4"
+                    android:inputType="none"/>
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <EditText
                 android:layout_width="match_parent"

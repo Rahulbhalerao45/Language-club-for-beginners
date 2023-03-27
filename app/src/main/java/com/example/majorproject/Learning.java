@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Learning extends AppCompatActivity {
@@ -16,6 +17,8 @@ public class Learning extends AppCompatActivity {
     EditText mainUsername;
 
     String username;
+
+    TextView logoutRedirectText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,7 @@ public class Learning extends AppCompatActivity {
         learningButton2 = findViewById(R.id.chat_button);
         learningButton3 = findViewById(R.id.profile_button);
         return3Button = findViewById(R.id.return3_button);
+        logoutRedirectText = findViewById(R.id.logout3);
 
         mainUsername.setText(username);
         mainUsername.setEnabled(false); // disable editing of the username field
@@ -76,6 +80,14 @@ public class Learning extends AppCompatActivity {
 
                 Intent intent = new Intent(Learning.this, MainActivity.class);
                 intent.putExtra("USERNAME", username);
+                startActivity(intent);
+            }
+        });
+
+        logoutRedirectText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(Learning.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

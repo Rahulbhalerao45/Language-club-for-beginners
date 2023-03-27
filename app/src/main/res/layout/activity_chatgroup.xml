@@ -9,18 +9,6 @@
     android:background="@drawable/background6"
     tools:context=".Chatgroup">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:id="@+id/main_username3"
-        android:layout_marginTop="20dp"
-        android:padding="8dp"
-        android:hint="Username"
-        android:drawableLeft="@drawable/baseline_person_24"
-        android:drawablePadding="8dp"
-        android:textColor="@color/black"/>
-
-
     <Button
         android:layout_width="150dp"
         android:layout_height="150dp"
@@ -45,17 +33,27 @@
             android:padding="24dp"
             android:background="@drawable/lavender_border">
 
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/main_username3"
+                android:layout_marginTop="10dp"
+                android:padding="8dp"
+                android:hint="Username"
+                android:drawableLeft="@drawable/baseline_person_24"
+                android:drawablePadding="8dp"
+                android:textColor="@color/black"/>
 
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:id="@+id/main_chat1"
                 android:textAlignment="center"
                 android:hint="Chat here"
-                android:drawableLeft="@drawable/baseline_person_pin_24"
+                android:drawableRight="@drawable/baseline_person_pin_24"
                 android:focusable="false"
                 android:clickable="false"
                 android:cursorVisible="false"
@@ -65,26 +63,11 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:id="@+id/main_chat2"
                 android:textAlignment="center"
                 android:hint="Chat here"
-                android:drawableRight="@drawable/baseline_person_pin_24"
-                android:focusable="false"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:padding="8dp"
-                android:id="@+id/main_chat3"
-                android:textAlignment="center"
-                android:hint="Chat here"
                 android:drawableLeft="@drawable/baseline_person_pin_24"
                 android:focusable="false"
                 android:clickable="false"
@@ -95,9 +78,9 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:padding="8dp"
-                android:id="@+id/main_chat4"
+                android:id="@+id/main_chat3"
                 android:textAlignment="center"
                 android:hint="Chat here"
                 android:drawableRight="@drawable/baseline_person_pin_24"
@@ -110,9 +93,9 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:padding="8dp"
-                android:id="@+id/main_chat5"
+                android:id="@+id/main_chat4"
                 android:textAlignment="center"
                 android:hint="Chat here"
                 android:drawableLeft="@drawable/baseline_person_pin_24"
@@ -128,8 +111,19 @@
                 android:text="Return"
                 android:id="@+id/return1_button"
                 android:textSize="18sp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 app:cornerRadius = "20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/logout5"
+                android:text="Logout"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/lavender"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

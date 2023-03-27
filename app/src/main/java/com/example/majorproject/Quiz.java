@@ -35,6 +35,8 @@ public class Quiz extends AppCompatActivity {
 
     String username;
 
+    TextView logoutRedirectText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +49,10 @@ public class Quiz extends AppCompatActivity {
         mainUsername = findViewById(R.id.main_username4);
         mReturnButton = findViewById(R.id.return_button);
         mSubmitButton = findViewById(R.id.submit_button);
+        logoutRedirectText = findViewById(R.id.logout4);
         mAnswer1RadioButton = findViewById(R.id.answer1);
         mAnswer2RadioButton = findViewById(R.id.answer2);
+
 
         mainUsername.setText(username);
         mainUsername.setEnabled(false); // disable editing of the username field
@@ -80,6 +84,14 @@ public class Quiz extends AppCompatActivity {
 
                 // Display the score
                 Toast.makeText(Quiz.this, "Your score is " + mScore, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        logoutRedirectText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(Quiz.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
 

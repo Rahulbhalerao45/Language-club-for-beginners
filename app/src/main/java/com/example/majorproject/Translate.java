@@ -18,6 +18,8 @@ public class Translate extends AppCompatActivity {
 
     String username;
 
+    TextView logoutRedirectText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,7 @@ public class Translate extends AppCompatActivity {
         Language1 = findViewById(R.id.language1_textview);
         Language2 = findViewById(R.id.language2_textview);
         Language3 = findViewById(R.id.language3_textview);
+        logoutRedirectText = findViewById(R.id.logout2);
 
         // Retrieve the selected languages passed from MainActivity
         Intent intent = getIntent();
@@ -52,6 +55,14 @@ public class Translate extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Translate.this, MainActivity.class);
                 intent.putExtra("USERNAME", username);
+                startActivity(intent);
+            }
+        });
+
+        logoutRedirectText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(Translate.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

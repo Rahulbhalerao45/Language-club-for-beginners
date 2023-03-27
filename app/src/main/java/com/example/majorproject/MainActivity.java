@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -26,10 +27,12 @@ public class MainActivity extends AppCompatActivity {
     Button mainButton, learningButton;
     FirebaseDatabase database;
     DatabaseReference reference;
-    String[] item = {"Hindi", "Marathi", "Telugu", "Tamil", "Malayalam"};
+    String[] item = {"Hindi(हिंदी)", "Marathi(मराठी)", "Telugu(తెలుగు)", "Tamil(தமிழ்)", "Malayalam(മലയാളം)"};
     AutoCompleteTextView selectLanguage1, selectLanguage2, selectLanguage3;
     ArrayAdapter adapterItems1, adapterItems2, adapterItems3;
     String username, selectedLanguage1, selectedLanguage2, selectedLanguage3;
+
+    TextView logoutRedirectText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         selectLanguage1 = findViewById(R.id.auto_complete_txt1);
         selectLanguage2 = findViewById(R.id.auto_complete_txt2);
         selectLanguage3 = findViewById(R.id.auto_complete_txt3);
+        logoutRedirectText = findViewById(R.id.logout1);
 
         adapterItems1 = new ArrayAdapter<String>(this, R.layout.language1_item, item);
         adapterItems2 = new ArrayAdapter<String>(this, R.layout.language2_item, item);
@@ -105,6 +109,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Learning.class);
                 intent.putExtra("USERNAME", username);
+                startActivity(intent);
+            }
+        });
+
+        logoutRedirectText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

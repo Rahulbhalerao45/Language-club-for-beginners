@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Chatgroup extends AppCompatActivity {
@@ -16,6 +17,8 @@ public class Chatgroup extends AppCompatActivity {
     Button return1Button;
 
     String username;
+
+    TextView logoutRedirectText;
 
 
 
@@ -29,6 +32,7 @@ public class Chatgroup extends AppCompatActivity {
 
         mainUsername = findViewById(R.id.main_username3);
         return1Button = findViewById(R.id.return1_button);
+        logoutRedirectText = findViewById(R.id.logout5);
 
         mainUsername.setText(username);
         mainUsername.setEnabled(false); // disable editing of the username field
@@ -38,6 +42,14 @@ public class Chatgroup extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Chatgroup.this, Learning.class);
                 intent.putExtra("USERNAME", username);
+                startActivity(intent);
+            }
+        });
+
+        logoutRedirectText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(Chatgroup.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

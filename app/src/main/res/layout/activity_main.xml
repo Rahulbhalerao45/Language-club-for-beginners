@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/main_username"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:hint="Username"
                 android:drawableLeft="@drawable/baseline_person_24"
@@ -51,7 +51,7 @@
                 android:layout_height="50dp"
                 android:id="@+id/main_entertext"
                 android:background="@drawable/lavender_border"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:hint="EnterText"
                 android:drawableLeft="@drawable/baseline_keyboard_24"
@@ -112,16 +112,13 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
-
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Translate"
                 android:id="@+id/main_button"
                 android:textSize="18sp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 app:cornerRadius = "20dp"/>
 
             <Button
@@ -130,15 +127,19 @@
                 android:text="More Learning option"
                 android:id="@+id/more_button"
                 android:textSize="18sp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 app:cornerRadius = "20dp"/>
 
-
-
-
-
-
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/logout1"
+                android:text="Logout"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/lavender"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

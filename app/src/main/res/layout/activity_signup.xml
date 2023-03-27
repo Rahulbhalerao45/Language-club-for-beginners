@@ -75,12 +75,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
-
-
-
-
-
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
