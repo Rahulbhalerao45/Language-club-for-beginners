@@ -27,8 +27,6 @@ public class Translate extends AppCompatActivity {
 
         // Retrieve the username passed from LoginActivity
         username = getIntent().getStringExtra("USERNAME");
-
-
         mainUsername = findViewById(R.id.main_username1);
         backButton = findViewById(R.id.back_button);
         Language1 = findViewById(R.id.language1_textview);
