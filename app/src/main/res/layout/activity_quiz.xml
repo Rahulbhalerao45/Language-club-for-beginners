@@ -59,7 +59,7 @@
                 android:id="@+id/answer2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="London" />
+                android:text="Rome" />
 
             <Button
                 android:layout_width="wrap_content"

@@ -99,7 +99,7 @@ public class Quiz extends AppCompatActivity {
         mQuizRef = mDatabase.getReference("Quiz");
 
         mCorrectAnswers = new HashMap<>();
-        mCorrectAnswers.put("Q1", "A1");
+        mCorrectAnswers.put("Q1", "Ans");
 
         ValueEventListener valueEventListener = mQuizRef.addValueEventListener(new ValueEventListener() {
             @Override
