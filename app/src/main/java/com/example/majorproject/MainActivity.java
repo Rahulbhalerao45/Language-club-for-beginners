@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("LANGUAGE2", selectedLanguage2);
                 intent.putExtra("LANGUAGE3", selectedLanguage3);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("ENTERED_TEXT", entertext);
                 startActivity(intent);
             }
         });

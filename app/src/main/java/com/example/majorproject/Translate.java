@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class Translate extends AppCompatActivity {
 
-    EditText mainUsername;
+    EditText mainUsername, mainEnterText;
     Button backButton;
     TextView Language1, Language2, Language3;
 
@@ -33,6 +33,7 @@ public class Translate extends AppCompatActivity {
         Language2 = findViewById(R.id.language2_textview);
         Language3 = findViewById(R.id.language3_textview);
         logoutRedirectText = findViewById(R.id.logout2);
+        mainEnterText = findViewById(R.id.main_entertext1);
 
         // Retrieve the selected languages passed from MainActivity
         Intent intent = getIntent();
@@ -47,6 +48,11 @@ public class Translate extends AppCompatActivity {
 
         mainUsername.setText(username);
         mainUsername.setEnabled(false); // disable editing of the username field
+
+        String enteredText = intent.getStringExtra("ENTERED_TEXT");
+        mainEnterText.setText(enteredText);
+
+
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
