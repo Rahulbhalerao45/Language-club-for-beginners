@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/background6"
-    tools:context=".Beginner">
+    tools:context=".Medium">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:id="@+id/beginner_main_username"
+                android:id="@+id/medium_main_username"
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:hint="Username"
@@ -83,19 +83,19 @@
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""/>
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""/></RadioGroup>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""/>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""/></RadioGroup>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="Return"
-                android:id="@+id/beginner_return_button"
+                android:id="@+id/medium_return_button"
                 android:textSize="18sp"
                 android:layout_marginTop="10dp"
                 app:cornerRadius = "20dp"/>
@@ -103,7 +103,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/beginner_logout"
+                android:id="@+id/medium_logout"
                 android:text="Logout"
                 android:layout_gravity="center"
                 android:padding="8dp"

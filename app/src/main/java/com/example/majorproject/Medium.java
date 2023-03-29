@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Beginner extends AppCompatActivity {
+public class Medium extends AppCompatActivity {
 
 
     EditText mainUsername;
@@ -25,14 +25,14 @@ public class Beginner extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_beginner);
+        setContentView(R.layout.activity_medium);
 
         // Retrieve the username passed from LoginActivity
         username = getIntent().getStringExtra("USERNAME");
 
-        mainUsername = findViewById(R.id.beginner_main_username);
-        returnButton = findViewById(R.id.beginner_return_button);
-        logoutRedirectText = findViewById(R.id.beginner_logout);
+        mainUsername = findViewById(R.id.medium_main_username);
+        returnButton = findViewById(R.id.medium_return_button);
+        logoutRedirectText = findViewById(R.id.medium_logout);
 
         mainUsername.setText(username);
         mainUsername.setEnabled(false); // disable editing of the username field
@@ -40,7 +40,7 @@ public class Beginner extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Beginner.this, Quiz.class);
+                Intent intent = new Intent(Medium.this, Quiz.class);
                 intent.putExtra("USERNAME", username);
                 startActivity(intent);
             }
@@ -49,7 +49,7 @@ public class Beginner extends AppCompatActivity {
         logoutRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(Beginner.this, LoginActivity.class);
+                Intent intent =new Intent(Medium.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
