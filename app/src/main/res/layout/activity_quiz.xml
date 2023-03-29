@@ -53,7 +53,7 @@
 
 
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="220dp"
                 android:layout_height="50dp"
                 android:text="Return"
                 android:id="@+id/quiz_return_button"

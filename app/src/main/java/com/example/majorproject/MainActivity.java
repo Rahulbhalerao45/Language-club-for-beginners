@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     String[] item = {"Hindi(हिंदी)", "Marathi(मराठी)", "Telugu(తెలుగు)", "Tamil(தமிழ்)", "Malayalam(മലയാളം)"};
     AutoCompleteTextView selectLanguage1, selectLanguage2, selectLanguage3;
     ArrayAdapter adapterItems1, adapterItems2, adapterItems3;
-    String username, selectedLanguage1, selectedLanguage2, selectedLanguage3;
+    String username, selectedLanguage1, selectedLanguage2, selectedLanguage3, languageFromDB;
 
     TextView logoutRedirectText;
 
@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Retrieve the username passed from LoginActivity
         username = getIntent().getStringExtra("USERNAME");
+        languageFromDB = getIntent().getStringExtra("LANGUAGE");
 
         // Initialize the views
         mainUsername = findViewById(R.id.main_username);
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Set the username in the mainUsername EditText view
+
         mainUsername.setText(username);
         mainUsername.setEnabled(false); // disable editing of the username field
 
