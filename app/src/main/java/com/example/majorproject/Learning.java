@@ -41,7 +41,6 @@ public class Learning extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 Intent intent = new Intent(Learning.this, Quiz.class);
                 intent.putExtra("USERNAME", username);
                 startActivity(intent);
@@ -52,7 +51,6 @@ public class Learning extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 Intent intent = new Intent(Learning.this, Chatgroup.class);
                 intent.putExtra("USERNAME", username);
                 startActivity(intent);
@@ -62,7 +60,6 @@ public class Learning extends AppCompatActivity {
         learningButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 Intent intent = new Intent(Learning.this, Profile.class);
                 intent.putExtra("USERNAME", username);

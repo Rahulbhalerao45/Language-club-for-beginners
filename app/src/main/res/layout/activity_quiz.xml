@@ -35,7 +35,7 @@
             android:textColor="@color/black"/>
 
         <TextView
-            android:id="@+id/question_text"
+            android:id="@+id/question_text1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -61,6 +61,27 @@
                 android:layout_height="wrap_content"
                 android:text="Rome" />
 
+            <RadioButton
+                android:id="@+id/answer3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="London" />
+
+            <RadioButton
+                android:id="@+id/answer4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Madrid" />
+
+            <TextView
+                android:id="@+id/question_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="What is the capital of France?"
+                android:layout_marginLeft="10dp"/>
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
@@ -71,16 +92,6 @@
                 android:layout_marginLeft="20dp"
                 app:cornerRadius = "20dp"/>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="Submit"
-                android:id="@+id/submit_button"
-                android:textSize="18sp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="20dp"
-                app:cornerRadius = "20dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
