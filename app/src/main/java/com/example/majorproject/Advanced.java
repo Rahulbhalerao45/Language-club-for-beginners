@@ -16,7 +16,7 @@ public class Advanced extends AppCompatActivity {
     EditText mainUsername;
     Button returnButton;
 
-    String username;
+    String username, language;
 
     TextView logoutRedirectText;
 
@@ -28,20 +28,25 @@ public class Advanced extends AppCompatActivity {
         setContentView(R.layout.activity_advanced);
 
         // Retrieve the username passed from LoginActivity
-        username = getIntent().getStringExtra("USERNAME");
+        String username = getIntent().getStringExtra("USERNAME");
+        String language = getIntent().getStringExtra("LANGUAGE");
 
         mainUsername = findViewById(R.id.advanced_main_username);
         returnButton = findViewById(R.id.advanced_return_button);
         logoutRedirectText = findViewById(R.id.advanced_logout);
 
-        mainUsername.setText(username);
+        mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
 
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
+
+
+
             public void onClick(View view) {
                 Intent intent = new Intent(Advanced.this, Quiz.class);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
                 startActivity(intent);
             }
         });

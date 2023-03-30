@@ -16,7 +16,7 @@ public class Quiz extends AppCompatActivity {
     EditText mainUsername;
     Button return1Button, beginnerButton, mediumButton, advancedButton;
 
-    String username;
+    String username, language;
 
     TextView logoutRedirectText;
 
@@ -28,7 +28,8 @@ public class Quiz extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         // Retrieve the username passed from LoginActivity
-        username = getIntent().getStringExtra("USERNAME");
+        String username = getIntent().getStringExtra("USERNAME");
+        String language = getIntent().getStringExtra("LANGUAGE");
 
         mainUsername = findViewById(R.id.quiz_main_username);
         return1Button = findViewById(R.id.quiz_return_button);
@@ -37,7 +38,7 @@ public class Quiz extends AppCompatActivity {
         advancedButton = findViewById(R.id.quiz_advanced_button);
         logoutRedirectText = findViewById(R.id.quiz_logout);
 
-        mainUsername.setText(username);
+        mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
 
         beginnerButton.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +46,7 @@ public class Quiz extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Quiz.this, Beginner.class);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
                 startActivity(intent);
             }
         });
@@ -54,6 +56,7 @@ public class Quiz extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Quiz.this, Medium.class);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
                 startActivity(intent);
             }
         });
@@ -63,6 +66,7 @@ public class Quiz extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Quiz.this, Advanced.class);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
                 startActivity(intent);
             }
         });
@@ -72,6 +76,7 @@ public class Quiz extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Quiz.this, Learning.class);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
                 startActivity(intent);
             }
         });

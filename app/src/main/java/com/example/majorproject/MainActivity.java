@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     String[] item = {"Hindi(हिंदी)", "Marathi(मराठी)", "Telugu(తెలుగు)", "Tamil(தமிழ்)", "Malayalam(മലയാളം)"};
     AutoCompleteTextView selectLanguage1, selectLanguage2, selectLanguage3;
     ArrayAdapter adapterItems1, adapterItems2, adapterItems3;
-    String username, selectedLanguage1, selectedLanguage2, selectedLanguage3, languageFromDB;
+    String username, selectedLanguage1, selectedLanguage2, selectedLanguage3, language;
 
     TextView logoutRedirectText;
 
@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Retrieve the username passed from LoginActivity
-        username = getIntent().getStringExtra("USERNAME");
-        languageFromDB = getIntent().getStringExtra("LANGUAGE");
+         String username = getIntent().getStringExtra("USERNAME");
+         String language = getIntent().getStringExtra("LANGUAGE");
 
         // Initialize the views
         mainUsername = findViewById(R.id.main_username);
@@ -87,8 +87,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Set the username in the mainUsername EditText view
 
-        mainUsername.setText(username);
+        mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
+
 
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("LANGUAGE2", selectedLanguage2);
                 intent.putExtra("LANGUAGE3", selectedLanguage3);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
                 intent.putExtra("ENTERED_TEXT", entertext);
                 startActivity(intent);
             }
@@ -128,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Learning.class);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
                 startActivity(intent);
             }
         });

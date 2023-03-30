@@ -25,14 +25,15 @@ public class Profile extends AppCompatActivity {
     ArrayAdapter adapterItems4;
 
 
-    String username, selectedLanguage4;
+    String username, selectedLanguage4, language;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        username = getIntent().getStringExtra("USERNAME");
+        String username = getIntent().getStringExtra("USERNAME");
+        String language = getIntent().getStringExtra("LANGUAGE");
 
 
         mainUsername = findViewById(R.id.main_username5);
@@ -40,7 +41,7 @@ public class Profile extends AppCompatActivity {
         logoutButton = findViewById(R.id.logout_button);
         selectLanguage4 = findViewById(R.id.auto_complete_txt4);
 
-        mainUsername.setText(username);
+        mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
 
         adapterItems4 = new ArrayAdapter<String>(this,R.layout.language4_item, item);
@@ -64,6 +65,7 @@ public class Profile extends AppCompatActivity {
 
                 Intent intent = new Intent(Profile.this, Learning.class);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
                 startActivity(intent);
             }
         });

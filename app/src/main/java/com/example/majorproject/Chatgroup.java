@@ -16,7 +16,7 @@ public class Chatgroup extends AppCompatActivity {
     EditText mainUsername;
     Button return1Button;
 
-    String username;
+    String username, language;
 
     TextView logoutRedirectText;
 
@@ -28,13 +28,14 @@ public class Chatgroup extends AppCompatActivity {
         setContentView(R.layout.activity_chatgroup);
 
         // Retrieve the username passed from LoginActivity
-        username = getIntent().getStringExtra("USERNAME");
+        String username = getIntent().getStringExtra("USERNAME");
+        String language = getIntent().getStringExtra("LANGUAGE");
 
         mainUsername = findViewById(R.id.main_username3);
         return1Button = findViewById(R.id.return1_button);
         logoutRedirectText = findViewById(R.id.logout5);
 
-        mainUsername.setText(username);
+        mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
 
         return1Button.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +43,7 @@ public class Chatgroup extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Chatgroup.this, Learning.class);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
                 startActivity(intent);
             }
         });

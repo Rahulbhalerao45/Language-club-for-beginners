@@ -16,7 +16,7 @@ public class Learning extends AppCompatActivity {
 
     EditText mainUsername;
 
-    String username;
+    String username, language;
 
     TextView logoutRedirectText;
 
@@ -25,7 +25,8 @@ public class Learning extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_learning);
 
-        username = getIntent().getStringExtra("USERNAME");
+        String username = getIntent().getStringExtra("USERNAME");
+        String language = getIntent().getStringExtra("LANGUAGE");
 
         mainUsername = findViewById(R.id.main_username2);
         learningButton1 = findViewById(R.id.quiz_button);
@@ -34,7 +35,7 @@ public class Learning extends AppCompatActivity {
         return3Button = findViewById(R.id.return3_button);
         logoutRedirectText = findViewById(R.id.logout3);
 
-        mainUsername.setText(username);
+        mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
 
         learningButton1.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +44,7 @@ public class Learning extends AppCompatActivity {
 
                 Intent intent = new Intent(Learning.this, Quiz.class);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
                 startActivity(intent);
             }
         });
@@ -53,6 +55,7 @@ public class Learning extends AppCompatActivity {
 
                 Intent intent = new Intent(Learning.this, Chatgroup.class);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
                 startActivity(intent);
             }
         });
@@ -63,11 +66,12 @@ public class Learning extends AppCompatActivity {
 
                 Intent intent = new Intent(Learning.this, Profile.class);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
                 startActivity(intent);
             }
         });
 
-        mainUsername.setText(username);
+        mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
 
         return3Button.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +81,7 @@ public class Learning extends AppCompatActivity {
 
                 Intent intent = new Intent(Learning.this, MainActivity.class);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
                 startActivity(intent);
             }
         });

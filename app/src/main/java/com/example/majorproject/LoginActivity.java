@@ -94,11 +94,13 @@ public class LoginActivity extends AppCompatActivity {
                 if (snapshot.exists()){
                     for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                         String passwordFromDB = userSnapshot.child("password").getValue(String.class);
+                        String languageFromDB = userSnapshot.child("language").getValue(String.class);
                         if (passwordFromDB.equals(userPassword)) {
                             loginUsername.setError(null);
                             loginPassword.setError(null);
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.putExtra("USERNAME", userUsername);
+                            intent.putExtra("LANGUAGE", languageFromDB);
                             startActivity(intent);
                         } else {
                             loginPassword.setError("Invalid Password");

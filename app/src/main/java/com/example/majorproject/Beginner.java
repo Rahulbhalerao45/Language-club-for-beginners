@@ -16,7 +16,7 @@ public class Beginner extends AppCompatActivity {
     EditText mainUsername;
     Button returnButton;
 
-    String username;
+    String username, language;
 
     TextView logoutRedirectText;
 
@@ -28,13 +28,14 @@ public class Beginner extends AppCompatActivity {
         setContentView(R.layout.activity_beginner);
 
         // Retrieve the username passed from LoginActivity
-        username = getIntent().getStringExtra("USERNAME");
+        String username = getIntent().getStringExtra("USERNAME");
+        String language = getIntent().getStringExtra("LANGUAGE");
 
         mainUsername = findViewById(R.id.beginner_main_username);
         returnButton = findViewById(R.id.beginner_return_button);
         logoutRedirectText = findViewById(R.id.beginner_logout);
 
-        mainUsername.setText(username);
+        mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
 
         returnButton.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +43,7 @@ public class Beginner extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Beginner.this, Quiz.class);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
                 startActivity(intent);
             }
         });

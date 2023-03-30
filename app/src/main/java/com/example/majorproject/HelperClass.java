@@ -2,7 +2,7 @@ package com.example.majorproject;
 
 public class HelperClass {
 
-    String name, email, selectlanguage, username, password;
+    String name, email, language, username, password;
 
     public String getName() {
         return name;
@@ -20,9 +20,9 @@ public class HelperClass {
         this.email = email;
     }
 
-    public String getSelectlanguage() {return selectlanguage;}
+    public String getLanguage() {return language;}
 
-    public void setSelectlanguage(String language) {this.selectlanguage = selectlanguage;}
+    public void setLanguage(String language) {this.language = language;}
 
 
     public String getUsername() {
@@ -43,10 +43,10 @@ public class HelperClass {
 
 
 
-    public HelperClass(String name, String email,String selectlanguage, String username, String password) {
+    public HelperClass(String name, String email,String language, String username, String password) {
         this.name = name;
         this.email = email;
-        this.selectlanguage = selectlanguage;
+        this.language = language;
         this.username = username;
         this.password = password;
 
