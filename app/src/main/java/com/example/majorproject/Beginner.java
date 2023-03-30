@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +20,11 @@ public class Beginner extends AppCompatActivity {
 
     String username, language;
 
-    TextView logoutRedirectText;
+    RadioGroup mradio1, mradio2, mradio3;
+
+    RadioButton manswer1, manswer2, manswer3, manswer4, manswer5, manswer6;
+
+    TextView logoutRedirectText, question1, question2, question3;
 
 
 
@@ -32,6 +38,18 @@ public class Beginner extends AppCompatActivity {
         String language = getIntent().getStringExtra("LANGUAGE");
 
         mainUsername = findViewById(R.id.beginner_main_username);
+        question1 = findViewById(R.id.beginner_question1);
+        question2 = findViewById(R.id.beginner_question2);
+        question3 = findViewById(R.id.beginner_question3);
+        mradio1 = findViewById(R.id.radio1);
+        mradio2 = findViewById(R.id.radio2);
+        mradio3 = findViewById(R.id.radio3);
+        manswer1 = findViewById(R.id.answer1);
+        manswer2 = findViewById(R.id.answer2);
+        manswer3 = findViewById(R.id.answer3);
+        manswer4 = findViewById(R.id.answer4);
+        manswer5 = findViewById(R.id.answer5);
+        manswer6 = findViewById(R.id.answer6);
         returnButton = findViewById(R.id.beginner_return_button);
         logoutRedirectText = findViewById(R.id.beginner_logout);
 

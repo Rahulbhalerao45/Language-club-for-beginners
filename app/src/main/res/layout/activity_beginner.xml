@@ -38,19 +38,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Question1"
+                android:id="@+id/beginner_question1"
                 android:textSize="20dp"
                 android:text=""/>
             <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/radio1">
 
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/answer1"
                     android:text=""/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/answer2"
                     android:text=""/>
             </RadioGroup>
 
@@ -59,18 +63,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Question2"
+                android:id="@+id/beginner_question2"
                 android:textSize="20dp"
                 android:text=""/>
             <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/radio2">
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/answer3"
                     android:text=""/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/answer4"
                     android:text=""/>
             </RadioGroup>
 
@@ -78,18 +86,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Question3"
+                android:id="@+id/beginner_question3"
                 android:textSize="20dp"
                 android:text=""/>
             <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/radio3">
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/answer5"
                 android:text=""/>
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/answer6"
                 android:text=""/></RadioGroup>
             <Button
                 android:layout_width="match_parent"
