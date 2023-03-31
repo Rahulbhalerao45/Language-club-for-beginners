@@ -1,5 +1,6 @@
 package com.example.majorproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,6 +13,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class Beginner extends AppCompatActivity {
 
 
@@ -19,14 +26,9 @@ public class Beginner extends AppCompatActivity {
     Button returnButton;
 
     String username, language;
-
-    RadioGroup mradio1, mradio2, mradio3;
-
-    RadioButton manswer1, manswer2, manswer3, manswer4, manswer5, manswer6;
-
+    RadioGroup radio1, radio2, radio3;
+    RadioButton answer1, answer2, answer3,answer4, answer5, answer6;
     TextView logoutRedirectText, question1, question2, question3;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +43,15 @@ public class Beginner extends AppCompatActivity {
         question1 = findViewById(R.id.beginner_question1);
         question2 = findViewById(R.id.beginner_question2);
         question3 = findViewById(R.id.beginner_question3);
-        mradio1 = findViewById(R.id.radio1);
-        mradio2 = findViewById(R.id.radio2);
-        mradio3 = findViewById(R.id.radio3);
-        manswer1 = findViewById(R.id.answer1);
-        manswer2 = findViewById(R.id.answer2);
-        manswer3 = findViewById(R.id.answer3);
-        manswer4 = findViewById(R.id.answer4);
-        manswer5 = findViewById(R.id.answer5);
-        manswer6 = findViewById(R.id.answer6);
+        radio1 = findViewById(R.id.radio1);
+        radio2 = findViewById(R.id.radio2);
+        radio3 = findViewById(R.id.radio3);
+        answer1 = findViewById(R.id.answer1);
+        answer2 = findViewById(R.id.answer2);
+        answer3 = findViewById(R.id.answer3);
+        answer4 = findViewById(R.id.answer4);
+        answer5 = findViewById(R.id.answer5);
+        answer6 = findViewById(R.id.answer6);
         returnButton = findViewById(R.id.beginner_return_button);
         logoutRedirectText = findViewById(R.id.beginner_logout);
 

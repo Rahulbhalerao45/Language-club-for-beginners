@@ -1,5 +1,6 @@
 package com.example.majorproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class Quiz extends AppCompatActivity {
 
 
@@ -17,8 +24,11 @@ public class Quiz extends AppCompatActivity {
     Button return1Button, beginnerButton, mediumButton, advancedButton;
 
     String username, language;
-
     TextView logoutRedirectText;
+
+    FirebaseDatabase database;
+
+    DatabaseReference quizRef, databaseRef;
 
 
 
@@ -31,6 +41,9 @@ public class Quiz extends AppCompatActivity {
         String username = getIntent().getStringExtra("USERNAME");
         String language = getIntent().getStringExtra("LANGUAGE");
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference quizRef = database.getReference(language);
+
         mainUsername = findViewById(R.id.quiz_main_username);
         return1Button = findViewById(R.id.quiz_return_button);
         beginnerButton = findViewById(R.id.quiz_beginner_button);
@@ -41,9 +54,21 @@ public class Quiz extends AppCompatActivity {
         mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
 
+        quizRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Quiz quizData = dataSnapshot.getValue(Quiz.class);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         beginnerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                databaseRef = FirebaseDatabase.getInstance().getReference(language).child("beginner");
                 Intent intent = new Intent(Quiz.this, Beginner.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
