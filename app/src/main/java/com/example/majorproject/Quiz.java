@@ -26,12 +26,6 @@ public class Quiz extends AppCompatActivity {
     String username, language;
     TextView logoutRedirectText;
 
-    FirebaseDatabase database;
-
-    DatabaseReference quizRef, databaseRef;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +34,6 @@ public class Quiz extends AppCompatActivity {
         // Retrieve the username passed from LoginActivity
         String username = getIntent().getStringExtra("USERNAME");
         String language = getIntent().getStringExtra("LANGUAGE");
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference quizRef = database.getReference(language);
 
         mainUsername = findViewById(R.id.quiz_main_username);
         return1Button = findViewById(R.id.quiz_return_button);
@@ -54,21 +45,9 @@ public class Quiz extends AppCompatActivity {
         mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
 
-        quizRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Quiz quizData = dataSnapshot.getValue(Quiz.class);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
         beginnerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseRef = FirebaseDatabase.getInstance().getReference(language).child("beginner");
                 Intent intent = new Intent(Quiz.this, Beginner.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);

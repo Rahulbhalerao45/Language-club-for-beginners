@@ -26,9 +26,7 @@ public class Beginner extends AppCompatActivity {
     Button returnButton;
 
     String username, language;
-    RadioGroup radio1, radio2, radio3;
-    RadioButton answer1, answer2, answer3,answer4, answer5, answer6;
-    TextView logoutRedirectText, question1, question2, question3;
+    TextView logoutRedirectText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,18 +38,6 @@ public class Beginner extends AppCompatActivity {
         String language = getIntent().getStringExtra("LANGUAGE");
 
         mainUsername = findViewById(R.id.beginner_main_username);
-        question1 = findViewById(R.id.beginner_question1);
-        question2 = findViewById(R.id.beginner_question2);
-        question3 = findViewById(R.id.beginner_question3);
-        radio1 = findViewById(R.id.radio1);
-        radio2 = findViewById(R.id.radio2);
-        radio3 = findViewById(R.id.radio3);
-        answer1 = findViewById(R.id.answer1);
-        answer2 = findViewById(R.id.answer2);
-        answer3 = findViewById(R.id.answer3);
-        answer4 = findViewById(R.id.answer4);
-        answer5 = findViewById(R.id.answer5);
-        answer6 = findViewById(R.id.answer6);
         returnButton = findViewById(R.id.beginner_return_button);
         logoutRedirectText = findViewById(R.id.beginner_logout);
 
