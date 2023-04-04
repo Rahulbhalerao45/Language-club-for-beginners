@@ -28,6 +28,7 @@ public class Beginner extends AppCompatActivity {
     String username, language;
     TextView logoutRedirectText;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

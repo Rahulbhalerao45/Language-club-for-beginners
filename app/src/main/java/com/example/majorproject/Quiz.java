@@ -19,21 +19,22 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Quiz extends AppCompatActivity {
 
-
     EditText mainUsername;
     Button return1Button, beginnerButton, mediumButton, advancedButton;
 
     String username, language;
     TextView logoutRedirectText;
 
+    DatabaseReference quizRef; // reference to the quiz data in Firebase
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        // Retrieve the username passed from LoginActivity
-        String username = getIntent().getStringExtra("USERNAME");
-        String language = getIntent().getStringExtra("LANGUAGE");
+        // Retrieve the username and language passed from LoginActivity
+        username = getIntent().getStringExtra("USERNAME");
+        language = getIntent().getStringExtra("LANGUAGE");
 
         mainUsername = findViewById(R.id.quiz_main_username);
         return1Button = findViewById(R.id.quiz_return_button);
@@ -45,33 +46,92 @@ public class Quiz extends AppCompatActivity {
         mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
 
+        // Get a reference to the quiz data in Firebase using the language key
+        quizRef = FirebaseDatabase.getInstance().getReference().child("quiz").child(language);
+
         beginnerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Quiz.this, Beginner.class);
-                intent.putExtra("USERNAME", username);
-                intent.putExtra("LANGUAGE", language);
-                startActivity(intent);
+                // Select the beginner level key from the quiz data using a switch statement
+                quizRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String quizLevelKey = "";
+                        switch (v.getId()) {
+                            case R.id.quiz_beginner_button:
+                                quizLevelKey = "beginner";
+                                break;
+                        }
+                        Intent intent = new Intent(Quiz.this, Beginner.class);
+                        intent.putExtra("USERNAME", username);
+                        intent.putExtra("LANGUAGE", language);
+                        intent.putExtra("LEVEL", quizLevelKey);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(Quiz.this, "Error accessing quiz data", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
         mediumButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Quiz.this, Medium.class);
-                intent.putExtra("USERNAME", username);
-                intent.putExtra("LANGUAGE", language);
-                startActivity(intent);
+                // Select the beginner level key from the quiz data using a switch statement
+                quizRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String quizLevelKey = "";
+                        switch (v.getId()) {
+                            case R.id.quiz_medium_button:
+                                quizLevelKey = "medium";
+                                break;
+                        }
+
+                        Intent intent = new Intent(Quiz.this, Medium.class);
+                        intent.putExtra("USERNAME", username);
+                        intent.putExtra("LANGUAGE", language);
+                        intent.putExtra("LEVEL", quizLevelKey);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(Quiz.this, "Error accessing quiz data", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
         advancedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Quiz.this, Advanced.class);
-                intent.putExtra("USERNAME", username);
-                intent.putExtra("LANGUAGE", language);
-                startActivity(intent);
+                // Select the beginner level key from the quiz data using a switch statement
+                quizRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String quizLevelKey = "";
+                        switch (v.getId()) {
+                            case R.id.quiz_advanced_button:
+                                quizLevelKey = "advanced";
+                                break;
+                        }
+
+                        Intent intent = new Intent(Quiz.this, Advanced.class);
+                        intent.putExtra("USERNAME", username);
+                        intent.putExtra("LANGUAGE", language);
+                        intent.putExtra("LEVEL", quizLevelKey);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(Quiz.this, "Error accessing quiz data", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
