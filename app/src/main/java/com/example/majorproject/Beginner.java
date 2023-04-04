@@ -24,9 +24,12 @@ public class Beginner extends AppCompatActivity {
 
     EditText mainUsername;
     Button returnButton;
+    RadioButton option1, option2, option3, option4, option5, option6;
+
+    RadioGroup group1, group2, group3;
 
     String username, language;
-    TextView logoutRedirectText;
+    TextView logoutRedirectText, question1, question2, question3;
 
 
     @Override
@@ -38,6 +41,18 @@ public class Beginner extends AppCompatActivity {
         String username = getIntent().getStringExtra("USERNAME");
         String language = getIntent().getStringExtra("LANGUAGE");
 
+        question1 = findViewById(R.id.beginner_question1);
+        question2 = findViewById(R.id.beginner_question2);
+        question3 = findViewById(R.id.beginner_question3);
+        group1 = findViewById(R.id.radio1);
+        group2 = findViewById(R.id.radio2);
+        group3 = findViewById(R.id.radio3);
+        option1 = findViewById(R.id.answer1);
+        option2 = findViewById(R.id.answer2);
+        option3 = findViewById(R.id.answer3);
+        option4 = findViewById(R.id.answer4);
+        option5 = findViewById(R.id.answer5);
+        option6 = findViewById(R.id.answer6);
         mainUsername = findViewById(R.id.beginner_main_username);
         returnButton = findViewById(R.id.beginner_return_button);
         logoutRedirectText = findViewById(R.id.beginner_logout);
