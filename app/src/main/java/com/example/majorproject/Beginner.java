@@ -24,12 +24,14 @@ public class Beginner extends AppCompatActivity {
 
     EditText mainUsername;
     Button returnButton;
-    RadioButton option1, option2, option3, option4, option5, option6;
+    RadioButton beginnerOption1A, beginnerOption1B, beginnerOption2A, beginnerOption2B, beginnerOption3A, beginnerOption3B;
 
     RadioGroup group1, group2, group3;
 
     String username, language;
-    TextView logoutRedirectText, question1, question2, question3;
+    TextView logoutRedirectText, beginnerQuestion1, beginnerQuestion2, beginnerQuestion3;
+
+    DatabaseReference ref;
 
 
     @Override
@@ -41,24 +43,34 @@ public class Beginner extends AppCompatActivity {
         String username = getIntent().getStringExtra("USERNAME");
         String language = getIntent().getStringExtra("LANGUAGE");
 
-        question1 = findViewById(R.id.beginner_question1);
-        question2 = findViewById(R.id.beginner_question2);
-        question3 = findViewById(R.id.beginner_question3);
+        beginnerQuestion1 = findViewById(R.id.beginner_question1);
+        beginnerQuestion2 = findViewById(R.id.beginner_question2);
+        beginnerQuestion3 = findViewById(R.id.beginner_question3);
         group1 = findViewById(R.id.radio1);
         group2 = findViewById(R.id.radio2);
         group3 = findViewById(R.id.radio3);
-        option1 = findViewById(R.id.answer1);
-        option2 = findViewById(R.id.answer2);
-        option3 = findViewById(R.id.answer3);
-        option4 = findViewById(R.id.answer4);
-        option5 = findViewById(R.id.answer5);
-        option6 = findViewById(R.id.answer6);
+        beginnerOption1A = findViewById(R.id.answer1);
+        beginnerOption1B = findViewById(R.id.answer2);
+        beginnerOption2A = findViewById(R.id.answer3);
+        beginnerOption2B = findViewById(R.id.answer4);
+        beginnerOption3A = findViewById(R.id.answer5);
+        beginnerOption3B = findViewById(R.id.answer6);
         mainUsername = findViewById(R.id.beginner_main_username);
         returnButton = findViewById(R.id.beginner_return_button);
         logoutRedirectText = findViewById(R.id.beginner_logout);
 
         mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
+
+        beginnerQuestion1.setText("QUESTION1");
+        beginnerQuestion2.setText("QUESTION2");
+        beginnerQuestion3.setText("QUESTION3");
+        beginnerOption1A.setText("OPTION1A");
+        beginnerOption1B.setText("OPTION1B");
+        beginnerOption2A.setText("OPTION2A");
+        beginnerOption2B.setText("OPTION2B");
+        beginnerOption3A.setText("OPTION3A");
+        beginnerOption3B.setText("OPTION3B");
 
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override

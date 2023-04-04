@@ -22,10 +22,10 @@ public class Quiz extends AppCompatActivity {
     EditText mainUsername;
     Button return1Button, beginnerButton, mediumButton, advancedButton;
 
-    String username, language;
+    String username, language, question1, option1A, option1B, question2, option2A, option2B, question3, option3A, option3B;
     TextView logoutRedirectText;
 
-    DatabaseReference quizRef; // reference to the quiz data in Firebase
+    DatabaseReference quizRef, ref;// reference to the quiz data in Firebase
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,6 @@ public class Quiz extends AppCompatActivity {
 
         // Get a reference to the quiz data in Firebase using the language key
         quizRef = FirebaseDatabase.getInstance().getReference().child("quiz").child(language);
-
         beginnerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +73,33 @@ public class Quiz extends AppCompatActivity {
                         Toast.makeText(Quiz.this, "Error accessing quiz data", Toast.LENGTH_SHORT).show();
                     }
                 });
+            }
+        });
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("quiz/language/beginner");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // Retrieve the questions and options
+                    String question1 = dataSnapshot.child("quiz/language/beginner/question1/question").getValue(String.class);
+                    String option1A = dataSnapshot.child("quiz/language/beginner/question1/options/A").getValue(String.class);
+                    String option1B = dataSnapshot.child("quiz/language/beginner/question1/options/B").getValue(String.class);
+
+                    String question2 = dataSnapshot.child("quiz/language/beginner/question2/question").getValue(String.class);
+                    String option2A = dataSnapshot.child("quiz/language/beginner/question2/options/A").getValue(String.class);
+                    String option2B = dataSnapshot.child("quiz/language/beginner/question2/options/B").getValue(String.class);
+
+                    String question3 = dataSnapshot.child("quiz/language/beginner/question3/question").getValue(String.class);
+                    String option3A = dataSnapshot.child("quiz/language/beginner/question3/options/A").getValue(String.class);
+                    String option3B = dataSnapshot.child("quiz/language/beginner/question3/options/B").getValue(String.class);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle the error
             }
         });
 
