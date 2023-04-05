@@ -45,29 +45,15 @@
                 android:textColor="@color/black"/>
 
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
-                android:id="@+id/main_chat1"
+                android:id="@+id/sender_chat"
+                android:textSize="18dp"
                 android:textAlignment="center"
-                android:hint="Chat here"
-                android:drawableRight="@drawable/baseline_person_pin_24"
-                android:focusable="false"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:padding="8dp"
-                android:id="@+id/main_chat2"
-                android:textAlignment="center"
-                android:hint="Chat here"
+                android:hint="Senders Text"
                 android:drawableLeft="@drawable/baseline_person_pin_24"
                 android:focusable="false"
                 android:clickable="false"
@@ -80,30 +66,22 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
-                android:id="@+id/main_chat3"
+                android:id="@+id/enter_chat"
                 android:textAlignment="center"
-                android:hint="Chat here"
+                android:hint="Enter Your Text"
                 android:drawableRight="@drawable/baseline_person_pin_24"
-                android:focusable="false"
-                android:clickable="false"
-                android:cursorVisible="false"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
 
-            <EditText
+            <Button
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
+                android:text="Send"
+                android:id="@+id/send_button"
+                android:textSize="18sp"
                 android:layout_marginTop="10dp"
-                android:padding="8dp"
-                android:id="@+id/main_chat4"
-                android:textAlignment="center"
-                android:hint="Chat here"
-                android:drawableLeft="@drawable/baseline_person_pin_24"
-                android:focusable="false"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
+                app:cornerRadius = "20dp"/>
+
 
             <Button
                 android:layout_width="match_parent"

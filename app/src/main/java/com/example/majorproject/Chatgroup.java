@@ -13,12 +13,12 @@ import android.widget.Toast;
 public class Chatgroup extends AppCompatActivity {
 
 
-    EditText mainUsername;
-    Button return1Button;
+    EditText mainUsername, enterText;
+    Button return1Button, sendButton;
 
     String username, language;
 
-    TextView logoutRedirectText;
+    TextView logoutRedirectText, sendersText;
 
 
 
@@ -31,12 +31,26 @@ public class Chatgroup extends AppCompatActivity {
         String username = getIntent().getStringExtra("USERNAME");
         String language = getIntent().getStringExtra("LANGUAGE");
 
+        enterText = findViewById(R.id.enter_chat);
+        sendersText = findViewById(R.id.sender_chat);
         mainUsername = findViewById(R.id.main_username3);
+        sendButton = findViewById(R.id.send_button);
         return1Button = findViewById(R.id.return1_button);
         logoutRedirectText = findViewById(R.id.logout5);
 
         mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Chatgroup.this, Chatgroup.class);
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
+                startActivity(intent);
+            }
+        });
+
 
         return1Button.setOnClickListener(new View.OnClickListener() {
             @Override
