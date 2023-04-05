@@ -73,8 +73,7 @@ public class SignupActivity extends AppCompatActivity {
                 String password = signupPassword.getText().toString();
 
                 HelperClass helperClass = new HelperClass(name, email, language, username, password);
-                reference.child(name).setValue(helperClass);
-
+                reference.child(username).setValue(helperClass);
 
                 Intent intent =new Intent(SignupActivity.this, LoginActivity.class);
                 startActivity(intent);

@@ -94,10 +94,20 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:text="Update"
+                android:id="@+id/update_button"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                app:cornerRadius = "20dp"/>
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:text="Return"
                 android:id="@+id/return2_button"
                 android:textSize="18sp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 app:cornerRadius = "20dp"/>
 
             <Button
