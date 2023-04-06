@@ -24,7 +24,7 @@ public class Beginner extends AppCompatActivity {
 
     EditText mainUsername;
     Button returnButton;
-    RadioButton beginnerOption1A, beginnerOption1B, beginnerOption2A, beginnerOption2B, beginnerOption3A, beginnerOption3B;
+    RadioButton beginnerOption1A, beginnerOption1B, beginnerOption2A, beginnerOption2B, beginnerOption3A, beginnerOption3B, level;
 
     RadioGroup group1, group2, group3;
 
@@ -61,16 +61,6 @@ public class Beginner extends AppCompatActivity {
 
         mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
-
-        beginnerQuestion1.setText("QUESTION1");
-        beginnerQuestion2.setText("QUESTION2");
-        beginnerQuestion3.setText("QUESTION3");
-        beginnerOption1A.setText("OPTION1A");
-        beginnerOption1B.setText("OPTION1B");
-        beginnerOption2A.setText("OPTION2A");
-        beginnerOption2B.setText("OPTION2B");
-        beginnerOption3A.setText("OPTION3A");
-        beginnerOption3B.setText("OPTION3B");
 
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
