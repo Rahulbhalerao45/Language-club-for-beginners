@@ -64,15 +64,21 @@ public class Learning extends AppCompatActivity {
                 quizReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        // Get the questions and options for the quiz
-                        HashMap<String, HashMap<String, String>> quiz = (HashMap<String, HashMap<String, String>>) dataSnapshot.getValue();
+                        // Check if a matching child node was found
+                        if (dataSnapshot.exists()) {
+                            // Get the questions and options for the quiz
+                            HashMap<String, HashMap<String, String>> quiz = (HashMap<String, HashMap<String, String>>) dataSnapshot.getChildren().iterator().next().getValue();
 
-                        // Start the quiz activity and pass the questions and options to it
-                        Intent intent = new Intent(Learning.this, Quiz.class);
-                        intent.putExtra("USERNAME", username);
-                        intent.putExtra("LANGUAGE", language);
-                        intent.putExtra("QUIZ", quiz);
-                        startActivity(intent);
+                            // Start the quiz activity and pass the questions and options to it
+                            Intent intent = new Intent(Learning.this, Quiz.class);
+                            intent.putExtra("USERNAME", username);
+                            intent.putExtra("LANGUAGE", language);
+                            intent.putExtra("QUIZ", quiz);
+                            startActivity(intent);
+                        } else {
+                            // No matching child node found
+                            Toast.makeText(Learning.this, "No quiz found for language " + languageKey, Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
