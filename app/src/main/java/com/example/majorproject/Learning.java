@@ -25,9 +25,9 @@ public class Learning extends AppCompatActivity {
 
     EditText mainUsername;
 
-    String username, language;
+    String username, language, language_one, language_two, language_three;
 
-    TextView logoutRedirectText;
+    TextView logoutRedirectText, language_view;
 
     DatabaseReference databaseReference, quizReference;
 
@@ -38,6 +38,9 @@ public class Learning extends AppCompatActivity {
 
         String username = getIntent().getStringExtra("USERNAME");
         String language = getIntent().getStringExtra("LANGUAGE");
+        String language_one = getIntent().getStringExtra("LANGUAGE1");
+        String language_two = getIntent().getStringExtra("LANGUAGE2");
+        String language_three = getIntent().getStringExtra("LANGUAGE3");
 
         mainUsername = findViewById(R.id.main_username2);
         learningButton1 = findViewById(R.id.quiz_button);
@@ -45,9 +48,14 @@ public class Learning extends AppCompatActivity {
         learningButton3 = findViewById(R.id.profile_button);
         return3Button = findViewById(R.id.return3_button);
         logoutRedirectText = findViewById(R.id.logout3);
+        language_view = findViewById(R.id.language_view);
 
         mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
+
+        language_view.setText("" + language_one + "-" + language_two + "-" + language_three + "");
+        language_view.setEnabled(false);
+        language_view.setVisibility(View.INVISIBLE);
 
         learningButton1.setOnClickListener(new View.OnClickListener() {
             @Override
