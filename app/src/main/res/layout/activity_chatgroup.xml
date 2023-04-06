@@ -52,7 +52,6 @@
                 android:padding="8dp"
                 android:id="@+id/sender_chat"
                 android:textSize="18dp"
-                android:textAlignment="center"
                 android:hint="Senders Text"
                 android:drawableLeft="@drawable/baseline_person_pin_24"
                 android:focusable="false"
