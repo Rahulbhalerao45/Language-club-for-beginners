@@ -52,49 +52,18 @@ public class Learning extends AppCompatActivity {
         learningButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Get the reference to the Firebase database
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-
-                // Get the language key of the logged-in user
-                String languageKey = getIntent().getStringExtra("LANGUAGE");
-
-                // Get the quiz key matching the language key
-                DatabaseReference quizReference = databaseReference.child("quiz").child(languageKey);
-
-                quizReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        // Check if a matching child node was found
-                        if (dataSnapshot.exists()) {
-                            // Get the questions and options for the quiz
-                            HashMap<String, HashMap<String, String>> quiz = (HashMap<String, HashMap<String, String>>) dataSnapshot.getChildren().iterator().next().getValue();
-
                             // Start the quiz activity and pass the questions and options to it
                             Intent intent = new Intent(Learning.this, Quiz.class);
                             intent.putExtra("USERNAME", username);
                             intent.putExtra("LANGUAGE", language);
-                            intent.putExtra("QUIZ", quiz);
                             startActivity(intent);
-                        } else {
-                            // No matching child node found
-                            Toast.makeText(Learning.this, "No quiz found for language " + languageKey, Toast.LENGTH_SHORT).show();
                         }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        // Handle the error
-                        Toast.makeText(Learning.this, "Failed to get quiz questions", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
+                    });
 
 
         learningButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(Learning.this, Chatgroup.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
@@ -105,7 +74,6 @@ public class Learning extends AppCompatActivity {
         learningButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(Learning.this, Profile.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
