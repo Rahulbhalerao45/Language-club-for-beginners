@@ -35,6 +35,7 @@ public class Quiz extends AppCompatActivity {
 
     FirebaseDatabase Reference;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +67,7 @@ public class Quiz extends AppCompatActivity {
         logoutRedirectText = findViewById(R.id.quiz_logout);
         quiz_view = findViewById(R.id.quiz_view);
 
+
         mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
 
@@ -88,10 +90,10 @@ public class Quiz extends AppCompatActivity {
                     String option1A = snapshot.child("question1/A").getValue(String.class);
                     String option1B = snapshot.child("question1/B").getValue(String.class);
 
+
                     quizQuestion1.setText(question1);
                     quizOption1A.setText(option1A);
                     quizOption1B.setText(option1B);
-
 
                 }
             }

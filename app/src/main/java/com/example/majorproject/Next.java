@@ -44,6 +44,7 @@ public class Next extends AppCompatActivity {
         String username = getIntent().getStringExtra("USERNAME");
         String language = getIntent().getStringExtra("LANGUAGE");
 
+
         String language_one = getIntent().getStringExtra("LANGUAGE1");
         String language_two = getIntent().getStringExtra("LANGUAGE2");
         String language_three = getIntent().getStringExtra("LANGUAGE3");
@@ -145,6 +146,8 @@ public class Next extends AppCompatActivity {
                 // Handle the error
             }
         });
+
+
 
         next1Button.setOnClickListener(new View.OnClickListener() {
             @Override
