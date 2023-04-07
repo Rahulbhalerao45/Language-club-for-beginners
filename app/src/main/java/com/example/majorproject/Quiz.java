@@ -80,9 +80,9 @@ public class Quiz extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     // Retrieve the questions and options
-                    String question1 = snapshot.child("quiz/language_one/0/question1").getValue(String.class);
-                    String option1A = snapshot.child("quiz/language_one/0/options/A").getValue(String.class);
-                    String option1B = snapshot.child("quiz/language_one/0/options/B").getValue(String.class);
+                    String question1 = snapshot.child("question1/text").getValue(String.class);
+                    String option1A = snapshot.child("question1/A").getValue(String.class);
+                    String option1B = snapshot.child("question1/B").getValue(String.class);
 
 
                 }
@@ -99,9 +99,9 @@ public class Quiz extends AppCompatActivity {
                 if (snapshot.exists()) {
                     // Retrieve the questions and options
 
-                    String question2 = snapshot.child("quiz/language_two/1/question2").getValue(String.class);
-                    String option2A = snapshot.child("quiz/language_two/1/options/A").getValue(String.class);
-                    String option2B = snapshot.child("quiz/language_two/1/options/B").getValue(String.class);
+                    String question2 = snapshot.child("question2/text").getValue(String.class);
+                    String option2A = snapshot.child("question2/A").getValue(String.class);
+                    String option2B = snapshot.child("question2/B").getValue(String.class);
 
 
                 }
@@ -118,9 +118,9 @@ public class Quiz extends AppCompatActivity {
                 if (snapshot.exists()) {
                     // Retrieve the questions and options
 
-                    String question3 = snapshot.child("quiz/language_three/2/question3").getValue(String.class);
-                    String option3A = snapshot.child("quiz/language_three/2/options/A").getValue(String.class);
-                    String option3B = snapshot.child("quiz/language_three/2/options/B").getValue(String.class);
+                    String question3 = snapshot.child("question3/text").getValue(String.class);
+                    String option3A = snapshot.child("question3/A").getValue(String.class);
+                    String option3B = snapshot.child("question3/B").getValue(String.class);
 
                 }
             }
