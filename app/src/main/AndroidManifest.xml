@@ -19,15 +19,6 @@
             android:name=".Next"
             android:exported="false" />
         <activity
-            android:name=".Advanced"
-            android:exported="false" />
-        <activity
-            android:name=".Medium"
-            android:exported="false" />
-        <activity
-            android:name=".Beginner"
-            android:exported="false" />
-        <activity
             android:name=".SignupActivity"
             android:exported="false" />
         <activity

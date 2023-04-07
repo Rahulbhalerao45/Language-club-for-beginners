@@ -116,6 +116,18 @@
                     android:id="@+id/qanswer6"
                     android:text=""/></RadioGroup>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/quiz_submit2"
+                android:text="Submit"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/lavender"/>
+
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
