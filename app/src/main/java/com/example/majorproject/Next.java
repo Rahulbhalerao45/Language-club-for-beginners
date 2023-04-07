@@ -19,11 +19,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Quiz extends AppCompatActivity {
+public class Next extends AppCompatActivity {
 
 
     EditText mainUsername;
-    Button returnButton, nextButton;
+    Button returnButton, next1Button;
     RadioButton quizOption1A, quizOption1B, quizOption2A, quizOption2B, quizOption3A, quizOption3B;
 
     RadioGroup group1, group2, group3;
@@ -38,7 +38,7 @@ public class Quiz extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz);
+        setContentView(R.layout.activity_next);
 
         // Retrieve the username passed from LoginActivity
         String username = getIntent().getStringExtra("USERNAME");
@@ -62,7 +62,7 @@ public class Quiz extends AppCompatActivity {
         quizOption3B = findViewById(R.id.qanswer6);
         mainUsername = findViewById(R.id.quiz_main_username);
         returnButton = findViewById(R.id.quiz_return_button);
-        nextButton = findViewById(R.id.quiz_next_button);
+        next1Button = findViewById(R.id.quiz_next1_button);
         logoutRedirectText = findViewById(R.id.quiz_logout);
         quiz_view = findViewById(R.id.quiz_view);
 
@@ -84,9 +84,9 @@ public class Quiz extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     // Retrieve the questions and options
-                    String question1 = snapshot.child("question1/text").getValue(String.class);
-                    String option1A = snapshot.child("question1/A").getValue(String.class);
-                    String option1B = snapshot.child("question1/B").getValue(String.class);
+                    String question1 = snapshot.child("question2/text").getValue(String.class);
+                    String option1A = snapshot.child("question2/A").getValue(String.class);
+                    String option1B = snapshot.child("question2/B").getValue(String.class);
 
                     quizQuestion1.setText(question1);
                     quizOption1A.setText(option1A);
@@ -107,9 +107,9 @@ public class Quiz extends AppCompatActivity {
                 if (snapshot.exists()) {
                     // Retrieve the questions and options
 
-                    String question2 = snapshot.child("question1/text").getValue(String.class);
-                    String option2A = snapshot.child("question1/A").getValue(String.class);
-                    String option2B = snapshot.child("question1/B").getValue(String.class);
+                    String question2 = snapshot.child("question2/text").getValue(String.class);
+                    String option2A = snapshot.child("question2/A").getValue(String.class);
+                    String option2B = snapshot.child("question2/B").getValue(String.class);
 
                     quizQuestion2.setText(question2);
                     quizOption2A.setText(option2A);
@@ -130,9 +130,9 @@ public class Quiz extends AppCompatActivity {
                 if (snapshot.exists()) {
                     // Retrieve the questions and options
 
-                    String question3 = snapshot.child("question1/text").getValue(String.class);
-                    String option3A = snapshot.child("question1/A").getValue(String.class);
-                    String option3B = snapshot.child("question1/B").getValue(String.class);
+                    String question3 = snapshot.child("question2/text").getValue(String.class);
+                    String option3A = snapshot.child("question2/A").getValue(String.class);
+                    String option3B = snapshot.child("question2/B").getValue(String.class);
 
                     quizQuestion3.setText(question3);
                     quizOption3A.setText(option3A);
@@ -146,10 +146,10 @@ public class Quiz extends AppCompatActivity {
             }
         });
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        next1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Quiz.this, Next.class);
+                Intent intent = new Intent(Next.this, Next1.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
                 intent.putExtra("LANGUAGE1", language_one);
@@ -162,7 +162,7 @@ public class Quiz extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Quiz.this, Learning.class);
+                Intent intent = new Intent(Next.this, Quiz.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
                 intent.putExtra("LANGUAGE1", language_one);
@@ -175,7 +175,7 @@ public class Quiz extends AppCompatActivity {
         logoutRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(Quiz.this, LoginActivity.class);
+                Intent intent =new Intent(Next.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

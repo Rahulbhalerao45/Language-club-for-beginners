@@ -115,6 +115,16 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/qanswer6"
                                     android:text=""/></RadioGroup>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:text="Next"
+                            android:id="@+id/quiz_next_button"
+                            android:textSize="18sp"
+                            android:layout_marginTop="10dp"
+                            app:cornerRadius = "20dp"/>
+
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
