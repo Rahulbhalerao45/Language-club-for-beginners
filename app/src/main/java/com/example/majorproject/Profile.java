@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +32,8 @@ public class Profile extends AppCompatActivity {
 
     DatabaseReference databaseReference;
 
+    TextView logoutRedirectText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +44,7 @@ public class Profile extends AppCompatActivity {
 
         mainUsername = findViewById(R.id.main_username5);
         return2Button = findViewById(R.id.return2_button);
-        logoutButton = findViewById(R.id.logout_button);
+        logoutRedirectText = findViewById(R.id.profile_logout);
         updateButton = findViewById(R.id.update_button);
         selectLanguage4 = findViewById(R.id.auto_complete_txt4);
 
@@ -68,7 +71,7 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-        logoutButton.setOnClickListener(new View.OnClickListener() {
+        logoutRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Profile.this, LoginActivity.class);
