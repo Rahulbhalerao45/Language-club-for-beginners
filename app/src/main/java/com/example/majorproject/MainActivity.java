@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         selectLanguage2.setAdapter(adapterItems2);
         selectLanguage3.setAdapter(adapterItems3);
 
+
         selectLanguage1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

@@ -24,14 +24,14 @@ public class Quiz extends AppCompatActivity {
 
     EditText mainUsername;
     Button returnButton;
-    RadioButton beginnerOption1A, beginnerOption1B, beginnerOption2A, beginnerOption2B, beginnerOption3A, beginnerOption3B;
+    RadioButton quizOption1A, quizOption1B, quizOption2A, quizOption2B, quizOption3A, quizOption3B;
 
     RadioGroup group1, group2, group3;
 
-    String username, language;
-    TextView logoutRedirectText, beginnerQuestion1, beginnerQuestion2, beginnerQuestion3;
+    String username, language, language_one, language_two, language_three;
+    TextView logoutRedirectText, quizQuestion1, quizQuestion2, quizQuestion3, quiz_view;
 
-    DatabaseReference ref;
+    DatabaseReference quiz1Ref, quiz2Ref, quiz3Ref;// reference to the quiz data in Firebase
 
 
     @Override
@@ -43,24 +43,103 @@ public class Quiz extends AppCompatActivity {
         String username = getIntent().getStringExtra("USERNAME");
         String language = getIntent().getStringExtra("LANGUAGE");
 
-        beginnerQuestion1 = findViewById(R.id.quiz_question1);
-        beginnerQuestion2 = findViewById(R.id.quiz_question2);
-        beginnerQuestion3 = findViewById(R.id.quiz_question3);
+        String language_one = getIntent().getStringExtra("LANGUAGE1");
+        String language_two = getIntent().getStringExtra("LANGUAGE2");
+        String language_three = getIntent().getStringExtra("LANGUAGE3");
+
+        quizQuestion1 = findViewById(R.id.quiz_question1);
+        quizQuestion2 = findViewById(R.id.quiz_question2);
+        quizQuestion3 = findViewById(R.id.quiz_question3);
         group1 = findViewById(R.id.qradio1);
         group2 = findViewById(R.id.qradio2);
         group3 = findViewById(R.id.qradio3);
-        beginnerOption1A = findViewById(R.id.qanswer1);
-        beginnerOption1B = findViewById(R.id.qanswer2);
-        beginnerOption2A = findViewById(R.id.qanswer3);
-        beginnerOption2B = findViewById(R.id.qanswer4);
-        beginnerOption3A = findViewById(R.id.qanswer5);
-        beginnerOption3B = findViewById(R.id.qanswer6);
+        quizOption1A = findViewById(R.id.qanswer1);
+        quizOption1B = findViewById(R.id.qanswer2);
+        quizOption2A = findViewById(R.id.qanswer3);
+        quizOption2B = findViewById(R.id.qanswer4);
+        quizOption3A = findViewById(R.id.qanswer5);
+        quizOption3B = findViewById(R.id.qanswer6);
         mainUsername = findViewById(R.id.quiz_main_username);
         returnButton = findViewById(R.id.quiz_return_button);
         logoutRedirectText = findViewById(R.id.quiz_logout);
+        quiz_view = findViewById(R.id.quiz_view);
 
         mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
+
+        quiz_view.setText("" + language_one + "-" + language_two + "-" + language_three + "");
+        quiz_view.setEnabled(false);
+        quiz_view.setVisibility(View.INVISIBLE);
+
+        DatabaseReference quiz1Ref = FirebaseDatabase.getInstance().getReference().child("quiz").child(language_one);
+        DatabaseReference quiz2Ref = FirebaseDatabase.getInstance().getReference().child("quiz").child(language_two);
+        DatabaseReference quiz3Ref = FirebaseDatabase.getInstance().getReference().child("quiz").child(language_three);
+
+        quiz1Ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    // Retrieve the questions and options
+                    String question1 = snapshot.child("quiz/language_one/0/question1").getValue(String.class);
+                    String option1A = snapshot.child("quiz/language_one/0/options/A").getValue(String.class);
+                    String option1B = snapshot.child("quiz/language_one/0/options/B").getValue(String.class);
+
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle the error
+            }
+        });
+
+        quiz2Ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    // Retrieve the questions and options
+
+                    String question2 = snapshot.child("quiz/language_two/1/question2").getValue(String.class);
+                    String option2A = snapshot.child("quiz/language_two/1/options/A").getValue(String.class);
+                    String option2B = snapshot.child("quiz/language_two/1/options/B").getValue(String.class);
+
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle the error
+            }
+        });
+
+        quiz3Ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    // Retrieve the questions and options
+
+                    String question3 = snapshot.child("quiz/language_three/2/question3").getValue(String.class);
+                    String option3A = snapshot.child("quiz/language_three/2/options/A").getValue(String.class);
+                    String option3B = snapshot.child("quiz/language_three/2/options/B").getValue(String.class);
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle the error
+            }
+        });
+
+        quizQuestion1.setText("question1");
+        quizQuestion2.setText("question2");
+        quizQuestion3.setText("question3");
+        quizOption1A.setText("option1A");
+        quizOption1B.setText("option1B");
+        quizOption2A.setText("option2A");
+        quizOption2B.setText("option2B");
+        quizOption3A.setText("option3A");
+        quizOption3B.setText("option3B");
+
 
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -25,11 +25,11 @@ public class Learning extends AppCompatActivity {
 
     EditText mainUsername;
 
-    String username, language, language_one, language_two, language_three;
+    String username, language, language_one, language_two, language_three, selectedLanguage1, selectedLanguage2, selectedLanguage3;
 
     TextView logoutRedirectText, language_view;
 
-    DatabaseReference databaseReference, quizReference;
+    DatabaseReference databaseReference, quiz1Reference, quiz2Reference, quiz3Reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,10 @@ public class Learning extends AppCompatActivity {
 
         String username = getIntent().getStringExtra("USERNAME");
         String language = getIntent().getStringExtra("LANGUAGE");
+        String selectedLanguage1 = getIntent().getStringExtra("LANGUAGE1");
+        String selectedLanguage2 = getIntent().getStringExtra("LANGUAGE2");
+        String selectedLanguage3 = getIntent().getStringExtra("LANGUAGE3");
+
         String language_one = getIntent().getStringExtra("LANGUAGE1");
         String language_two = getIntent().getStringExtra("LANGUAGE2");
         String language_three = getIntent().getStringExtra("LANGUAGE3");
@@ -57,18 +61,110 @@ public class Learning extends AppCompatActivity {
         language_view.setEnabled(false);
         language_view.setVisibility(View.INVISIBLE);
 
+
         learningButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Get the reference to the Firebase database
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
+
+                // Get the quiz key matching the language key
+                DatabaseReference quiz1Reference = databaseReference.child("quiz").child(language_one);
+                DatabaseReference quiz2Reference = databaseReference.child("quiz").child(language_two);
+                DatabaseReference quiz3Reference = databaseReference.child("quiz").child(language_three);
+
+                quiz1Reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        // Check if a matching child node was found
+                        if (dataSnapshot.exists()) {
+                            // Get the questions and options for the quiz
+                            HashMap<String, HashMap<String, String>> quiz = (HashMap<String, HashMap<String, String>>) dataSnapshot.getChildren().iterator().next().getValue();
+
                             // Start the quiz activity and pass the questions and options to it
                             Intent intent = new Intent(Learning.this, Quiz.class);
                             intent.putExtra("USERNAME", username);
                             intent.putExtra("LANGUAGE", language);
+                            intent.putExtra("LANGUAGE1", selectedLanguage1);
+                            intent.putExtra("LANGUAGE2", selectedLanguage2);
+                            intent.putExtra("LANGUAGE3", selectedLanguage3);
+                            intent.putExtra("QUIZ", quiz);
                             startActivity(intent);
+                        } else {
+                            // No matching child node found
+                            Toast.makeText(Learning.this, "No quiz found for language " + language_one, Toast.LENGTH_SHORT).show();
                         }
-                    });
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Handle the error
+                        Toast.makeText(Learning.this, "Failed to get quiz questions", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
+                quiz2Reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        // Check if a matching child node was found
+                        if (dataSnapshot.exists()) {
+                            // Get the questions and options for the quiz
+                            HashMap<String, HashMap<String, String>> quiz = (HashMap<String, HashMap<String, String>>) dataSnapshot.getChildren().iterator().next().getValue();
+
+                            // Start the quiz activity and pass the questions and options to it
+                            Intent intent = new Intent(Learning.this, Quiz.class);
+                            intent.putExtra("USERNAME", username);
+                            intent.putExtra("LANGUAGE", language);
+                            intent.putExtra("LANGUAGE1", selectedLanguage1);
+                            intent.putExtra("LANGUAGE2", selectedLanguage2);
+                            intent.putExtra("LANGUAGE3", selectedLanguage3);
+                            intent.putExtra("QUIZ", quiz);
+                            startActivity(intent);
+                        } else {
+                            // No matching child node found
+                            Toast.makeText(Learning.this, "No quiz found for language " + language_two, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Handle the error
+                        Toast.makeText(Learning.this, "Failed to get quiz questions", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                quiz3Reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        // Check if a matching child node was found
+                        if (dataSnapshot.exists()) {
+                            // Get the questions and options for the quiz
+                            HashMap<String, HashMap<String, String>> quiz = (HashMap<String, HashMap<String, String>>) dataSnapshot.getChildren().iterator().next().getValue();
+
+                            // Start the quiz activity and pass the questions and options to it
+                            Intent intent = new Intent(Learning.this, Quiz.class);
+                            intent.putExtra("USERNAME", username);
+                            intent.putExtra("LANGUAGE", language);
+                            intent.putExtra("LANGUAGE1", selectedLanguage1);
+                            intent.putExtra("LANGUAGE2", selectedLanguage2);
+                            intent.putExtra("LANGUAGE3", selectedLanguage3);
+                            intent.putExtra("QUIZ", quiz);
+                            startActivity(intent);
+                        } else {
+                            // No matching child node found
+                            Toast.makeText(Learning.this, "No quiz found for language " + language_three, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Handle the error
+                        Toast.makeText(Learning.this, "Failed to get quiz questions", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
         learningButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
