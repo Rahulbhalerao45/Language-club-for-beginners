@@ -30,7 +30,7 @@ public class Quiz extends AppCompatActivity {
     RadioGroup group1, group2, group3;
 
     String username, language, language_one, language_two, language_three;
-    TextView logoutRedirectText, quizQuestion1, quizQuestion2, quizQuestion3, quiz_view, submitRedirectText;
+    TextView logoutRedirectText, quizQuestion1, quizQuestion2, quizQuestion3, quiz_view;
 
     DatabaseReference quiz1Ref, quiz2Ref, quiz3Ref;// reference to the quiz data in Firebase
 
@@ -65,7 +65,6 @@ public class Quiz extends AppCompatActivity {
         returnButton = findViewById(R.id.quiz_return_button);
         nextButton = findViewById(R.id.quiz_next_button);
         logoutRedirectText = findViewById(R.id.quiz_logout);
-        submitRedirectText = findViewById(R.id.quiz_submit);
         quiz_view = findViewById(R.id.quiz_view);
 
 
@@ -166,19 +165,6 @@ public class Quiz extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Quiz.this, Learning.class);
-                intent.putExtra("USERNAME", username);
-                intent.putExtra("LANGUAGE", language);
-                intent.putExtra("LANGUAGE1", language_one);
-                intent.putExtra("LANGUAGE2", language_two);
-                intent.putExtra("LANGUAGE3", language_three);
-                startActivity(intent);
-            }
-        });
-
-        submitRedirectText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent =new Intent(Quiz.this, Submit.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
                 intent.putExtra("LANGUAGE1", language_one);
