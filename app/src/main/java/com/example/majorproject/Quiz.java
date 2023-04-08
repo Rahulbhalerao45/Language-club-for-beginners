@@ -163,6 +163,7 @@ public class Quiz extends AppCompatActivity {
                     Toast.makeText(Quiz.this, "Please select an option for each question.", Toast.LENGTH_SHORT).show();
                 }
             }
+
         });
 
         returnButton.setOnClickListener(new View.OnClickListener() {
