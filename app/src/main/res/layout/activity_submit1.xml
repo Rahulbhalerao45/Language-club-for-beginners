@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/background6"
-    tools:context=".Next">
+    tools:context=".Submit1">
 
     <TextView
         android:layout_width="400dp"
@@ -49,103 +49,81 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Question1"
-                android:id="@+id/quiz_question1"
-                android:textSize="20dp"
-                android:text=""/>
+                android:id="@+id/correct_answer"
+                android:textAlignment="center"
+                android:textSize="32dp"
+                android:textColor="@color/lavender"
+                android:text="Correct Answers"/>
+
             <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/qradio1">
-
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/qanswer1"
-                    android:text=""/>
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/qanswer2"
-                    android:text=""/>
-            </RadioGroup>
-
-
-            <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:hint="Question2"
-                android:id="@+id/quiz_question2"
-                android:textSize="20dp"
-                android:text=""/>
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/qradio2">
+                android:id="@+id/group4">
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/qanswer3"
-                    android:text=""/>
+                    android:text=""
+                    android:textSize="15dp"
+                    android:id="@+id/answer1"/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/qanswer4"
-                    android:text=""/>
+                    android:text=""
+                    android:textSize="15dp"
+                    android:id="@+id/answer2"/>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="15dp"
+                    android:id="@+id/answer3"/>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="15dp"
+                    android:id="@+id/answer4"/>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="15dp"
+                    android:id="@+id/answer5"/>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="15dp"
+                    android:id="@+id/answer6"/>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="15dp"
+                    android:id="@+id/answer7"/>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="15dp"
+                    android:id="@+id/answer8"/>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="15dp"
+                    android:id="@+id/answer9"/>
             </RadioGroup>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Question3"
-                android:id="@+id/quiz_question3"
-                android:textSize="20dp"
-                android:text=""/>
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/qradio3">
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/qanswer5"
-                    android:text=""/>
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/qanswer6"
-                    android:text=""/></RadioGroup>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="SUBMIT"
-                android:id="@+id/submit"
-                android:textSize="18sp"
-                android:layout_marginTop="10dp"
-                app:cornerRadius = "20dp"/>
-
-
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="Return"
-                android:id="@+id/quiz_return_button"
+                android:id="@+id/submit1_return_button"
                 android:textSize="18sp"
                 android:layout_marginTop="10dp"
                 app:cornerRadius = "20dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/quiz_logout"
-                android:text="Logout"
-                android:layout_gravity="center"
-                android:padding="8dp"
-                android:layout_marginTop="10dp"
-                android:textSize="18sp"
-                android:textColor="@color/lavender"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
