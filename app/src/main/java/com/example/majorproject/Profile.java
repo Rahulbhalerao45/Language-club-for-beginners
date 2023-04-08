@@ -10,11 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class Profile extends AppCompatActivity {
 
@@ -33,6 +36,8 @@ public class Profile extends AppCompatActivity {
     DatabaseReference databaseReference;
 
     TextView logoutRedirectText;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +67,8 @@ public class Profile extends AppCompatActivity {
                 selectedLanguage4 = adapterView.getItemAtPosition(i).toString();
             }
         });
+
+
 
         return2Button.setOnClickListener(new View.OnClickListener() {
             @Override
