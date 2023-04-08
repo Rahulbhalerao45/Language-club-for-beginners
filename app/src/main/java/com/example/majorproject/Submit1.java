@@ -45,7 +45,6 @@ public class Submit1 extends AppCompatActivity {
         String username = getIntent().getStringExtra("USERNAME");
         String language = getIntent().getStringExtra("LANGUAGE");
 
-
         String language_one = getIntent().getStringExtra("LANGUAGE1");
         String language_two = getIntent().getStringExtra("LANGUAGE2");
         String language_three = getIntent().getStringExtra("LANGUAGE3");
