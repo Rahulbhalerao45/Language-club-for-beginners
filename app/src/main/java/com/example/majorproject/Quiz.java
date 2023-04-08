@@ -151,6 +151,7 @@ public class Quiz extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (group1.getCheckedRadioButtonId() != -1 && group2.getCheckedRadioButtonId() != -1 && group3.getCheckedRadioButtonId() != -1) {
                 Intent intent = new Intent(Quiz.this, Next.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
@@ -158,6 +159,9 @@ public class Quiz extends AppCompatActivity {
                 intent.putExtra("LANGUAGE2", language_two);
                 intent.putExtra("LANGUAGE3", language_three);
                 startActivity(intent);
+                } else {
+                    Toast.makeText(Quiz.this, "Please select an option for each question.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

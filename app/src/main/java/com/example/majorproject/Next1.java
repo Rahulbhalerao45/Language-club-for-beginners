@@ -149,13 +149,17 @@ public class Next1 extends AppCompatActivity {
         submit1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Next1.this, Submit1.class);
-                intent.putExtra("USERNAME", username);
-                intent.putExtra("LANGUAGE", language);
-                intent.putExtra("LANGUAGE1", language_one);
-                intent.putExtra("LANGUAGE2", language_two);
-                intent.putExtra("LANGUAGE3", language_three);
-                startActivity(intent);
+                if (group1.getCheckedRadioButtonId() != -1 && group2.getCheckedRadioButtonId() != -1 && group3.getCheckedRadioButtonId() != -1) {
+                    Intent intent = new Intent(Next1.this, Submit1.class);
+                    intent.putExtra("USERNAME", username);
+                    intent.putExtra("LANGUAGE", language);
+                    intent.putExtra("LANGUAGE1", language_one);
+                    intent.putExtra("LANGUAGE2", language_two);
+                    intent.putExtra("LANGUAGE3", language_three);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(Next1.this, "Please select an option for each question.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
