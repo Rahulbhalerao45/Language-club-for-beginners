@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Profile extends AppCompatActivity {
 
-    EditText mainUsername;
+    EditText mainUsername, ranking, search;
 
     Button return2Button, logoutButton, updateButton;
 
@@ -43,6 +43,8 @@ public class Profile extends AppCompatActivity {
         language = getIntent().getStringExtra("LANGUAGE");
 
         mainUsername = findViewById(R.id.main_username5);
+        ranking = findViewById(R.id.main_profile3);
+        search = findViewById(R.id.main_profile4);
         return2Button = findViewById(R.id.return2_button);
         logoutRedirectText = findViewById(R.id.profile_logout);
         updateButton = findViewById(R.id.update_button);
