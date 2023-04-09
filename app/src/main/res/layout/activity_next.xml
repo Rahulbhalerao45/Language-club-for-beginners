@@ -56,17 +56,17 @@
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/qradio1">
+                android:id="@+id/qradio4">
 
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/qanswer1"
+                    android:id="@+id/qanswer7"
                     android:text=""/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/qanswer2"
+                    android:id="@+id/qanswer8"
                     android:text=""/>
             </RadioGroup>
 
@@ -81,16 +81,16 @@
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/qradio2">
+                android:id="@+id/qradio5">
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/qanswer3"
+                    android:id="@+id/qanswer9"
                     android:text=""/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/qanswer4"
+                    android:id="@+id/qanswer10"
                     android:text=""/>
             </RadioGroup>
 
@@ -104,16 +104,16 @@
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/qradio3">
+                android:id="@+id/qradio6">
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/qanswer5"
+                    android:id="@+id/qanswer11"
                     android:text=""/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/qanswer6"
+                    android:id="@+id/qanswer12"
                     android:text=""/></RadioGroup>
 
 

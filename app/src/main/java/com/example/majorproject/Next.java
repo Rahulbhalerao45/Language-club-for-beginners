@@ -52,15 +52,15 @@ public class Next extends AppCompatActivity {
         quizQuestion1 = findViewById(R.id.quiz_question1);
         quizQuestion2 = findViewById(R.id.quiz_question2);
         quizQuestion3 = findViewById(R.id.quiz_question3);
-        group1 = findViewById(R.id.qradio1);
-        group2 = findViewById(R.id.qradio2);
-        group3 = findViewById(R.id.qradio3);
-        quizOption1A = findViewById(R.id.qanswer1);
-        quizOption1B = findViewById(R.id.qanswer2);
-        quizOption2A = findViewById(R.id.qanswer3);
-        quizOption2B = findViewById(R.id.qanswer4);
-        quizOption3A = findViewById(R.id.qanswer5);
-        quizOption3B = findViewById(R.id.qanswer6);
+        group1 = findViewById(R.id.qradio4);
+        group2 = findViewById(R.id.qradio5);
+        group3 = findViewById(R.id.qradio6);
+        quizOption1A = findViewById(R.id.qanswer7);
+        quizOption1B = findViewById(R.id.qanswer8);
+        quizOption2A = findViewById(R.id.qanswer9);
+        quizOption2B = findViewById(R.id.qanswer10);
+        quizOption3A = findViewById(R.id.qanswer11);
+        quizOption3B = findViewById(R.id.qanswer12);
         mainUsername = findViewById(R.id.quiz_main_username);
         returnButton = findViewById(R.id.quiz_return_button);
         next1Button = findViewById(R.id.quiz_next1_button);
@@ -146,8 +146,6 @@ public class Next extends AppCompatActivity {
                 // Handle the error
             }
         });
-
-
 
         next1Button.setOnClickListener(new View.OnClickListener() {
             @Override

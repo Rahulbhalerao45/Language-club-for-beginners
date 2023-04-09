@@ -27,7 +27,7 @@ public class Submit1 extends AppCompatActivity {
 
     String username, language, language_one, language_two, language_three;
 
-    RadioGroup group4;
+    RadioGroup group10;
     RadioButton answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9;
 
     TextView scoreTextView, quiz_view;
@@ -50,15 +50,16 @@ public class Submit1 extends AppCompatActivity {
         String language_three = getIntent().getStringExtra("LANGUAGE3");
 
         scoreTextView = findViewById(R.id.correct_answer);
-        answer1 = findViewById(R.id.answer1);
-        answer2 = findViewById(R.id.answer2);
-        answer3 = findViewById(R.id.answer3);
-        answer4 = findViewById(R.id.answer4);
-        answer5 = findViewById(R.id.answer5);
-        answer6 = findViewById(R.id.answer6);
-        answer7 = findViewById(R.id.answer7);
-        answer8 = findViewById(R.id.answer8);
-        answer9 = findViewById(R.id.answer9);
+        group10 = findViewById(R.id.group10);
+        answer1 = findViewById(R.id.answer111);
+        answer2 = findViewById(R.id.answer222);
+        answer3 = findViewById(R.id.answer333);
+        answer4 = findViewById(R.id.answer444);
+        answer5 = findViewById(R.id.answer555);
+        answer6 = findViewById(R.id.answer666);
+        answer7 = findViewById(R.id.answer777);
+        answer8 = findViewById(R.id.answer888);
+        answer9 = findViewById(R.id.answer999);
         mainUsername = findViewById(R.id.quiz_main_username);
         returnButton = findViewById(R.id.submit1_return_button);
         quiz_view = findViewById(R.id.quiz_view);
@@ -89,7 +90,7 @@ public class Submit1 extends AppCompatActivity {
                     answer1.setClickable(false);
                     answer4.setText( "Correct answer for question4 is " + option1);
                     answer4.setClickable(false);
-                    answer7.setText( "Correct answer for question7 is " + option2);
+                    answer7.setText("Correct answer for question7 is " + option2);
                     answer7.setClickable(false);
 
                 }

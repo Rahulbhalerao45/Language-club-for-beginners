@@ -58,62 +58,62 @@
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/group4">
+                android:id="@+id/group10">
 
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textSize="15dp"
-                    android:id="@+id/answer1"/>
+                    android:id="@+id/answer111"/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textSize="15dp"
-                    android:id="@+id/answer2"/>
+                    android:id="@+id/answer222"/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textSize="15dp"
-                    android:id="@+id/answer3"/>
+                    android:id="@+id/answer333"/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textSize="15dp"
-                    android:id="@+id/answer4"/>
+                    android:id="@+id/answer444"/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textSize="15dp"
-                    android:id="@+id/answer5"/>
+                    android:id="@+id/answer555"/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textSize="15dp"
-                    android:id="@+id/answer6"/>
+                    android:id="@+id/answer666"/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textSize="15dp"
-                    android:id="@+id/answer7"/>
+                    android:id="@+id/answer777"/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textSize="15dp"
-                    android:id="@+id/answer8"/>
+                    android:id="@+id/answer888"/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textSize="15dp"
-                    android:id="@+id/answer9"/>
+                    android:id="@+id/answer999"/>
             </RadioGroup>
 
             <Button
