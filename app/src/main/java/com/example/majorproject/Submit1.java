@@ -30,7 +30,7 @@ public class Submit1 extends AppCompatActivity {
     RadioGroup group4;
     RadioButton answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9;
 
-    TextView correct, quiz_view;
+    TextView scoreTextView, quiz_view;
 
     DatabaseReference quiz1Ref, quiz2Ref, quiz3Ref;// reference to the quiz data in Firebase
 
@@ -49,8 +49,7 @@ public class Submit1 extends AppCompatActivity {
         String language_two = getIntent().getStringExtra("LANGUAGE2");
         String language_three = getIntent().getStringExtra("LANGUAGE3");
 
-
-        correct = findViewById(R.id.correct_answer);
+        scoreTextView = findViewById(R.id.correct_answer);
         answer1 = findViewById(R.id.answer1);
         answer2 = findViewById(R.id.answer2);
         answer3 = findViewById(R.id.answer3);
@@ -151,7 +150,6 @@ public class Submit1 extends AppCompatActivity {
                 // Handle the error
             }
         });
-
 
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
