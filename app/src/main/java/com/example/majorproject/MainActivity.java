@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
          String username = getIntent().getStringExtra("USERNAME");
          String language = getIntent().getStringExtra("LANGUAGE");
 
+
+
         // Initialize the views
         mainUsername = findViewById(R.id.main_username);
         mainEnterText = findViewById(R.id.main_entertext);
