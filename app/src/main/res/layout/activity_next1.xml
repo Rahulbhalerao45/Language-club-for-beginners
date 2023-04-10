@@ -51,7 +51,7 @@
                 android:layout_height="match_parent"
                 android:hint="Question1"
                 android:id="@+id/quiz_question1"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:text=""/>
             <RadioGroup
                 android:layout_width="match_parent"
@@ -62,11 +62,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/qanswer13"
+                    android:textSize="15dp"
                     android:text=""/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/qanswer14"
+                    android:textSize="15dp"
                     android:text=""/>
             </RadioGroup>
             <TextView
@@ -74,7 +76,7 @@
                 android:layout_height="match_parent"
                 android:hint="Question2"
                 android:id="@+id/quiz_question2"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:text=""/>
             <RadioGroup
                 android:layout_width="match_parent"
@@ -84,11 +86,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/qanswer15"
+                    android:textSize="15dp"
                     android:text=""/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/qanswer16"
+                    android:textSize="15dp"
                     android:text=""/>
             </RadioGroup>
 
@@ -97,7 +101,7 @@
                 android:layout_height="match_parent"
                 android:hint="Question3"
                 android:id="@+id/quiz_question3"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:text=""/>
             <RadioGroup
                 android:layout_width="match_parent"
@@ -107,11 +111,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/qanswer17"
+                    android:textSize="15dp"
                     android:text=""/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/qanswer18"
+                    android:textSize="15dp"
                     android:text=""/></RadioGroup>
 
             <Button

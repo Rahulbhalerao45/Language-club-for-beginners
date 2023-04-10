@@ -51,7 +51,7 @@
                             android:layout_height="match_parent"
                             android:hint="Question1"
                             android:id="@+id/quiz_question1"
-                            android:textSize="20dp"
+                            android:textSize="15dp"
                             android:text=""/>
                         <RadioGroup
                             android:layout_width="match_parent"
@@ -62,11 +62,13 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/qanswer1"
+                                    android:textSize="15dp"
                                     android:text=""/>
                                 <RadioButton
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/qanswer2"
+                                    android:textSize="15dp"
                                     android:text=""/>
                         </RadioGroup>
 
@@ -76,7 +78,7 @@
                             android:layout_height="match_parent"
                             android:hint="Question2"
                             android:id="@+id/quiz_question2"
-                            android:textSize="20dp"
+                            android:textSize="15dp"
                             android:text=""/>
                         <RadioGroup
                             android:layout_width="match_parent"
@@ -86,11 +88,13 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/qanswer3"
+                                    android:textSize="15dp"
                                     android:text=""/>
                                 <RadioButton
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/qanswer4"
+                                    android:textSize="15dp"
                                     android:text=""/>
                         </RadioGroup>
 
@@ -99,7 +103,7 @@
                             android:layout_height="match_parent"
                             android:hint="Question3"
                             android:id="@+id/quiz_question3"
-                            android:textSize="20dp"
+                            android:textSize="15dp"
                             android:text=""/>
                         <RadioGroup
                             android:layout_width="match_parent"
@@ -109,11 +113,13 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/qanswer5"
+                                    android:textSize="15dp"
                                     android:text=""/>
                                 <RadioButton
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/qanswer6"
+                                    android:textSize="15dp"
                                     android:text=""/></RadioGroup>
 
 
