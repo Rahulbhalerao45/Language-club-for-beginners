@@ -1,8 +1,5 @@
 package com.example.majorproject;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +9,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     String username, selectedLanguage1, selectedLanguage2, selectedLanguage3, language;
 
     TextView logoutRedirectText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
         mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
-
 
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
