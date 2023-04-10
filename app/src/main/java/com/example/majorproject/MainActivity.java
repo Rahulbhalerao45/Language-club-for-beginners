@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     TextView logoutRedirectText;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         // Retrieve the username passed from LoginActivity
          String username = getIntent().getStringExtra("USERNAME");
          String language = getIntent().getStringExtra("LANGUAGE");
-
 
 
         // Initialize the views
