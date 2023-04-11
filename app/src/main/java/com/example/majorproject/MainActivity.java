@@ -25,6 +25,8 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     EditText mainUsername, mainEnterText;
     Button mainButton, learningButton;
     FirebaseDatabase database;
