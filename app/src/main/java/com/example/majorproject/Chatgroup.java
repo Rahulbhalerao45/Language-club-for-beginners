@@ -87,12 +87,19 @@ public class Chatgroup extends AppCompatActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent intent = new Intent(Chatgroup.this, Chatgroup.class);
                 // Get the text entered by the user and add it to the chat messages of the user's language
                 String message = enterText.getText().toString();
                 reference.child(username).setValue(message);
 
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
+
                 // Clear the enterText EditText
                 enterText.setText("");
+
+                startActivity(intent);
             }
         });
 

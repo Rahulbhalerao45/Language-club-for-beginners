@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class Translate extends AppCompatActivity {
 
-    EditText mainUsername, mainEnterText;
+    EditText mainUsername, mainEnterText, result1, result2, result3;
     Button backButton;
     TextView Language1, Language2, Language3;
 
@@ -28,11 +28,16 @@ public class Translate extends AppCompatActivity {
         // Retrieve the username passed from LoginActivity
         String username = getIntent().getStringExtra("USERNAME");
         String language = getIntent().getStringExtra("LANGUAGE");
+
+
         mainUsername = findViewById(R.id.main_username1);
         backButton = findViewById(R.id.back_button);
         Language1 = findViewById(R.id.language1_textview);
         Language2 = findViewById(R.id.language2_textview);
         Language3 = findViewById(R.id.language3_textview);
+        result1 = findViewById(R.id.main_translation1);
+        result2 = findViewById(R.id.main_translation2);
+        result3 = findViewById(R.id.main_translation3);
         logoutRedirectText = findViewById(R.id.logout2);
         mainEnterText = findViewById(R.id.main_entertext1);
 
@@ -53,6 +58,20 @@ public class Translate extends AppCompatActivity {
         String enteredText = intent.getStringExtra("ENTERED_TEXT");
         mainEnterText.setText(enteredText);
         mainEnterText.setEnabled(false);
+
+        String result11 = intent.getStringExtra("RUS1");
+        result1.setText(result11);
+        result1.setEnabled(false);
+
+        String result22 = intent.getStringExtra("RUS2");
+        result2.setText(result22);
+        result2.setEnabled(false);
+
+        String result33 = intent.getStringExtra("RUS3");
+        result3.setText(result33);
+        result3.setEnabled(false);
+
+
 
 
 

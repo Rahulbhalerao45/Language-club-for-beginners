@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     String username, selectedLanguage1, selectedLanguage2, selectedLanguage3, language;
     String str1, str2, str3;
 
+    String rus1 = "", rus2 = "", rus3 = "";
+
     TextView logoutRedirectText;
 
 
@@ -88,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedLanguage1 = adapterView.getItemAtPosition(i).toString();
                 if(selectedLanguage1=="Hindi(हिंदी)"){
-                    str1= "hi";
+                    str1 = "hi";
                 }else if (selectedLanguage1=="Bengali(বাঙ্গালি)") {
                     str1 = "bn";
                 } else if (selectedLanguage1=="Tamil(தமிழ்)") {
@@ -108,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedLanguage2 = adapterView.getItemAtPosition(i).toString();
                 if(selectedLanguage2=="Hindi(हिंदी)"){
-                    str2= "hi";
+                    str2 = "hi";
                 }else if (selectedLanguage2=="Bengali(বাঙ্গালি)") {
                     str2 = "bn";
                 } else if (selectedLanguage2=="Tamil(தமிழ்)") {
@@ -128,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedLanguage3 = adapterView.getItemAtPosition(i).toString();
                 if(selectedLanguage3=="Hindi(हिंदी)"){
-                    str3= "hi";
+                    str3 = "hi";
                 }else if (selectedLanguage3=="Bengali(বাঙ্গালি)") {
                     str3 = "bn";
                 } else if (selectedLanguage3=="Tamil(தமிழ்)") {
@@ -149,13 +151,12 @@ public class MainActivity extends AppCompatActivity {
         mainUsername.setEnabled(false); // disable editing of the username field
 
 
-
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if(TextUtils.isEmpty(mainEnterText.getText().toString())) {
-                    Toast.makeText(MainActivity.this, "No text allowed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Please Enter text....", Toast.LENGTH_SHORT).show();
                 }else{
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str1)
@@ -176,10 +177,12 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                     });
+
                     Task<String> result = translator.translate(sourceText).addOnSuccessListener(new OnSuccessListener<String>() {
                         @Override
                         public void onSuccess(String s) {
-                            Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+                            rus1 = s;
+                            Toast.makeText(MainActivity.this, rus1, Toast.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -191,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if(TextUtils.isEmpty(mainEnterText.getText().toString())) {
-                    Toast.makeText(MainActivity.this, "No text allowed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Please Enter Text...", Toast.LENGTH_SHORT).show();
                 }else{
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str2)
@@ -215,7 +218,8 @@ public class MainActivity extends AppCompatActivity {
                     Task<String> result = translator.translate(sourceText).addOnSuccessListener(new OnSuccessListener<String>() {
                         @Override
                         public void onSuccess(String s) {
-                            Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+                            rus2 = s;
+                            Toast.makeText(MainActivity.this, rus2, Toast.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -227,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if(TextUtils.isEmpty(mainEnterText.getText().toString())) {
-                    Toast.makeText(MainActivity.this, "No text allowed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Please Enter Text...", Toast.LENGTH_SHORT).show();
                 }else{
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str3)
@@ -251,7 +255,19 @@ public class MainActivity extends AppCompatActivity {
                     Task<String> result = translator.translate(sourceText).addOnSuccessListener(new OnSuccessListener<String>() {
                         @Override
                         public void onSuccess(String s) {
-                            Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+                            rus3 = s;
+                            Toast.makeText(MainActivity.this, rus3, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(MainActivity.this, Translate.class);
+                            intent.putExtra("LANGUAGE1", selectedLanguage1);
+                            intent.putExtra("LANGUAGE2", selectedLanguage2);
+                            intent.putExtra("LANGUAGE3", selectedLanguage3);
+                            intent.putExtra("USERNAME", username);
+                            intent.putExtra("LANGUAGE", language);
+                            intent.putExtra("ENTERED_TEXT",sourceText);
+                            intent.putExtra("RUS1", rus1);
+                            intent.putExtra("RUS2", rus2);
+                            intent.putExtra("RUS3", rus3);
+                            startActivity(intent);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -281,14 +297,6 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-                Intent intent = new Intent(MainActivity.this, Translate.class);
-                intent.putExtra("LANGUAGE1", selectedLanguage1);
-                intent.putExtra("LANGUAGE2", selectedLanguage2);
-                intent.putExtra("LANGUAGE3", selectedLanguage3);
-                intent.putExtra("USERNAME", username);
-                intent.putExtra("LANGUAGE", language);
-                intent.putExtra("ENTERED_TEXT", entertext);
-                startActivity(intent);
             }
         });
 
