@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(String s) {
                             rus1 = s;
-                            Toast.makeText(MainActivity.this, rus1, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, rus1, Toast.LENGTH_SHORT);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(String s) {
                             rus2 = s;
-                            Toast.makeText(MainActivity.this, rus2, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, rus2, Toast.LENGTH_SHORT);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -256,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(String s) {
                             rus3 = s;
-                            Toast.makeText(MainActivity.this, rus3, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, rus3, Toast.LENGTH_SHORT);
                             Intent intent = new Intent(MainActivity.this, Translate.class);
                             intent.putExtra("LANGUAGE1", selectedLanguage1);
                             intent.putExtra("LANGUAGE2", selectedLanguage2);
