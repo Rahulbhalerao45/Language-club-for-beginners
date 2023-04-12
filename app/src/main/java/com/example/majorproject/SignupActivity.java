@@ -26,7 +26,7 @@ public class SignupActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference reference;
 
-    String[] item = {"Hindi(हिंदी)", "Marathi(मराठी)", "Telugu(తెలుగు)", "Tamil(தமிழ்)", "Malayalam(മലയാളം)"};
+    String[] item = {"Hindi(हिंदी)", "Marathi(मराठी)", "Telugu(తెలుగు)", "Tamil(தமிழ்)", "Bengali(বাঙ্গালি)"};
 
     AutoCompleteTextView selectLanguage;
 

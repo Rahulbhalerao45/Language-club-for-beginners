@@ -1,27 +1,40 @@
 package com.example.majorproject;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import com.google.mlkit.nl.translate.Translation;
+import com.google.mlkit.nl.translate.Translator;
+import com.google.mlkit.nl.translate.TranslatorOptions;
+import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,10 +44,11 @@ public class MainActivity extends AppCompatActivity {
     Button mainButton, learningButton;
     FirebaseDatabase database;
     DatabaseReference reference;
-    String[] item = {"Hindi(हिंदी)", "Marathi(मराठी)", "Telugu(తెలుగు)", "Tamil(தமிழ்)", "Malayalam(മലയാളം)"};
+    String[] item = {"Hindi(हिंदी)", "Marathi(मराठी)", "Telugu(తెలుగు)", "Tamil(தமிழ்)", "Bengali(বাঙ্গালি)"};
     AutoCompleteTextView selectLanguage1, selectLanguage2, selectLanguage3;
     ArrayAdapter adapterItems1, adapterItems2, adapterItems3;
     String username, selectedLanguage1, selectedLanguage2, selectedLanguage3, language;
+    String str1, str2, str3;
 
     TextView logoutRedirectText;
 
@@ -73,6 +87,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedLanguage1 = adapterView.getItemAtPosition(i).toString();
+                if(selectedLanguage1=="Hindi(हिंदी)"){
+                    str1= "hi";
+                }else if (selectedLanguage1=="Bengali(বাঙ্গালি)") {
+                    str1 = "bn";
+                } else if (selectedLanguage1=="Tamil(தமிழ்)") {
+                    str1 = "ta";
+                }else if (selectedLanguage1=="Telugu(తెలుగు)") {
+                    str1 = "te";
+                }else if (selectedLanguage1=="Marathi(मराठी)") {
+                    str1 = "mr";
+                }else {
+                    str1 = "en";
+                }
             }
         });
 
@@ -80,6 +107,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedLanguage2 = adapterView.getItemAtPosition(i).toString();
+                if(selectedLanguage2=="Hindi(हिंदी)"){
+                    str2= "hi";
+                }else if (selectedLanguage2=="Bengali(বাঙ্গালি)") {
+                    str2 = "bn";
+                } else if (selectedLanguage2=="Tamil(தமிழ்)") {
+                    str2 = "ta";
+                }else if (selectedLanguage2=="Telugu(తెలుగు)") {
+                    str2 = "te";
+                }else if (selectedLanguage2=="Marathi(मराठी)") {
+                    str2 = "mr";
+                }else {
+                    str2 = "en";
+                }
             }
         });
 
@@ -87,6 +127,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedLanguage3 = adapterView.getItemAtPosition(i).toString();
+                if(selectedLanguage3=="Hindi(हिंदी)"){
+                    str3= "hi";
+                }else if (selectedLanguage3=="Bengali(বাঙ্গালি)") {
+                    str3 = "bn";
+                } else if (selectedLanguage3=="Tamil(தமிழ்)") {
+                    str3 = "ta";
+                }else if (selectedLanguage3=="Telugu(తెలుగు)") {
+                    str3 = "te";
+                }else if (selectedLanguage3=="Marathi(मराठी)") {
+                    str3 = "mr";
+                }else {
+                    str3 = "en";
+                }
             }
         });
 
@@ -95,9 +148,119 @@ public class MainActivity extends AppCompatActivity {
         mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
 
+
+
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(TextUtils.isEmpty(mainEnterText.getText().toString())) {
+                    Toast.makeText(MainActivity.this, "No text allowed", Toast.LENGTH_SHORT).show();
+                }else{
+                    TranslatorOptions options = new TranslatorOptions.Builder()
+                            .setTargetLanguage(str1)
+                            .setSourceLanguage("en")
+                            .build();
+                    Translator translator = Translation.getClient(options);
+                    translator.downloadModelIfNeeded();
+                    String sourceText = mainEnterText.getText().toString();
+
+                    translator.downloadModelIfNeeded().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+                    Task<String> result = translator.translate(sourceText).addOnSuccessListener(new OnSuccessListener<String>() {
+                        @Override
+                        public void onSuccess(String s) {
+                            Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }
+
+                if(TextUtils.isEmpty(mainEnterText.getText().toString())) {
+                    Toast.makeText(MainActivity.this, "No text allowed", Toast.LENGTH_SHORT).show();
+                }else{
+                    TranslatorOptions options = new TranslatorOptions.Builder()
+                            .setTargetLanguage(str2)
+                            .setSourceLanguage("en")
+                            .build();
+                    Translator translator = Translation.getClient(options);
+                    translator.downloadModelIfNeeded();
+                    String sourceText = mainEnterText.getText().toString();
+
+                    translator.downloadModelIfNeeded().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+                    Task<String> result = translator.translate(sourceText).addOnSuccessListener(new OnSuccessListener<String>() {
+                        @Override
+                        public void onSuccess(String s) {
+                            Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }
+
+                if(TextUtils.isEmpty(mainEnterText.getText().toString())) {
+                    Toast.makeText(MainActivity.this, "No text allowed", Toast.LENGTH_SHORT).show();
+                }else{
+                    TranslatorOptions options = new TranslatorOptions.Builder()
+                            .setTargetLanguage(str3)
+                            .setSourceLanguage("en")
+                            .build();
+                    Translator translator = Translation.getClient(options);
+                    translator.downloadModelIfNeeded();
+                    String sourceText = mainEnterText.getText().toString();
+
+                    translator.downloadModelIfNeeded().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+                    Task<String> result = translator.translate(sourceText).addOnSuccessListener(new OnSuccessListener<String>() {
+                        @Override
+                        public void onSuccess(String s) {
+                            Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }
                 database = FirebaseDatabase.getInstance();
                 reference = database.getReference("history").child(username);
                 String entertext = mainEnterText.getText().toString();

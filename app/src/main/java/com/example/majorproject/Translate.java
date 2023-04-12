@@ -52,6 +52,7 @@ public class Translate extends AppCompatActivity {
 
         String enteredText = intent.getStringExtra("ENTERED_TEXT");
         mainEnterText.setText(enteredText);
+        mainEnterText.setEnabled(false);
 
 
 
