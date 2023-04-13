@@ -87,6 +87,9 @@ public class Learning extends AppCompatActivity {
                 Intent intent = new Intent(Learning.this, Chatgroup.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
+                intent.putExtra("LANGUAGE1", selectedLanguage1);
+                intent.putExtra("LANGUAGE2", selectedLanguage2);
+                intent.putExtra("LANGUAGE3", selectedLanguage3);
                 startActivity(intent);
             }
         });
@@ -97,6 +100,9 @@ public class Learning extends AppCompatActivity {
                 Intent intent = new Intent(Learning.this, Profile.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
+                intent.putExtra("LANGUAGE1", selectedLanguage1);
+                intent.putExtra("LANGUAGE2", selectedLanguage2);
+                intent.putExtra("LANGUAGE3", selectedLanguage3);
                 startActivity(intent);
             }
         });
@@ -112,6 +118,9 @@ public class Learning extends AppCompatActivity {
                 Intent intent = new Intent(Learning.this, MainActivity.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
+                intent.putExtra("LANGUAGE1", selectedLanguage1);
+                intent.putExtra("LANGUAGE2", selectedLanguage2);
+                intent.putExtra("LANGUAGE3", selectedLanguage3);
                 startActivity(intent);
             }
         });

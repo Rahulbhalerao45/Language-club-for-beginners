@@ -55,6 +55,9 @@ public class Profile extends AppCompatActivity {
 
         username = getIntent().getStringExtra("USERNAME");
         language = getIntent().getStringExtra("LANGUAGE");
+        String selectedLanguage1 = getIntent().getStringExtra("LANGUAGE1");
+        String selectedLanguage2 = getIntent().getStringExtra("LANGUAGE2");
+        String selectedLanguage3 = getIntent().getStringExtra("LANGUAGE3");
 
         mainUsername = findViewById(R.id.main_username5);
         ranking = findViewById(R.id.main_profile3);
@@ -83,6 +86,9 @@ public class Profile extends AppCompatActivity {
                 Intent intent = new Intent(Profile.this, Learning.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
+                intent.putExtra("LANGUAGE1", selectedLanguage1);
+                intent.putExtra("LANGUAGE2", selectedLanguage2);
+                intent.putExtra("LANGUAGE3", selectedLanguage3);
                 startActivity(intent);
             }
         });

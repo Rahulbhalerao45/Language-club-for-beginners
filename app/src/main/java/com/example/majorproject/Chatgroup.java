@@ -38,6 +38,9 @@ public class Chatgroup extends AppCompatActivity {
         // Retrieve the username and language passed from LoginActivity
         username = getIntent().getStringExtra("USERNAME");
         language = getIntent().getStringExtra("LANGUAGE");
+        String selectedLanguage1 = getIntent().getStringExtra("LANGUAGE1");
+        String selectedLanguage2 = getIntent().getStringExtra("LANGUAGE2");
+        String selectedLanguage3 = getIntent().getStringExtra("LANGUAGE3");
 
         enterText = findViewById(R.id.enter_chat);
         sendersText = findViewById(R.id.sender_chat);
@@ -109,6 +112,9 @@ public class Chatgroup extends AppCompatActivity {
                 Intent intent = new Intent(Chatgroup.this, Learning.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
+                intent.putExtra("LANGUAGE1", selectedLanguage1);
+                intent.putExtra("LANGUAGE2", selectedLanguage2);
+                intent.putExtra("LANGUAGE3", selectedLanguage3);
                 startActivity(intent);
             }
         });
