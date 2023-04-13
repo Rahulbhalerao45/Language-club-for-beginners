@@ -68,7 +68,6 @@ public class Learning extends AppCompatActivity {
             learningButton1.setEnabled(false);
             Toast.makeText(this, "Please select three languages to start the quiz ", Toast.LENGTH_SHORT).show();
         } else {
-
             learningButton1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
