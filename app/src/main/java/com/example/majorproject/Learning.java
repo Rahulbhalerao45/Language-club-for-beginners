@@ -61,7 +61,6 @@ public class Learning extends AppCompatActivity {
         language_view.setEnabled(false);
         language_view.setVisibility(View.INVISIBLE);
 
-
         if (selectedLanguage1 == null || selectedLanguage1.isEmpty() ||
                 selectedLanguage2 == null || selectedLanguage2.isEmpty() ||
                 selectedLanguage3 == null || selectedLanguage3.isEmpty()) {
