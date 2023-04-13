@@ -14,7 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -116,7 +115,9 @@ public class Profile extends AppCompatActivity {
                 } else {
                     Toast.makeText(Profile.this, "Please select a language", Toast.LENGTH_SHORT).show();
                 }
+
             }
+
         });
     }
 }
