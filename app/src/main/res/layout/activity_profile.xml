@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/main_username5"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:hint="Username"
                 android:drawableLeft="@drawable/baseline_person_24"
@@ -66,7 +66,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:padding="8dp"
                 android:id="@+id/main_profile3"
                 android:hint="User Ranking in %"
@@ -77,19 +77,16 @@
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
 
-            <EditText
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:id="@+id/main_profile4"
                 android:hint="Search History"
                 android:drawableLeft="@drawable/baseline_person_pin_24"
-                android:focusable="false"
-                android:clickable="false"
-                android:cursorVisible="false"
                 android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
             <Button
                 android:layout_width="match_parent"
@@ -97,7 +94,7 @@
                 android:text="Update"
                 android:id="@+id/update_button"
                 android:textSize="18sp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 app:cornerRadius = "20dp"/>
 
 
