@@ -62,9 +62,16 @@ public class Learning extends AppCompatActivity {
         language_view.setVisibility(View.INVISIBLE);
 
 
-        learningButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        if (selectedLanguage1 == null || selectedLanguage1.isEmpty() ||
+                selectedLanguage2 == null || selectedLanguage2.isEmpty() ||
+                selectedLanguage3 == null || selectedLanguage3.isEmpty()) {
+            learningButton1.setEnabled(false);
+            Toast.makeText(this, "Please select three languages to start the quiz ", Toast.LENGTH_SHORT).show();
+        } else {
+
+            learningButton1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
                     Intent intent = new Intent(Learning.this, Quiz.class);
                     intent.putExtra("USERNAME", username);
                     intent.putExtra("LANGUAGE", language);
@@ -72,8 +79,9 @@ public class Learning extends AppCompatActivity {
                     intent.putExtra("LANGUAGE2", selectedLanguage2);
                     intent.putExtra("LANGUAGE3", selectedLanguage3);
                     startActivity(intent);
-                    }
-                });
+                }
+            });
+        }
 
         learningButton2.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -155,6 +155,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                if (TextUtils.isEmpty(selectedLanguage1) || TextUtils.isEmpty(selectedLanguage2) || TextUtils.isEmpty(selectedLanguage3)) {
+                    Toast.makeText(MainActivity.this, "Please select all three languages", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if(TextUtils.isEmpty(mainEnterText.getText().toString())) {
                     Toast.makeText(MainActivity.this, "Please Enter text....", Toast.LENGTH_SHORT).show();
                 }else{
