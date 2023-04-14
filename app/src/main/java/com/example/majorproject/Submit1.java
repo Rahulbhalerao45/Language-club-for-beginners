@@ -49,6 +49,10 @@ public class Submit1 extends AppCompatActivity {
         String language_two = getIntent().getStringExtra("LANGUAGE2");
         String language_three = getIntent().getStringExtra("LANGUAGE3");
 
+        String selectedLanguage1 = getIntent().getStringExtra("LANGUAGE1");
+        String selectedLanguage2 = getIntent().getStringExtra("LANGUAGE2");
+        String selectedLanguage3 = getIntent().getStringExtra("LANGUAGE3");
+
         scoreTextView = findViewById(R.id.correct_answer);
         group10 = findViewById(R.id.group10);
         answer1 = findViewById(R.id.answer111);
@@ -155,12 +159,15 @@ public class Submit1 extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Submit1.this, Next1.class);
+                Intent intent = new Intent(Submit1.this, Learning.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
                 intent.putExtra("LANGUAGE1", language_one);
                 intent.putExtra("LANGUAGE2", language_two);
                 intent.putExtra("LANGUAGE3", language_three);
+                intent.putExtra("LANGUAGE1", selectedLanguage1);
+                intent.putExtra("LANGUAGE2", selectedLanguage2);
+                intent.putExtra("LANGUAGE3", selectedLanguage3);
                 startActivity(intent);
             }
         });
