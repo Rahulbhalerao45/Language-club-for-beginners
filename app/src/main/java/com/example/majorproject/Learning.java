@@ -64,7 +64,7 @@ public class Learning extends AppCompatActivity {
         if (selectedLanguage1 == null || selectedLanguage1.isEmpty() ||
                 selectedLanguage2 == null || selectedLanguage2.isEmpty() ||
                 selectedLanguage3 == null || selectedLanguage3.isEmpty()) {
-            learningButton1.setEnabled(false);
+            learningButton1.setEnabled(true);
             Toast.makeText(this, "Please select three languages to start the quiz ", Toast.LENGTH_SHORT).show();
         } else {
             learningButton1.setOnClickListener(new View.OnClickListener() {
