@@ -85,7 +85,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Return"
+                android:text="Back"
                 android:id="@+id/return1_button"
                 android:textSize="18sp"
                 android:layout_marginTop="10dp"

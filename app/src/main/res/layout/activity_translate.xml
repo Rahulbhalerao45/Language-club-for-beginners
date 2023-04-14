@@ -126,7 +126,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Return"
+                android:text="Back"
                 android:id="@+id/back_button"
                 android:textSize="18sp"
                 android:layout_marginTop="20dp"
