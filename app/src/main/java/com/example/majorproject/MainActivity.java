@@ -154,8 +154,147 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                if (TextUtils.isEmpty(selectedLanguage1)) {
+                    Toast.makeText(MainActivity.this, "Please select at least one  languages", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(TextUtils.isEmpty(mainEnterText.getText().toString())) {
+                    Toast.makeText(MainActivity.this, "Please Enter text....", Toast.LENGTH_SHORT).show();
+                }else{
+                    TranslatorOptions options = new TranslatorOptions.Builder()
+                            .setTargetLanguage(str1)
+                            .setSourceLanguage("en")
+                            .build();
+                    Translator translator = Translation.getClient(options);
+                    translator.downloadModelIfNeeded();
+                    String sourceText = mainEnterText.getText().toString();
+
+                    translator.downloadModelIfNeeded().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+
+                    Task<String> result = translator.translate(sourceText).addOnSuccessListener(new OnSuccessListener<String>() {
+                        @Override
+                        public void onSuccess(String s) {
+                            rus1 = s;
+                            Toast.makeText(MainActivity.this, rus1, Toast.LENGTH_SHORT);
+                            Intent intent = new Intent(MainActivity.this, Translate.class);
+                            intent.putExtra("LANGUAGE1", selectedLanguage1);
+                            intent.putExtra("USERNAME", username);
+                            intent.putExtra("LANGUAGE", language);
+                            intent.putExtra("ENTERED_TEXT",sourceText);
+                            intent.putExtra("RUS1", rus1);
+                            startActivity(intent);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }
+
+                if (TextUtils.isEmpty(selectedLanguage1) || TextUtils.isEmpty(selectedLanguage2)) {
+                    Toast.makeText(MainActivity.this, "Please select all three languages", Toast.LENGTH_SHORT);
+                    return;
+                }
+
+                if(TextUtils.isEmpty(mainEnterText.getText().toString())) {
+                    Toast.makeText(MainActivity.this, "Please Enter text....", Toast.LENGTH_SHORT).show();
+                }else{
+                    TranslatorOptions options = new TranslatorOptions.Builder()
+                            .setTargetLanguage(str1)
+                            .setSourceLanguage("en")
+                            .build();
+                    Translator translator = Translation.getClient(options);
+                    translator.downloadModelIfNeeded();
+                    String sourceText = mainEnterText.getText().toString();
+
+                    translator.downloadModelIfNeeded().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+
+                    Task<String> result = translator.translate(sourceText).addOnSuccessListener(new OnSuccessListener<String>() {
+                        @Override
+                        public void onSuccess(String s) {
+                            rus1 = s;
+                            Toast.makeText(MainActivity.this, rus1, Toast.LENGTH_SHORT);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }
+
+                if(TextUtils.isEmpty(mainEnterText.getText().toString())) {
+                    Toast.makeText(MainActivity.this, "Please Enter Text...", Toast.LENGTH_SHORT).show();
+                }else{
+                    TranslatorOptions options = new TranslatorOptions.Builder()
+                            .setTargetLanguage(str2)
+                            .setSourceLanguage("en")
+                            .build();
+                    Translator translator = Translation.getClient(options);
+                    translator.downloadModelIfNeeded();
+                    String sourceText = mainEnterText.getText().toString();
+
+                    translator.downloadModelIfNeeded().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+                    Task<String> result = translator.translate(sourceText).addOnSuccessListener(new OnSuccessListener<String>() {
+                        @Override
+                        public void onSuccess(String s) {
+                            rus2 = s;
+                            Toast.makeText(MainActivity.this, rus2, Toast.LENGTH_SHORT);
+                            Intent intent = new Intent(MainActivity.this, Translate.class);
+                            intent.putExtra("LANGUAGE1", selectedLanguage1);
+                            intent.putExtra("LANGUAGE2", selectedLanguage2);
+                            intent.putExtra("USERNAME", username);
+                            intent.putExtra("LANGUAGE", language);
+                            intent.putExtra("ENTERED_TEXT",sourceText);
+                            intent.putExtra("RUS1", rus1);
+                            intent.putExtra("RUS2", rus2);
+                            startActivity(intent);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }
+
                 if (TextUtils.isEmpty(selectedLanguage1) || TextUtils.isEmpty(selectedLanguage2) || TextUtils.isEmpty(selectedLanguage3)) {
-                    Toast.makeText(MainActivity.this, "Please select all three languages", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Please select all three languages", Toast.LENGTH_SHORT);
                     return;
                 }
 
@@ -281,6 +420,7 @@ public class MainActivity extends AppCompatActivity {
                     });
 
                 }
+
                 database = FirebaseDatabase.getInstance();
                 reference = database.getReference("history").child(username);
                 String entertext = mainEnterText.getText().toString();
