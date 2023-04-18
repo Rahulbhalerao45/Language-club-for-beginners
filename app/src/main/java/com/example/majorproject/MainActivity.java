@@ -165,6 +165,11 @@ public class MainActivity extends AppCompatActivity {
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str1)
                             .setSourceLanguage("en")
+                            .setSourceLanguage("bn")
+                            .setSourceLanguage("mr")
+                            .setSourceLanguage("ta")
+                            .setSourceLanguage("te")
+                            .setSourceLanguage("hi")
                             .build();
                     Translator translator = Translation.getClient(options);
                     translator.downloadModelIfNeeded();
@@ -215,6 +220,11 @@ public class MainActivity extends AppCompatActivity {
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str1)
                             .setSourceLanguage("en")
+                            .setSourceLanguage("bn")
+                            .setSourceLanguage("mr")
+                            .setSourceLanguage("ta")
+                            .setSourceLanguage("te")
+                            .setSourceLanguage("hi")
                             .build();
                     Translator translator = Translation.getClient(options);
                     translator.downloadModelIfNeeded();
@@ -253,6 +263,11 @@ public class MainActivity extends AppCompatActivity {
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str2)
                             .setSourceLanguage("en")
+                            .setSourceLanguage("bn")
+                            .setSourceLanguage("mr")
+                            .setSourceLanguage("ta")
+                            .setSourceLanguage("te")
+                            .setSourceLanguage("hi")
                             .build();
                     Translator translator = Translation.getClient(options);
                     translator.downloadModelIfNeeded();
@@ -304,6 +319,11 @@ public class MainActivity extends AppCompatActivity {
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str1)
                             .setSourceLanguage("en")
+                            .setSourceLanguage("bn")
+                            .setSourceLanguage("mr")
+                            .setSourceLanguage("ta")
+                            .setSourceLanguage("te")
+                            .setSourceLanguage("hi")
                             .build();
                     Translator translator = Translation.getClient(options);
                     translator.downloadModelIfNeeded();
@@ -342,6 +362,11 @@ public class MainActivity extends AppCompatActivity {
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str2)
                             .setSourceLanguage("en")
+                            .setSourceLanguage("bn")
+                            .setSourceLanguage("mr")
+                            .setSourceLanguage("ta")
+                            .setSourceLanguage("te")
+                            .setSourceLanguage("hi")
                             .build();
                     Translator translator = Translation.getClient(options);
                     translator.downloadModelIfNeeded();
@@ -379,6 +404,11 @@ public class MainActivity extends AppCompatActivity {
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str3)
                             .setSourceLanguage("en")
+                            .setSourceLanguage("bn")
+                            .setSourceLanguage("mr")
+                            .setSourceLanguage("ta")
+                            .setSourceLanguage("te")
+                            .setSourceLanguage("hi")
                             .build();
                     Translator translator = Translation.getClient(options);
                     translator.downloadModelIfNeeded();
