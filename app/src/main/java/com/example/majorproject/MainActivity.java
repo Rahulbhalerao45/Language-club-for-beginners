@@ -86,18 +86,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedLanguage1 = adapterView.getItemAtPosition(i).toString();
-                if(selectedLanguage1=="Hindi(हिंदी)"){
-                    str1 = "hi";
-                }else if (selectedLanguage1=="Bengali(বাঙ্গালি)") {
-                    str1 = "bn";
-                } else if (selectedLanguage1=="Tamil(தமிழ்)") {
-                    str1 = "ta";
-                }else if (selectedLanguage1=="Telugu(తెలుగు)") {
-                    str1 = "te";
-                }else if (selectedLanguage1=="Marathi(मराठी)") {
-                    str1 = "mr";
-                }else {
-                    str1 = "en";
+                switch (selectedLanguage1) {
+                    case "Hindi(हिंदी)":
+                        str1 = "hi";
+                        break;
+                    case "Bengali(বাঙ্গালি)":
+                        str1 = "bn";
+                        break;
+                    case "Tamil(தமிழ்)":
+                        str1 = "ta";
+                        break;
+                    case "Telugu(తెలుగు)":
+                        str1 = "te";
+                        break;
+                    case "Marathi(मराठी)":
+                        str1 = "mr";
+                        break;
+                    default:
+                        str1 = "en";
+                        break;
                 }
             }
         });
@@ -106,18 +113,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedLanguage2 = adapterView.getItemAtPosition(i).toString();
-                if(selectedLanguage2=="Hindi(हिंदी)"){
-                    str2 = "hi";
-                }else if (selectedLanguage2=="Bengali(বাঙ্গালি)") {
-                    str2 = "bn";
-                } else if (selectedLanguage2=="Tamil(தமிழ்)") {
-                    str2 = "ta";
-                }else if (selectedLanguage2=="Telugu(తెలుగు)") {
-                    str2 = "te";
-                }else if (selectedLanguage2=="Marathi(मराठी)") {
-                    str2 = "mr";
-                }else {
-                    str2 = "en";
+                switch (selectedLanguage2) {
+                    case "Hindi(हिंदी)":
+                        str2 = "hi";
+                        break;
+                    case "Bengali(বাঙ্গালি)":
+                        str2 = "bn";
+                        break;
+                    case "Tamil(தமிழ்)":
+                        str2 = "ta";
+                        break;
+                    case "Telugu(తెలుగు)":
+                        str2 = "te";
+                        break;
+                    case "Marathi(मराठी)":
+                        str2 = "mr";
+                        break;
+                    default:
+                        str2 = "en";
+                        break;
                 }
             }
         });
@@ -126,18 +140,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedLanguage3 = adapterView.getItemAtPosition(i).toString();
-                if(selectedLanguage3=="Hindi(हिंदी)"){
-                    str3 = "hi";
-                }else if (selectedLanguage3=="Bengali(বাঙ্গালি)") {
-                    str3 = "bn";
-                } else if (selectedLanguage3=="Tamil(தமிழ்)") {
-                    str3 = "ta";
-                }else if (selectedLanguage3=="Telugu(తెలుగు)") {
-                    str3 = "te";
-                }else if (selectedLanguage3=="Marathi(मराठी)") {
-                    str3 = "mr";
-                }else {
-                    str3 = "en";
+                switch (selectedLanguage3) {
+                    case "Hindi(हिंदी)":
+                        str3 = "hi";
+                        break;
+                    case "Bengali(বাঙ্গালি)":
+                        str3 = "bn";
+                        break;
+                    case "Tamil(தமிழ்)":
+                        str3 = "ta";
+                        break;
+                    case "Telugu(తెలుగు)":
+                        str3 = "te";
+                        break;
+                    case "Marathi(मराठी)":
+                        str3 = "mr";
+                        break;
+                    default:
+                        str3 = "en";
+                        break;
                 }
             }
         });
@@ -163,11 +184,6 @@ public class MainActivity extends AppCompatActivity {
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str1)
                             .setSourceLanguage("en")
-                            .setSourceLanguage("bn")
-                            .setSourceLanguage("mr")
-                            .setSourceLanguage("ta")
-                            .setSourceLanguage("te")
-                            .setSourceLanguage("hi")
                             .build();
                     Translator translator = Translation.getClient(options);
                     translator.downloadModelIfNeeded();
@@ -218,11 +234,6 @@ public class MainActivity extends AppCompatActivity {
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str1)
                             .setSourceLanguage("en")
-                            .setSourceLanguage("bn")
-                            .setSourceLanguage("mr")
-                            .setSourceLanguage("ta")
-                            .setSourceLanguage("te")
-                            .setSourceLanguage("hi")
                             .build();
                     Translator translator = Translation.getClient(options);
                     translator.downloadModelIfNeeded();
@@ -261,11 +272,6 @@ public class MainActivity extends AppCompatActivity {
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str2)
                             .setSourceLanguage("en")
-                            .setSourceLanguage("bn")
-                            .setSourceLanguage("mr")
-                            .setSourceLanguage("ta")
-                            .setSourceLanguage("te")
-                            .setSourceLanguage("hi")
                             .build();
                     Translator translator = Translation.getClient(options);
                     translator.downloadModelIfNeeded();
@@ -317,11 +323,6 @@ public class MainActivity extends AppCompatActivity {
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str1)
                             .setSourceLanguage("en")
-                            .setSourceLanguage("bn")
-                            .setSourceLanguage("mr")
-                            .setSourceLanguage("ta")
-                            .setSourceLanguage("te")
-                            .setSourceLanguage("hi")
                             .build();
                     Translator translator = Translation.getClient(options);
                     translator.downloadModelIfNeeded();
@@ -360,11 +361,6 @@ public class MainActivity extends AppCompatActivity {
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str2)
                             .setSourceLanguage("en")
-                            .setSourceLanguage("bn")
-                            .setSourceLanguage("mr")
-                            .setSourceLanguage("ta")
-                            .setSourceLanguage("te")
-                            .setSourceLanguage("hi")
                             .build();
                     Translator translator = Translation.getClient(options);
                     translator.downloadModelIfNeeded();
@@ -402,11 +398,6 @@ public class MainActivity extends AppCompatActivity {
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str3)
                             .setSourceLanguage("en")
-                            .setSourceLanguage("bn")
-                            .setSourceLanguage("mr")
-                            .setSourceLanguage("ta")
-                            .setSourceLanguage("te")
-                            .setSourceLanguage("hi")
                             .build();
                     Translator translator = Translation.getClient(options);
                     translator.downloadModelIfNeeded();
