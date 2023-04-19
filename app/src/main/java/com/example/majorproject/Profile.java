@@ -69,6 +69,33 @@ public class Profile extends AppCompatActivity {
         mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("history").child(username);
+
+        ArrayList<String> historyList = new ArrayList<>();
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    HelperClass2 helperClass2 = dataSnapshot.getValue(HelperClass2.class);
+                    String historyItem = helperClass2.getEntertext() + " -- " + helperClass2.getCurrentDate() + " -- " + helperClass2.getCurrentTime();
+                    historyList.add(historyItem);
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(Profile.this, android.R.layout.simple_spinner_dropdown_item, historyList);
+                search.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(Profile.this, android.R.layout.simple_spinner_dropdown_item, historyList);
+        search.setAdapter(adapter);
+
+
         adapterItems4 = new ArrayAdapter<>(this, R.layout.language4_item, item);
         selectLanguage4.setAdapter(adapterItems4);
 
