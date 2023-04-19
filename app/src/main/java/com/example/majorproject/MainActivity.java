@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Downloading Language Module...", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -249,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Downloading Language Module...", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -300,7 +300,7 @@ public class MainActivity extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Downloading Language Module...", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -348,7 +348,7 @@ public class MainActivity extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Downloading Language Module...", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -390,7 +390,7 @@ public class MainActivity extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Downloading Language Module...", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -443,7 +443,7 @@ public class MainActivity extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Downloading Language Module...", Toast.LENGTH_SHORT).show();
                         }
                     });
 
