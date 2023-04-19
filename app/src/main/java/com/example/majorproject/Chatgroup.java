@@ -23,7 +23,7 @@ public class Chatgroup extends AppCompatActivity {
 
     EditText mainUsername, enterText;
     Button return1Button, sendButton;
-    TextView logoutRedirectText, sendersText;
+    TextView logoutRedirectText, sendersText, refresh;
 
     String username, language;
 
@@ -48,6 +48,7 @@ public class Chatgroup extends AppCompatActivity {
         sendButton = findViewById(R.id.send_button);
         return1Button = findViewById(R.id.return1_button);
         logoutRedirectText = findViewById(R.id.logout5);
+        refresh = findViewById(R.id.refresh);
 
         mainUsername.setText(username + "--" + language);
         mainUsername.setEnabled(false); // disable editing of the username field
@@ -90,18 +91,23 @@ public class Chatgroup extends AppCompatActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(Chatgroup.this, Chatgroup.class);
                 // Get the text entered by the user and add it to the chat messages of the user's language
                 String message = enterText.getText().toString();
                 reference.child(username).setValue(message);
-
-                intent.putExtra("USERNAME", username);
-                intent.putExtra("LANGUAGE", language);
-
                 // Clear the enterText EditText
                 enterText.setText("");
 
+
+            }
+        });
+
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(Chatgroup.this, Chatgroup.class);
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
                 startActivity(intent);
             }
         });

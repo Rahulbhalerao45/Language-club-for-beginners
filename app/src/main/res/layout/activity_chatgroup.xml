@@ -72,15 +72,26 @@
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
 
+
+
             <Button
+                android:id="@+id/send_button"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Send"
-                android:id="@+id/send_button"
-                android:textSize="18sp"
                 android:layout_marginTop="10dp"
-                app:cornerRadius = "20dp"/>
-
+                android:text="Send"
+                android:textSize="18sp"
+                app:cornerRadius="20dp" />
+            <TextView
+                android:id="@+id/refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:padding="8dp"
+                android:text="Refresh"
+                android:textColor="@color/lavender"
+                android:textSize="18sp" />
 
             <Button
                 android:layout_width="match_parent"
@@ -92,15 +103,15 @@
                 app:cornerRadius = "20dp"/>
 
             <TextView
+                android:id="@+id/logout5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/logout5"
-                android:text="Logout"
                 android:layout_gravity="center"
-                android:padding="8dp"
                 android:layout_marginTop="10dp"
-                android:textSize="18sp"
-                android:textColor="@color/lavender"/>
+                android:padding="8dp"
+                android:text="Logout"
+                android:textColor="@color/lavender"
+                android:textSize="18sp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
