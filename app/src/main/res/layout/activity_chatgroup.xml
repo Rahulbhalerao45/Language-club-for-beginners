@@ -83,15 +83,6 @@
                 android:text="Send"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
-            <Button
-                android:id="@+id/refresh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:padding="8dp"
-                android:text="Refresh"
-                android:textSize="18sp" />
 
             <Button
                 android:layout_width="wrap_content"

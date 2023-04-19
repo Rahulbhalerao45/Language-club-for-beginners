@@ -13,16 +13,16 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Chatgroup extends AppCompatActivity {
 
     EditText mainUsername, enterText;
-    Button return1Button, sendButton, refresh;
+    Button return1Button, sendButton;
     TextView logoutRedirectText, sendersText;
 
     String username, language;
@@ -48,7 +48,6 @@ public class Chatgroup extends AppCompatActivity {
         sendButton = findViewById(R.id.send_button);
         return1Button = findViewById(R.id.return1_button);
         logoutRedirectText = findViewById(R.id.logout5);
-        refresh = findViewById(R.id.refresh);
 
         mainUsername.setText(username + "--" + language);
         mainUsername.setEnabled(false); // disable editing of the username field
@@ -57,30 +56,23 @@ public class Chatgroup extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("chat_" + language);
 
-        // Add a child event listener to the reference to listen for new chat messages
-        reference.addChildEventListener(new ChildEventListener() {
+        // Add a value event listener to the reference to listen for changes in the entire reference
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, String previousChildName) {
-                // Get the chat message and its sender
-                String message = snapshot.getValue(String.class);
-                String sender = snapshot.getKey();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // Clear the sendersText TextView before updating it
+                sendersText.setText("");
 
-                // If the sender is not the current user, update the sendersText TextView
-                if (!sender.equals(username)) {
-                    sendersText.setText(sender + ": " + message);
+                // Loop through all the chat messages in the reference and update the sendersText TextView
+                for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                    String message = childSnapshot.getValue(String.class);
+                    String sender = childSnapshot.getKey();
+
+                    // If the sender is not the current user, update the sendersText TextView
+                    if (!sender.equals(username)) {
+                        sendersText.append(sender + ": " + message + "\n");
+                    }
                 }
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, String previousChildName) {
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, String previousChildName) {
             }
 
             @Override
@@ -96,22 +88,6 @@ public class Chatgroup extends AppCompatActivity {
                 reference.child(username).setValue(message);
                 // Clear the enterText EditText
                 enterText.setText("");
-
-
-            }
-        });
-
-        refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(Chatgroup.this, Chatgroup.class);
-                intent.putExtra("USERNAME", username);
-                intent.putExtra("LANGUAGE", language);
-                intent.putExtra("LANGUAGE1", selectedLanguage1);
-                intent.putExtra("LANGUAGE2", selectedLanguage2);
-                intent.putExtra("LANGUAGE3", selectedLanguage3);
-                startActivity(intent);
             }
         });
 
