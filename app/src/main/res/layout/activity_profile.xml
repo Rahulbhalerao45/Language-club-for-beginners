@@ -89,8 +89,9 @@
                 android:textColor="@color/black" />
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Update"
                 android:id="@+id/update_button"
                 android:textSize="18sp"
@@ -99,8 +100,9 @@
 
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Back"
                 android:id="@+id/return2_button"
                 android:textSize="18sp"

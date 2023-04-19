@@ -124,8 +124,9 @@
 
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Next"
                 android:id="@+id/quiz_next1_button"
                 android:textSize="18sp"
@@ -133,8 +134,9 @@
                 app:cornerRadius = "20dp"/>
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Back"
                 android:id="@+id/quiz_return_button"
                 android:textSize="18sp"

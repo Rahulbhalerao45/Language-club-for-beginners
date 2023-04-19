@@ -22,8 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Chatgroup extends AppCompatActivity {
 
     EditText mainUsername, enterText;
-    Button return1Button, sendButton;
-    TextView logoutRedirectText, sendersText, refresh;
+    Button return1Button, sendButton, refresh;
+    TextView logoutRedirectText, sendersText;
 
     String username, language;
 
@@ -108,6 +108,9 @@ public class Chatgroup extends AppCompatActivity {
                 Intent intent = new Intent(Chatgroup.this, Chatgroup.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
+                intent.putExtra("LANGUAGE1", selectedLanguage1);
+                intent.putExtra("LANGUAGE2", selectedLanguage2);
+                intent.putExtra("LANGUAGE3", selectedLanguage3);
                 startActivity(intent);
             }
         });
