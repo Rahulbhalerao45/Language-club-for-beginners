@@ -1,5 +1,6 @@
 package com.example.majorproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class Translate extends AppCompatActivity {
 
     EditText mainUsername, mainEnterText, result1, result2, result3;
@@ -17,6 +28,9 @@ public class Translate extends AppCompatActivity {
     TextView Language1, Language2, Language3;
 
     String username, language;
+
+    FirebaseDatabase database;
+    DatabaseReference reference;
 
     TextView logoutRedirectText;
 
@@ -71,10 +85,6 @@ public class Translate extends AppCompatActivity {
         result3.setText(result33);
         result3.setEnabled(false);
 
-
-
-
-
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,6 +92,27 @@ public class Translate extends AppCompatActivity {
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
                 startActivity(intent);
+
+                database = FirebaseDatabase.getInstance();
+                reference = database.getReference("history").child(username);
+                String entertext = mainEnterText.getText().toString();
+                String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                HelperClass3 helperClass3 = new HelperClass3(username, entertext, language1, language2, language3, result11, result22, result33, currentDate, currentTime);
+                reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        int historyCount = (int) snapshot.getChildrenCount();
+
+                        String historykey = "history" + (historyCount + 1);
+
+                        reference.child(historykey).setValue(helperClass3);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
 

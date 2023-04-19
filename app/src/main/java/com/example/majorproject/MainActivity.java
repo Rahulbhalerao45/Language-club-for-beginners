@@ -440,26 +440,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-                database = FirebaseDatabase.getInstance();
-                reference = database.getReference("history").child(username);
-                String entertext = mainEnterText.getText().toString();
-                String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-                String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
-                HelperClass2 helperClass2 = new HelperClass2(username, entertext, selectedLanguage1, selectedLanguage2, selectedLanguage3, currentDate, currentTime);
-                reference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        int historyCount = (int) snapshot.getChildrenCount();
-
-                        String historykey = "history" + (historyCount + 1);
-
-                        reference.child(historykey).setValue(helperClass2);
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
             }
         });
 

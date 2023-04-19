@@ -78,8 +78,8 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    HelperClass2 helperClass2 = dataSnapshot.getValue(HelperClass2.class);
-                    String historyItem = helperClass2.getEntertext() + " -- " + helperClass2.getCurrentDate() + " -- " + helperClass2.getCurrentTime();
+                    HelperClass3 helperClass3 = dataSnapshot.getValue(HelperClass3.class);
+                    String historyItem = helperClass3.getEntertext() + " , " + helperClass3.getResult11() + " , " + helperClass3.getResult22() + " , " + helperClass3.getResult33();
                     historyList.add(historyItem);
                 }
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(Profile.this, android.R.layout.simple_spinner_dropdown_item, historyList);
