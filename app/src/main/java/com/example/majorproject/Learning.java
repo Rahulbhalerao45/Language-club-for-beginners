@@ -46,6 +46,8 @@ public class Learning extends AppCompatActivity {
         String language_two = getIntent().getStringExtra("LANGUAGE2");
         String language_three = getIntent().getStringExtra("LANGUAGE3");
 
+        String score = getIntent().getStringExtra("SCORE");
+
         mainUsername = findViewById(R.id.main_username2);
         learningButton1 = findViewById(R.id.quiz_button);
         learningButton2 = findViewById(R.id.chat_button);
@@ -103,6 +105,7 @@ public class Learning extends AppCompatActivity {
                 intent.putExtra("LANGUAGE1", selectedLanguage1);
                 intent.putExtra("LANGUAGE2", selectedLanguage2);
                 intent.putExtra("LANGUAGE3", selectedLanguage3);
+                intent.putExtra("SCORE", score);
                 startActivity(intent);
             }
         });

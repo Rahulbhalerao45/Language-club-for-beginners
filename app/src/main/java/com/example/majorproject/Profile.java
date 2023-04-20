@@ -24,8 +24,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Profile extends AppCompatActivity {
 
@@ -33,7 +36,7 @@ public class Profile extends AppCompatActivity {
 
     Spinner search;
 
-    Button return2Button, logoutButton, updateButton;
+    Button return2Button, save, updateButton;
 
     String[] item = {"Hindi(हिंदी)", "Marathi(मराठी)", "Telugu(తెలుగు)", "Tamil(தமிழ்)", "Bengali(বাঙ্গালি)"};
 
@@ -45,12 +48,17 @@ public class Profile extends AppCompatActivity {
 
     DatabaseReference databaseReference;
 
+    FirebaseDatabase database1;
+    DatabaseReference reference1;
+
     TextView logoutRedirectText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+
 
         username = getIntent().getStringExtra("USERNAME");
         language = getIntent().getStringExtra("LANGUAGE");
@@ -64,6 +72,7 @@ public class Profile extends AppCompatActivity {
         search = findViewById(R.id.main_profile4);
         return2Button = findViewById(R.id.return2_button);
         logoutRedirectText = findViewById(R.id.profile_logout);
+        save = findViewById(R.id.save);
         updateButton = findViewById(R.id.update_button);
         selectLanguage4 = findViewById(R.id.auto_complete_txt4);
 
@@ -110,6 +119,44 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, Profile.class);
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
+                intent.putExtra("LANGUAGE1", selectedLanguage1);
+                intent.putExtra("LANGUAGE2", selectedLanguage2);
+                intent.putExtra("LANGUAGE3", selectedLanguage3);
+                intent.putExtra("SCORE", score);
+                startActivity(intent);
+
+                database1 = FirebaseDatabase.getInstance();
+                reference1 = database1.getReference("attempts").child(username);
+                String Score = ranking.getText().toString();
+                String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                HelperClass2 helperClass2 = new HelperClass2(username, Score, currentDate, currentTime);
+
+                reference1.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        int attemptsCount = (int) snapshot.getChildrenCount();
+
+                        String attemptskey = "attempts" + (attemptsCount + 1);
+
+                        reference1.child(attemptskey).setValue(helperClass2);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+            }
+        });
+
         return2Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,7 +166,10 @@ public class Profile extends AppCompatActivity {
                 intent.putExtra("LANGUAGE1", selectedLanguage1);
                 intent.putExtra("LANGUAGE2", selectedLanguage2);
                 intent.putExtra("LANGUAGE3", selectedLanguage3);
+                intent.putExtra("SCORE", score);
                 startActivity(intent);
+
+
             }
         });
 
