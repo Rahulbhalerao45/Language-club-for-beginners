@@ -3,15 +3,15 @@ package com.example.majorproject;
 public class HelperClass2 {
 
         private String username;
-        private String Score;
+        private String score;
         private String currentDate;
         private String currentTime;
 
         public HelperClass2() {}
 
-        public HelperClass2(String username, String Score, String currentDate, String currentTime) {
+        public HelperClass2(String username, String score, String currentDate, String currentTime) {
             this.username = username;
-            this.Score = Score;
+            this.score = score;
             this.currentDate = currentDate;
             this.currentTime = currentTime;
         }
@@ -21,7 +21,7 @@ public class HelperClass2 {
         }
 
         public String getScore() {
-            return Score;
+            return score;
         }
 
         public String getCurrentDate() {

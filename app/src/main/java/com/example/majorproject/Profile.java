@@ -34,7 +34,7 @@ public class Profile extends AppCompatActivity {
 
     EditText mainUsername, ranking;
 
-    Spinner search;
+    Spinner search, attempts;
 
     Button return2Button, save, updateButton;
 
@@ -70,6 +70,7 @@ public class Profile extends AppCompatActivity {
         mainUsername = findViewById(R.id.main_username5);
         ranking = findViewById(R.id.main_profile3);
         search = findViewById(R.id.main_profile4);
+        attempts = findViewById(R.id.attempts);
         return2Button = findViewById(R.id.return2_button);
         logoutRedirectText = findViewById(R.id.profile_logout);
         save = findViewById(R.id.save);
@@ -108,6 +109,32 @@ public class Profile extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(Profile.this, android.R.layout.simple_spinner_dropdown_item, historyList);
         search.setAdapter(adapter);
 
+         database1 = FirebaseDatabase.getInstance();
+         reference1 = database.getReference("attempts").child(username);
+
+        ArrayList<String> attemptsList = new ArrayList<>();
+
+        reference1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    HelperClass2 helperClass2 = dataSnapshot.getValue(HelperClass2.class);
+                    String attemptsItem = helperClass2.getScore() + " , " + helperClass2.getCurrentDate() + " , " + helperClass2.getCurrentTime();
+                    attemptsList.add(attemptsItem);
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(Profile.this, android.R.layout.simple_spinner_dropdown_item, attemptsList);
+                attempts.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(Profile.this, android.R.layout.simple_spinner_dropdown_item, attemptsList);
+        attempts.setAdapter(adapter1);
+
 
         adapterItems4 = new ArrayAdapter<>(this, R.layout.language4_item, item);
         selectLanguage4.setAdapter(adapterItems4);
@@ -133,10 +160,10 @@ public class Profile extends AppCompatActivity {
 
                 database1 = FirebaseDatabase.getInstance();
                 reference1 = database1.getReference("attempts").child(username);
-                String Score = ranking.getText().toString();
+                String score = ranking.getText().toString();
                 String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
                 String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
-                HelperClass2 helperClass2 = new HelperClass2(username, Score, currentDate, currentTime);
+                HelperClass2 helperClass2 = new HelperClass2(username, score, currentDate, currentTime);
 
                 reference1.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
