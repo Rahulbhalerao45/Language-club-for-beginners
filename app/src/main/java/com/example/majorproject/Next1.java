@@ -26,12 +26,12 @@ public class Next1 extends AppCompatActivity {
 
     EditText mainUsername;
     Button returnButton, submit1Button;
-    RadioButton quizOption1A, quizOption1B, quizOption2A, quizOption2B, quizOption3A, quizOption3B;
+    RadioButton quizOption7A, quizOption7B, quizOption8A, quizOption8B, quizOption9A, quizOption9B;
 
     RadioGroup group1, group2, group3;
 
     String username, language, language_one, language_two, language_three;
-    TextView logoutRedirectText, quizQuestion1, quizQuestion2, quizQuestion3, quiz_view;
+    TextView logoutRedirectText, quizQuestion7, quizQuestion8, quizQuestion9, quiz_view;
 
     DatabaseReference quiz1Ref, quiz2Ref, quiz3Ref;// reference to the quiz data in Firebase
 
@@ -51,18 +51,18 @@ public class Next1 extends AppCompatActivity {
         String language_two = getIntent().getStringExtra("LANGUAGE2");
         String language_three = getIntent().getStringExtra("LANGUAGE3");
 
-        quizQuestion1 = findViewById(R.id.quiz_question1);
-        quizQuestion2 = findViewById(R.id.quiz_question2);
-        quizQuestion3 = findViewById(R.id.quiz_question3);
+        quizQuestion7 = findViewById(R.id.quiz_question1);
+        quizQuestion8 = findViewById(R.id.quiz_question2);
+        quizQuestion9 = findViewById(R.id.quiz_question3);
         group1 = findViewById(R.id.qradio7);
         group2 = findViewById(R.id.qradio8);
         group3 = findViewById(R.id.qradio9);
-        quizOption1A = findViewById(R.id.qanswer13);
-        quizOption1B = findViewById(R.id.qanswer14);
-        quizOption2A = findViewById(R.id.qanswer15);
-        quizOption2B = findViewById(R.id.qanswer16);
-        quizOption3A = findViewById(R.id.qanswer17);
-        quizOption3B = findViewById(R.id.qanswer18);
+        quizOption7A = findViewById(R.id.qanswer13);
+        quizOption7B = findViewById(R.id.qanswer14);
+        quizOption8A = findViewById(R.id.qanswer15);
+        quizOption8B = findViewById(R.id.qanswer16);
+        quizOption9A = findViewById(R.id.qanswer17);
+        quizOption9B = findViewById(R.id.qanswer18);
         mainUsername = findViewById(R.id.quiz_main_username);
         returnButton = findViewById(R.id.quiz_return_button);
         submit1Button = findViewById(R.id.submit);
@@ -78,54 +78,7 @@ public class Next1 extends AppCompatActivity {
 
         FirebaseDatabase Reference = FirebaseDatabase.getInstance();
 
-        DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_one);
-        DatabaseReference quiz2Ref = Reference.getReference("quiz").child(language_two);
         DatabaseReference quiz3Ref = Reference.getReference("quiz").child(language_three);
-
-        quiz1Ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    // Retrieve the questions and options
-                    String question1 = snapshot.child("question3/text").getValue(String.class);
-                    String option1A = snapshot.child("question3/A").getValue(String.class);
-                    String option1B = snapshot.child("question3/B").getValue(String.class);
-
-                    quizQuestion1.setText("Q7." + question1);
-                    quizOption1A.setText(option1A);
-                    quizOption1B.setText(option1B);
-
-
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Handle the error
-            }
-        });
-
-        quiz2Ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    // Retrieve the questions and options
-
-                    String question2 = snapshot.child("question3/text").getValue(String.class);
-                    String option2A = snapshot.child("question3/A").getValue(String.class);
-                    String option2B = snapshot.child("question3/B").getValue(String.class);
-
-                    quizQuestion2.setText("Q8." + question2);
-                    quizOption2A.setText(option2A);
-                    quizOption2B.setText(option2B);
-
-
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Handle the error
-            }
-        });
 
         quiz3Ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -133,13 +86,29 @@ public class Next1 extends AppCompatActivity {
                 if (snapshot.exists()) {
                     // Retrieve the questions and options
 
-                    String question3 = snapshot.child("question3/text").getValue(String.class);
-                    String option3A = snapshot.child("question3/A").getValue(String.class);
-                    String option3B = snapshot.child("question3/B").getValue(String.class);
+                    String question8 = snapshot.child("question2/text").getValue(String.class);
+                    String option8A = snapshot.child("question2/A").getValue(String.class);
+                    String option8B = snapshot.child("question2/B").getValue(String.class);
 
-                    quizQuestion3.setText("Q9." + question3);
-                    quizOption3A.setText(option3A);
-                    quizOption3B.setText(option3B);
+                    quizQuestion8.setText("Q8." + question8);
+                    quizOption8A.setText(option8A);
+                    quizOption8B.setText(option8B);
+
+                    String question7 = snapshot.child("question1/text").getValue(String.class);
+                    String option7A = snapshot.child("question1/A").getValue(String.class);
+                    String option7B = snapshot.child("question1/B").getValue(String.class);
+
+                    quizQuestion7.setText("Q7." + question7);
+                    quizOption7A.setText(option7A);
+                    quizOption7B.setText(option7B);
+
+                    String question9 = snapshot.child("question3/text").getValue(String.class);
+                    String option9A = snapshot.child("question3/A").getValue(String.class);
+                    String option9B = snapshot.child("question3/B").getValue(String.class);
+
+                    quizQuestion9.setText("Q9." + question9);
+                    quizOption9A.setText(option9A);
+                    quizOption9B.setText(option9B);
 
                 }
             }

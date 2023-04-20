@@ -78,8 +78,6 @@ public class Quiz extends AppCompatActivity {
         FirebaseDatabase Reference = FirebaseDatabase.getInstance();
 
         DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_one);
-        DatabaseReference quiz2Ref = Reference.getReference("quiz").child(language_two);
-        DatabaseReference quiz3Ref = Reference.getReference("quiz").child(language_three);
 
         quiz1Ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -90,51 +88,21 @@ public class Quiz extends AppCompatActivity {
                     String option1A = snapshot.child("question1/A").getValue(String.class);
                     String option1B = snapshot.child("question1/B").getValue(String.class);
 
-
                     quizQuestion1.setText("Q1." + question1);
                     quizOption1A.setText(option1A);
                     quizOption1B.setText(option1B);
 
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Handle the error
-            }
-        });
-
-        quiz2Ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    // Retrieve the questions and options
-
-                    String question2 = snapshot.child("question1/text").getValue(String.class);
-                    String option2A = snapshot.child("question1/A").getValue(String.class);
-                    String option2B = snapshot.child("question1/B").getValue(String.class);
+                    String question2 = snapshot.child("question2/text").getValue(String.class);
+                    String option2A = snapshot.child("question2/A").getValue(String.class);
+                    String option2B = snapshot.child("question2/B").getValue(String.class);
 
                     quizQuestion2.setText("Q2." + question2);
                     quizOption2A.setText(option2A);
                     quizOption2B.setText(option2B);
 
-
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Handle the error
-            }
-        });
-
-        quiz3Ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    // Retrieve the questions and options
-
-                    String question3 = snapshot.child("question1/text").getValue(String.class);
-                    String option3A = snapshot.child("question1/A").getValue(String.class);
-                    String option3B = snapshot.child("question1/B").getValue(String.class);
+                    String question3 = snapshot.child("question3/text").getValue(String.class);
+                    String option3A = snapshot.child("question3/A").getValue(String.class);
+                    String option3B = snapshot.child("question3/B").getValue(String.class);
 
                     quizQuestion3.setText("Q3." + question3);
                     quizOption3A.setText(option3A);

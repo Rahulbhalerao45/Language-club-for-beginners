@@ -35,6 +35,30 @@ public class Submit1 extends AppCompatActivity {
     DatabaseReference quiz1Ref, quiz2Ref, quiz3Ref;// reference to the quiz data in Firebase
 
     FirebaseDatabase Reference;
+    String str1="";
+    String str2="";
+    String str3="";
+    String str4="";
+    String str5="";
+    String str6="";
+    String str7="";
+    String str8="";
+    String str9="";
+    String str11="";
+    String str22="";
+    String str33="";
+    String str44="";
+    String str55="";
+    String str66="";
+    String str77="";
+    String str88="";
+    String str99="";
+
+    String S1;
+
+
+    int score1=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,28 +98,68 @@ public class Submit1 extends AppCompatActivity {
         quiz_view.setText("" + language_one + "-" + language_two + "-" + language_three + "");
         quiz_view.setEnabled(false);
         quiz_view.setVisibility(View.INVISIBLE);
-
         FirebaseDatabase Reference = FirebaseDatabase.getInstance();
 
         DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_one);
         DatabaseReference quiz2Ref = Reference.getReference("quiz").child(language_two);
         DatabaseReference quiz3Ref = Reference.getReference("quiz").child(language_three);
+        DatabaseReference quiz4Ref = Reference.getReference("quiz_results").child(username);
+
+        quiz4Ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    // Retrieve the questions and options
+                    String question1 = snapshot.child("question1").getValue(String.class);
+                    String question2 = snapshot.child("question2").getValue(String.class);
+                    String question3 = snapshot.child("question3").getValue(String.class);
+                    String question4 = snapshot.child("question4").getValue(String.class);
+                    String question5 = snapshot.child("question5").getValue(String.class);
+                    String question6 = snapshot.child("question6").getValue(String.class);
+                    String question7 = snapshot.child("question7").getValue(String.class);
+                    String question8 = snapshot.child("question8").getValue(String.class);
+                    String question9 = snapshot.child("question9").getValue(String.class);
+
+                    str1=question1;
+                    str2=question2;
+                    str3=question3;
+                    str4=question4;
+                    str5=question5;
+                    str6=question6;
+                    str7=question7;
+                    str8=question8;
+                    str9=question9;
+
+
+
+                }
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle the error
+            }
+        });
 
         quiz1Ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     // Retrieve the questions and options
-                    String question1 = snapshot.child("question1/answer").getValue(String.class);
-                    String option1 = snapshot.child("question2/answer").getValue(String.class);
-                    String option2 = snapshot.child("question3/answer").getValue(String.class);
+                    String question11 = snapshot.child("question1/answer").getValue(String.class);
+                    String question22 = snapshot.child("question2/answer").getValue(String.class);
+                    String question33 = snapshot.child("question3/answer").getValue(String.class);
 
-                    answer1.setText("Correct answer for question1 is " + question1);
+                    str11=question11;
+                    str22=question22;
+                    str33=question33;
+
+                    answer1.setText("Correct answer for question1 is " + question11);
                     answer1.setClickable(false);
-                    answer4.setText( "Correct answer for question4 is " + option1);
-                    answer4.setClickable(false);
-                    answer7.setText("Correct answer for question7 is " + option2);
-                    answer7.setClickable(false);
+                    answer2.setText( "Correct answer for question2 is " + question22);
+                    answer2.setClickable(false);
+                    answer3.setText("Correct answer for question3 is " + question33);
+                    answer3.setClickable(false);
 
                 }
             }
@@ -111,16 +175,20 @@ public class Submit1 extends AppCompatActivity {
                 if (snapshot.exists()) {
                     // Retrieve the questions and options
 
-                    String question1 = snapshot.child("question1/answer").getValue(String.class);
-                    String option1 = snapshot.child("question2/answer").getValue(String.class);
-                    String option2 = snapshot.child("question3/answer").getValue(String.class);
+                    String question44 = snapshot.child("question1/answer").getValue(String.class);
+                    String question55 = snapshot.child("question2/answer").getValue(String.class);
+                    String question66 = snapshot.child("question3/answer").getValue(String.class);
 
-                    answer2.setText( "Correct answer for question2 is " + question1);
-                    answer2.setClickable(false);
-                    answer5.setText( "Correct answer for question5 is " + option1);
+                    str44=question44;
+                    str55=question55;
+                    str66=question66;
+
+                    answer4.setText( "Correct answer for question4 is " + question44);
+                    answer4.setClickable(false);
+                    answer5.setText( "Correct answer for question5 is " + question55);
                     answer5.setClickable(false);
-                    answer8.setText( "Correct answer for question8 is " + option2);
-                    answer8.setClickable(false);
+                    answer6.setText( "Correct answer for question6 is " + question66);
+                    answer6.setClickable(false);
 
 
                 }
@@ -137,15 +205,19 @@ public class Submit1 extends AppCompatActivity {
                 if (snapshot.exists()) {
                     // Retrieve the questions and options
 
-                    String question1 = snapshot.child("question1/answer").getValue(String.class);
-                    String option1 = snapshot.child("question2/answer").getValue(String.class);
-                    String option2 = snapshot.child("question3/answer").getValue(String.class);
+                    String question77 = snapshot.child("question1/answer").getValue(String.class);
+                    String question88 = snapshot.child("question2/answer").getValue(String.class);
+                    String question99 = snapshot.child("question3/answer").getValue(String.class);
 
-                    answer3.setText( "Correct answer for question3 is " + question1);
-                    answer3.setClickable(false);
-                    answer6.setText( "Correct answer for question6 is " + option1);
-                    answer6.setClickable(false);
-                    answer9.setText( "Correct answer for question9 is " + option2);
+                    str77=question77;
+                    str88=question88;
+                    str99=question99;
+
+                    answer7.setText( "Correct answer for question7 is " + question77);
+                    answer7.setClickable(false);
+                    answer8.setText( "Correct answer for question8 is " + question88);
+                    answer8.setClickable(false);
+                    answer9.setText( "Correct answer for question9 is " + question99);
                     answer9.setClickable(false);
 
                 }
@@ -156,10 +228,42 @@ public class Submit1 extends AppCompatActivity {
             }
         });
 
+
+
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Submit1.this, Learning.class);
+                if(str1.equals(str11)){
+                    score1++;
+                }
+                if (str2.equals(str22)) {
+                    score1++;
+                }
+                if (str3.equals(str33)) {
+                    score1++;
+                }
+
+                if (str4.equals(str44)) {
+                    score1++;
+                }
+                if (str5.equals(str55)) {
+                    score1++;
+                }
+                if (str6.equals(str66)) {
+                    score1++;
+                }
+                if (str7.equals(str77)) {
+                    score1++;
+                }
+                if (str8.equals(str88)) {
+                    score1++;
+                }
+                if (str9.equals(str99)) {
+                    score1++;
+                }
+                S1 = String.valueOf(score1);
+                Toast.makeText(Submit1.this, "Your Score is : "+score1, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Submit1.this, Profile.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
                 intent.putExtra("LANGUAGE1", language_one);
@@ -168,6 +272,7 @@ public class Submit1 extends AppCompatActivity {
                 intent.putExtra("LANGUAGE1", selectedLanguage1);
                 intent.putExtra("LANGUAGE2", selectedLanguage2);
                 intent.putExtra("LANGUAGE3", selectedLanguage3);
+                intent.putExtra("SCORE", S1);
                 startActivity(intent);
             }
         });

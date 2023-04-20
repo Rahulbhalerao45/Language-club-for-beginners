@@ -57,6 +57,7 @@ public class Profile extends AppCompatActivity {
         String selectedLanguage1 = getIntent().getStringExtra("LANGUAGE1");
         String selectedLanguage2 = getIntent().getStringExtra("LANGUAGE2");
         String selectedLanguage3 = getIntent().getStringExtra("LANGUAGE3");
+        String score = getIntent().getStringExtra("SCORE");
 
         mainUsername = findViewById(R.id.main_username5);
         ranking = findViewById(R.id.main_profile3);
@@ -68,6 +69,9 @@ public class Profile extends AppCompatActivity {
 
         mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
+
+        ranking.setText("Your Score is : " +score);
+        ranking.setEnabled(false);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("history").child(username);
