@@ -56,6 +56,7 @@ public class Chatgroup extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("chat_" + language);
 
+
         // Add a value event listener to the reference to listen for changes in the entire reference
         reference.addValueEventListener(new ValueEventListener() {
             @Override

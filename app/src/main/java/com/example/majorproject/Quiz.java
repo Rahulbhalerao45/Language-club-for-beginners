@@ -149,8 +149,29 @@ public class Quiz extends AppCompatActivity {
         });
 
         nextButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
+                // Get the selected options
+                int selectedOption1 = group1.getCheckedRadioButtonId();
+                int selectedOption2 = group2.getCheckedRadioButtonId();
+                int selectedOption3 = group3.getCheckedRadioButtonId();
+
+// Convert the option IDs to strings
+                String selectedOption1String = selectedOption1 == R.id.qanswer1 ? "A" : "B";
+                String selectedOption2String = selectedOption2 == R.id.qanswer3 ? "A" : "B";
+                String selectedOption3String = selectedOption3 == R.id.qanswer5 ? "A" : "B";
+
+// Create a Firebase reference to the user's quiz results
+                DatabaseReference userQuizRef = FirebaseDatabase.getInstance().getReference()
+                        .child("quiz_results")
+                        .child(username);
+
+// Store the selected options in Firebase
+                userQuizRef.child("question1").setValue(selectedOption1String);
+                userQuizRef.child("question2").setValue(selectedOption2String);
+                userQuizRef.child("question3").setValue(selectedOption3String);
+
                 if (group1.getCheckedRadioButtonId() != -1 && group2.getCheckedRadioButtonId() != -1 && group3.getCheckedRadioButtonId() != -1) {
                 Intent intent = new Intent(Quiz.this, Next.class);
                 intent.putExtra("USERNAME", username);
