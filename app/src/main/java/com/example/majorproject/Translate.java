@@ -43,6 +43,8 @@ public class Translate extends AppCompatActivity {
         String username = getIntent().getStringExtra("USERNAME");
         String language = getIntent().getStringExtra("LANGUAGE");
 
+        String score = getIntent().getStringExtra("SCORE");
+
 
         mainUsername = findViewById(R.id.main_username1);
         backButton = findViewById(R.id.back_button);
@@ -91,6 +93,7 @@ public class Translate extends AppCompatActivity {
                 Intent intent = new Intent(Translate.this, MainActivity.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
+                intent.putExtra("SCORE", score);
                 startActivity(intent);
 
                 database = FirebaseDatabase.getInstance();

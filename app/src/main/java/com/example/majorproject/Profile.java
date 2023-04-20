@@ -79,7 +79,7 @@ public class Profile extends AppCompatActivity {
         mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false); // disable editing of the username field
 
-        ranking.setText("Your Score is : " +score);
+        ranking.setText("You Scored " +score + " out of 9");
         ranking.setEnabled(false);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -152,8 +152,7 @@ public class Profile extends AppCompatActivity {
 
                     }
                 });
-
-
+                Toast.makeText(Profile.this, "Score Saved Successfully👍👍", Toast.LENGTH_SHORT).show();
             }
         });
 

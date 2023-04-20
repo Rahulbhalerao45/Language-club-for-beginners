@@ -78,6 +78,7 @@ public class Learning extends AppCompatActivity {
                     intent.putExtra("LANGUAGE1", selectedLanguage1);
                     intent.putExtra("LANGUAGE2", selectedLanguage2);
                     intent.putExtra("LANGUAGE3", selectedLanguage3);
+                    intent.putExtra("SCORE", score);
                     startActivity(intent);
                 }
             });
@@ -92,6 +93,7 @@ public class Learning extends AppCompatActivity {
                 intent.putExtra("LANGUAGE1", selectedLanguage1);
                 intent.putExtra("LANGUAGE2", selectedLanguage2);
                 intent.putExtra("LANGUAGE3", selectedLanguage3);
+                intent.putExtra("SCORE", score);
                 startActivity(intent);
             }
         });
@@ -124,6 +126,7 @@ public class Learning extends AppCompatActivity {
                 intent.putExtra("LANGUAGE1", selectedLanguage1);
                 intent.putExtra("LANGUAGE2", selectedLanguage2);
                 intent.putExtra("LANGUAGE3", selectedLanguage3);
+                intent.putExtra("SCORE", score);
                 startActivity(intent);
             }
         });

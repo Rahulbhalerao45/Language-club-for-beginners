@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
          String username = getIntent().getStringExtra("USERNAME");
          String language = getIntent().getStringExtra("LANGUAGE");
 
+        String score = getIntent().getStringExtra("SCORE");
+
         // Initialize the views
         mainUsername = findViewById(R.id.main_username);
         mainEnterText = findViewById(R.id.main_entertext);
@@ -212,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
                             intent.putExtra("LANGUAGE", language);
                             intent.putExtra("ENTERED_TEXT",sourceText);
                             intent.putExtra("RUS1", rus1);
+                            intent.putExtra("SCORE", score);
                             startActivity(intent);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -301,6 +304,7 @@ public class MainActivity extends AppCompatActivity {
                             intent.putExtra("ENTERED_TEXT",sourceText);
                             intent.putExtra("RUS1", rus1);
                             intent.putExtra("RUS2", rus2);
+                            intent.putExtra("SCORE", score);
                             startActivity(intent);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -429,6 +433,7 @@ public class MainActivity extends AppCompatActivity {
                             intent.putExtra("RUS1", rus1);
                             intent.putExtra("RUS2", rus2);
                             intent.putExtra("RUS3", rus3);
+                            intent.putExtra("SCORE", score);
                             startActivity(intent);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -452,6 +457,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("LANGUAGE1", selectedLanguage1);
                 intent.putExtra("LANGUAGE2", selectedLanguage2);
                 intent.putExtra("LANGUAGE3", selectedLanguage3);
+                intent.putExtra("SCORE", score);
                 startActivity(intent);
             }
         });

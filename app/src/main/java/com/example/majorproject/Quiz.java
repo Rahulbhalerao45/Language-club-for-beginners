@@ -49,6 +49,8 @@ public class Quiz extends AppCompatActivity {
         String language_two = getIntent().getStringExtra("LANGUAGE2");
         String language_three = getIntent().getStringExtra("LANGUAGE3");
 
+        String score = getIntent().getStringExtra("SCORE");
+
         quizQuestion1 = findViewById(R.id.quiz_question1);
         quizQuestion2 = findViewById(R.id.quiz_question2);
         quizQuestion3 = findViewById(R.id.quiz_question3);
@@ -164,6 +166,7 @@ public class Quiz extends AppCompatActivity {
                 intent.putExtra("LANGUAGE1", language_one);
                 intent.putExtra("LANGUAGE2", language_two);
                 intent.putExtra("LANGUAGE3", language_three);
+                intent.putExtra("SCORE", score);
                 startActivity(intent);
             }
         });
