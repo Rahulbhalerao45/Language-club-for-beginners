@@ -180,6 +180,7 @@ public class Profile extends AppCompatActivity {
                     }
                 });
                 Toast.makeText(Profile.this, "Score Saved Successfully👍👍", Toast.LENGTH_SHORT).show();
+
             }
         });
 

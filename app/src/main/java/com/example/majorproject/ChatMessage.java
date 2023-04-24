@@ -6,11 +6,15 @@ public class ChatMessage {
 
     private String sender;
 
-    public ChatMessage() {}
+    private String currentTime;
 
-    public ChatMessage(String username, String message) {
+    public ChatMessage(String currentTime) {}
+
+    public ChatMessage(String username, String message, String sender,  String currentTime) {
         this.username = username;
         this.message = message;
+        this.currentTime = currentTime;
+        this.sender = sender;
     }
 
     public String getUsername() {
@@ -24,4 +28,6 @@ public class ChatMessage {
     public String getSender() {
         return sender;
     }
+
+    public String getCurrentTime() {return currentTime; }
 }

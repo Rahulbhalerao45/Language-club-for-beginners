@@ -10,16 +10,6 @@
     tools:context=".Profile">
 
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_margin="50dp"
-        android:text="Profile and Ranking"
-        android:id="@+id/profile_button"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:background="@drawable/circle_button"
-        android:padding="15dp"/>
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
