@@ -50,7 +50,7 @@ public class Profile extends AppCompatActivity {
 
     FirebaseDatabase database1;
     DatabaseReference reference1;
-
+ 
     TextView logoutRedirectText;
 
     @Override
