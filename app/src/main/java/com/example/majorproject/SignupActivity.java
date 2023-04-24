@@ -1,5 +1,6 @@
 package com.example.majorproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,8 +15,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -66,17 +70,68 @@ public class SignupActivity extends AppCompatActivity {
                 database = FirebaseDatabase.getInstance();
                 reference = database.getReference("users");
 
-                String name = signupName.getText().toString();
-                String email = signupEmail.getText().toString();
-                String language = selectLanguage.getText().toString();
-                String username = signupUsername.getText().toString();
-                String password = signupPassword.getText().toString();
+                final String name = signupName.getText().toString();
+                final String email = signupEmail.getText().toString();
+                final String language = selectLanguage.getText().toString();
+                final String username = signupUsername.getText().toString();
+                final String password = signupPassword.getText().toString();
 
-                HelperClass helperClass = new HelperClass(name, email, language, username, password);
-                reference.child(username).setValue(helperClass);
+                reference.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            // Show error message for username already exists
+                            signupUsername.setError("Username already exists");
+                            signupUsername.requestFocus();
+                        }
+                        else{
+                            reference.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if(snapshot.exists()){
+                                        // Show error message for email ID already exists
+                                        signupEmail.setError("Email ID already exists");
+                                        signupEmail.requestFocus();
+                                    }
+                                    else{
+                                        reference.orderByChild("password").equalTo(password).addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                if(snapshot.exists()){
+                                                    // Show error message for password already exists
+                                                    signupPassword.setError("Password already exists");
+                                                    signupPassword.requestFocus();
+                                                }
+                                                else{
+                                                    HelperClass helperClass = new HelperClass(name, email, language, username, password);
+                                                    reference.child(username).setValue(helperClass);
 
-                Intent intent =new Intent(SignupActivity.this, LoginActivity.class);
-                startActivity(intent);
+                                                    Intent intent =new Intent(SignupActivity.this, LoginActivity.class);
+                                                    startActivity(intent);
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
 
