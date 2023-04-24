@@ -102,19 +102,11 @@
                 android:textColor="@color/black"/>
 
             <CheckBox
-                android:layout_width="wrap_content"
+                android:id="@+id/show_password_checkbox"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:id="@+id/show_password_checkbox"/>
-
-            <TextView
-                android:id="@+id/password_strength_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:visibility="gone"
-                android:textSize="24sp"
-                android:textAlignment="center" />
+                android:drawableLeft="@drawable/baseline_remove_red_eye_24" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -123,7 +115,7 @@
                 android:text="Sign Up"
                 android:id="@+id/signup_button"
                 android:textSize="18sp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 app:cornerRadius = "20dp"/>
 
             <TextView
