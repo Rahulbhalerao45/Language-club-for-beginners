@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,11 +40,26 @@ public class SignupActivity extends AppCompatActivity {
 
     ArrayAdapter adapterItems;
 
+    private String getPasswordStrengthEmoji(String password) {
+        if (password.length() < 8) {
+            return "🟠"; // red circle emoji for weak passwords
+        } else if (password.matches(".*[a-zA-Z].*") && password.matches(".*[0-9].*") && !password.matches("^[a-zA-Z0-9]*$")) {
+            return "🟢"; // orange circle emoji for medium strength passwords
+        } else {
+            return "🟠"; // green circle emoji for strong passwords
+        }
+    }
+
+    CheckBox showPasswordCheckBox;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        showPasswordCheckBox = findViewById(R.id.show_password_checkbox);
 
         signupName = findViewById(R.id.signup_name);
         signupEmail = findViewById(R.id.signup_email);
@@ -63,6 +82,18 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
+        showPasswordCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    signupPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance()); // Show password
+                } else {
+                    signupPassword.setTransformationMethod(PasswordTransformationMethod.getInstance()); // Hide password
+                }
+            }
+        });
+
+
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,6 +106,11 @@ public class SignupActivity extends AppCompatActivity {
                 final String language = selectLanguage.getText().toString();
                 final String username = signupUsername.getText().toString();
                 final String password = signupPassword.getText().toString();
+
+                String passwordStrengthEmoji = getPasswordStrengthEmoji(password);
+
+                Toast.makeText(SignupActivity.this, "Password strength: " + passwordStrengthEmoji, Toast.LENGTH_SHORT).show();
+
 
                 reference.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
