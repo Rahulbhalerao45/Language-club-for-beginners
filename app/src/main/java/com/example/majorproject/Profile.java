@@ -36,7 +36,7 @@ public class Profile extends AppCompatActivity {
 
     Spinner search, attempts;
 
-    Button return2Button, save, updateButton;
+    Button return2Button, save, updateButton, ranking1;
 
     String[] item = {"Hindi(हिंदी)", "Marathi(मराठी)", "Telugu(తెలుగు)", "Tamil(தமிழ்)", "Bengali(বাঙ্গালি)"};
 
@@ -50,6 +50,9 @@ public class Profile extends AppCompatActivity {
 
     FirebaseDatabase database1;
     DatabaseReference reference1;
+
+    FirebaseDatabase database2;
+    DatabaseReference reference2;
  
     TextView logoutRedirectText;
 
@@ -57,8 +60,6 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-
 
         username = getIntent().getStringExtra("USERNAME");
         language = getIntent().getStringExtra("LANGUAGE");
@@ -74,6 +75,7 @@ public class Profile extends AppCompatActivity {
         return2Button = findViewById(R.id.return2_button);
         logoutRedirectText = findViewById(R.id.profile_logout);
         save = findViewById(R.id.save);
+        ranking1 = findViewById(R.id.ranking1);
         updateButton = findViewById(R.id.update_button);
         selectLanguage4 = findViewById(R.id.auto_complete_txt4);
 
@@ -82,6 +84,33 @@ public class Profile extends AppCompatActivity {
 
         ranking.setText("You Scored " +score + " out of 9");
         ranking.setEnabled(false);
+
+        database2 = FirebaseDatabase.getInstance();
+        reference2 = database2.getReference("LearningPoints");
+
+// Assuming `username` is the variable that holds the user's username
+        reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Retrieve the current value of the learning point
+                Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
+
+                // If the user has no learning points yet, the current value will be null, so set it to 0
+                if (currentLearningPoint == null) {
+                    currentLearningPoint = 0;
+                }
+                String str3=currentLearningPoint.toString();
+
+                // Update the text or label of the ranking button to display the user's points
+                ranking1.setText( str3);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle any errors that occur
+            }
+        });
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("history").child(username);
@@ -227,5 +256,6 @@ public class Profile extends AppCompatActivity {
             }
 
         });
+
     }
 }

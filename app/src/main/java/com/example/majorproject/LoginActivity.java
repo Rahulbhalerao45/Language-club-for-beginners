@@ -107,33 +107,7 @@ public class LoginActivity extends AppCompatActivity {
         String userUsername = loginUsername.getText().toString().trim();
         String userPassword = loginPassword.getText().toString().trim();
 
-        database2 = FirebaseDatabase.getInstance();
-        reference2 = database2.getReference("LearningPoints");
 
-// Assuming `username` is the variable that holds the user's username
-        reference2.child(userUsername).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Retrieve the current value of the learning point
-                Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
-
-                // If the user has no learning points yet, the current value will be null, so set it to 0
-                if (currentLearningPoint == null) {
-                    currentLearningPoint = 0;
-                }
-
-                // Increment the learning point by 1
-                Integer newLearningPoint = currentLearningPoint + 1;
-
-                // Set the updated value to the database
-                reference2.child(userUsername).setValue(newLearningPoint);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Handle any errors that occur
-            }
-        });
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
         Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
@@ -153,6 +127,34 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra("USERNAME", userUsername);
                             intent.putExtra("LANGUAGE", languageFromDB);
                             startActivity(intent);
+
+                            database2 = FirebaseDatabase.getInstance();
+                            reference2 = database2.getReference("LearningPoints");
+
+// Assuming `username` is the variable that holds the user's username
+                            reference2.child(userUsername).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    // Retrieve the current value of the learning point
+                                    Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
+
+                                    // If the user has no learning points yet, the current value will be null, so set it to 0
+                                    if (currentLearningPoint == null) {
+                                        currentLearningPoint = 0;
+                                    }
+
+                                    // Increment the learning point by 1
+                                    Integer newLearningPoint = currentLearningPoint + 1;
+
+                                    // Set the updated value to the database
+                                    reference2.child(userUsername).setValue(newLearningPoint);
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                    // Handle any errors that occur
+                                }
+                            });
                         } else {
                             loginPassword.setError("Invalid Password");
                             loginPassword.requestFocus();
