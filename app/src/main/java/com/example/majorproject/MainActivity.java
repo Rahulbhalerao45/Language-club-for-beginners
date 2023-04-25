@@ -354,7 +354,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
 
                                     // Increment the learning point by 1
-                                    Integer newLearningPoint = currentLearningPoint + 1;
+                                    Integer newLearningPoint = currentLearningPoint + 2;
 
                                     // Set the updated value to the database
                                     reference2.child(username).setValue(newLearningPoint);
@@ -511,7 +511,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
 
                                     // Increment the learning point by 1
-                                    Integer newLearningPoint = currentLearningPoint + 1;
+                                    Integer newLearningPoint = currentLearningPoint + 3;
 
                                     // Set the updated value to the database
                                     reference2.child(username).setValue(newLearningPoint);
