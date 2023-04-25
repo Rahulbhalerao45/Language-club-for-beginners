@@ -90,7 +90,7 @@ public class Quiz extends AppCompatActivity {
                     String option1A = snapshot.child("question1/A").getValue(String.class);
                     String option1B = snapshot.child("question1/B").getValue(String.class);
 
-                    quizQuestion1.setText("Q1." + question1);
+                    quizQuestion1.setText("Q1 : " + question1);
                     quizOption1A.setText(option1A);
                     quizOption1B.setText(option1B);
 
@@ -98,7 +98,7 @@ public class Quiz extends AppCompatActivity {
                     String option2A = snapshot.child("question2/A").getValue(String.class);
                     String option2B = snapshot.child("question2/B").getValue(String.class);
 
-                    quizQuestion2.setText("Q2." + question2);
+                    quizQuestion2.setText("Q2 : " + question2);
                     quizOption2A.setText(option2A);
                     quizOption2B.setText(option2B);
 
@@ -106,7 +106,7 @@ public class Quiz extends AppCompatActivity {
                     String option3A = snapshot.child("question3/A").getValue(String.class);
                     String option3B = snapshot.child("question3/B").getValue(String.class);
 
-                    quizQuestion3.setText("Q3." + question3);
+                    quizQuestion3.setText("Q3 : " + question3);
                     quizOption3A.setText(option3A);
                     quizOption3B.setText(option3B);
 

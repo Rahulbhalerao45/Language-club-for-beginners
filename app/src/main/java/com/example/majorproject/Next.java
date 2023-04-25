@@ -90,7 +90,7 @@ public class Next extends AppCompatActivity {
                         String option5A = snapshot.child("question5/A").getValue(String.class);
                         String option5B = snapshot.child("question5/B").getValue(String.class);
 
-                        quizQuestion5.setText("Q5." + question5);
+                        quizQuestion5.setText("Q5 : " + question5);
                         quizOption5A.setText(option5A);
                         quizOption5B.setText(option5B);
 
@@ -98,7 +98,7 @@ public class Next extends AppCompatActivity {
                         String option44A = snapshot.child("question4/A").getValue(String.class);
                         String option44B = snapshot.child("question4/B").getValue(String.class);
 
-                        quizQuestion4.setText("Q4." + question44);
+                        quizQuestion4.setText("Q4 : " + question44);
                         quizOption4A.setText(option44A);
                         quizOption4B.setText(option44B);
 
@@ -106,7 +106,7 @@ public class Next extends AppCompatActivity {
                         String option6A = snapshot.child("question6/A").getValue(String.class);
                         String option6B = snapshot.child("question6/B").getValue(String.class);
 
-                        quizQuestion6.setText("Q6." + question6);
+                        quizQuestion6.setText("Q6 : " + question6);
                         quizOption6A.setText(option6A);
                         quizOption6B.setText(option6B);
 

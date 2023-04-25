@@ -27,7 +27,7 @@ public class Submit1 extends AppCompatActivity {
 
     String username, language, language_one, language_two, language_three;
 
-    RadioGroup group10;
+
     RadioButton answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9;
 
     TextView scoreTextView, quiz_view;
@@ -81,7 +81,7 @@ public class Submit1 extends AppCompatActivity {
         String selectedLanguage3 = getIntent().getStringExtra("LANGUAGE3");
 
         scoreTextView = findViewById(R.id.correct_answer);
-        group10 = findViewById(R.id.group10);
+
         answer1 = findViewById(R.id.answer111);
         answer2 = findViewById(R.id.answer222);
         answer3 = findViewById(R.id.answer333);
@@ -157,10 +157,13 @@ public class Submit1 extends AppCompatActivity {
 
                     answer1.setText("Correct answer for question1 is " + question11);
                     answer1.setClickable(false);
+                    answer1.setChecked(true);
                     answer2.setText( "Correct answer for question2 is " + question22);
                     answer2.setClickable(false);
+                    answer2.setChecked(true);
                     answer3.setText("Correct answer for question3 is " + question33);
                     answer3.setClickable(false);
+                    answer3.setChecked(true);
 
                 }
             }
@@ -187,10 +190,13 @@ public class Submit1 extends AppCompatActivity {
 
                         answer4.setText( "Correct answer for question4 is " + question44);
                         answer4.setClickable(false);
+                        answer4.setChecked(true);
                         answer5.setText( "Correct answer for question5 is " + question55);
                         answer5.setClickable(false);
+                        answer5.setChecked(true);
                         answer6.setText( "Correct answer for question6 is " + question66);
                         answer6.setClickable(false);
+                        answer6.setChecked(true);
 
 
                     }
@@ -217,10 +223,13 @@ public class Submit1 extends AppCompatActivity {
 
                         answer4.setText("Correct answer for question4 is " + question44);
                         answer4.setClickable(false);
+                        answer4.setChecked(true);
                         answer5.setText("Correct answer for question5 is " + question55);
                         answer5.setClickable(false);
+                        answer5.setChecked(true);
                         answer6.setText("Correct answer for question6 is " + question66);
                         answer6.setClickable(false);
+                        answer6.setChecked(true);
 
 
                     }
@@ -251,10 +260,13 @@ public class Submit1 extends AppCompatActivity {
 
                         answer7.setText("Correct answer for question7 is " + question77);
                         answer7.setClickable(false);
+                        answer7.setChecked(true);
                         answer8.setText("Correct answer for question8 is " + question88);
                         answer8.setClickable(false);
+                        answer8.setChecked(true);
                         answer9.setText("Correct answer for question9 is " + question99);
                         answer9.setClickable(false);
+                        answer9.setChecked(true);
 
                     }
                 }
@@ -281,10 +293,13 @@ public class Submit1 extends AppCompatActivity {
 
                         answer7.setText("Correct answer for question7 is " + question77);
                         answer7.setClickable(false);
+                        answer7.setChecked(true);
                         answer8.setText("Correct answer for question8 is " + question88);
                         answer8.setClickable(false);
+                        answer8.setChecked(true);
                         answer9.setText("Correct answer for question9 is " + question99);
                         answer9.setClickable(false);
+                        answer9.setChecked(true);
 
                     }
                 }
