@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -112,62 +113,71 @@ public class SignupActivity extends AppCompatActivity {
                 Toast.makeText(SignupActivity.this, "Password strength: " + passwordStrengthEmoji, Toast.LENGTH_SHORT).show();
 
 
-                reference.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.exists()){
-                            // Show error message for username already exists
-                            signupUsername.setError("Username already exists");
-                            signupUsername.requestFocus();
-                        }
-                        else{
-                            reference.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    if(snapshot.exists()){
-                                        // Show error message for email ID already exists
-                                        signupEmail.setError("Email ID already exists");
-                                        signupEmail.requestFocus();
-                                    }
-                                    else{
-                                        reference.orderByChild("password").equalTo(password).addListenerForSingleValueEvent(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                if(snapshot.exists()){
-                                                    // Show error message for password already exists
-                                                    signupPassword.setError("Password already exists");
-                                                    signupPassword.requestFocus();
-                                                }
-                                                else{
-                                                    HelperClass helperClass = new HelperClass(name, email, language, username, password);
-                                                    reference.child(username).setValue(helperClass);
+                if(TextUtils.isEmpty(signupUsername.getText().toString())) {
+                    Toast.makeText(SignupActivity.this, "Username cannot be empty..", Toast.LENGTH_SHORT).show();
+                }else {
+                    reference.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                // Show error message for username already exists
+                                signupUsername.setError("Username already exists");
+                                signupUsername.requestFocus();
+                            } else {
+                                if(TextUtils.isEmpty(signupEmail.getText().toString())) {
+                                    Toast.makeText(SignupActivity.this, "Email cannot be empty..", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    reference.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            if (snapshot.exists()) {
+                                                // Show error message for email ID already exists
+                                                signupEmail.setError("Email ID already exists");
+                                                signupEmail.requestFocus();
+                                            } else {
+                                                if(TextUtils.isEmpty(signupPassword.getText().toString())) {
+                                                    Toast.makeText(SignupActivity.this, "Password cannot be empty..", Toast.LENGTH_SHORT).show();
+                                                }else {
+                                                    reference.orderByChild("password").equalTo(password).addListenerForSingleValueEvent(new ValueEventListener() {
+                                                        @Override
+                                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                            if (snapshot.exists()) {
+                                                                // Show error message for password already exists
+                                                                signupPassword.setError("Password already exists");
+                                                                signupPassword.requestFocus();
+                                                            } else {
+                                                                HelperClass helperClass = new HelperClass(name, email, language, username, password);
+                                                                reference.child(username).setValue(helperClass);
 
-                                                    Intent intent =new Intent(SignupActivity.this, LoginActivity.class);
-                                                    startActivity(intent);
+                                                                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                                                                startActivity(intent);
+                                                            }
+                                                        }
+
+                                                        @Override
+                                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                                        }
+                                                    });
                                                 }
                                             }
+                                        }
 
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError error) {
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
 
-                                            }
-                                        });
-                                    }
+                                        }
+                                    });
                                 }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
+                        }
+                    });
+                }
             }
         });
 
