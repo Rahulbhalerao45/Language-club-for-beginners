@@ -35,6 +35,9 @@ public class Submit1 extends AppCompatActivity {
     DatabaseReference quiz1Ref, quiz2Ref, quiz3Ref;// reference to the quiz data in Firebase
 
     FirebaseDatabase Reference;
+
+    FirebaseDatabase database2;
+    DatabaseReference reference2;
     String str1="";
     String str2="";
     String str3="";
@@ -233,6 +236,8 @@ public class Submit1 extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 if(str1.equals(str11)){
                     score1++;
                 }
@@ -274,6 +279,34 @@ public class Submit1 extends AppCompatActivity {
                 intent.putExtra("LANGUAGE3", selectedLanguage3);
                 intent.putExtra("SCORE", S1);
                 startActivity(intent);
+
+                database2 = FirebaseDatabase.getInstance();
+                reference2 = database2.getReference("LearningPoints");
+
+// Assuming `username` is the variable that holds the user's username
+                reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // Retrieve the current value of the learning point
+                        Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
+
+                        // If the user has no learning points yet, the current value will be null, so set it to 0
+                        if (currentLearningPoint == null) {
+                            currentLearningPoint = 0;
+                        }
+
+                        // Increment the learning point by 1
+                        Integer newLearningPoint = currentLearningPoint + score1;
+
+                        // Set the updated value to the database
+                        reference2.child(username).setValue(newLearningPoint);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // Handle any errors that occur
+                    }
+                });
             }
         });
 
