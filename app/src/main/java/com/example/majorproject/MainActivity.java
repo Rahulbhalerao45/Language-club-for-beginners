@@ -302,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if(TextUtils.isEmpty(mainEnterText.getText().toString())) {
-                    Toast.makeText(MainActivity.this, "Please Enter Text...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Please Enter Text...", Toast.LENGTH_SHORT);
                 }else{
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str2)
@@ -354,7 +354,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
 
                                     // Increment the learning point by 1
-                                    Integer newLearningPoint = currentLearningPoint + 2;
+                                    Integer newLearningPoint = currentLearningPoint + 1;
 
                                     // Set the updated value to the database
                                     reference2.child(username).setValue(newLearningPoint);
@@ -419,7 +419,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if(TextUtils.isEmpty(mainEnterText.getText().toString())) {
-                    Toast.makeText(MainActivity.this, "Please Enter Text...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Please Enter Text...", Toast.LENGTH_SHORT);
                 }else{
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str2)
@@ -456,7 +456,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if(TextUtils.isEmpty(mainEnterText.getText().toString())) {
-                    Toast.makeText(MainActivity.this, "Please Enter Text...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Please Enter Text...", Toast.LENGTH_SHORT);
                 }else{
                     TranslatorOptions options = new TranslatorOptions.Builder()
                             .setTargetLanguage(str3)
@@ -511,7 +511,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
 
                                     // Increment the learning point by 1
-                                    Integer newLearningPoint = currentLearningPoint + 3;
+                                    Integer newLearningPoint = currentLearningPoint + 1;
 
                                     // Set the updated value to the database
                                     reference2.child(username).setValue(newLearningPoint);

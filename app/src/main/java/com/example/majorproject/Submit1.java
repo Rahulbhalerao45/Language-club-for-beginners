@@ -234,7 +234,7 @@ public class Submit1 extends AppCompatActivity {
 
         }
 
-        if (language_three.equals(language_two)){
+        if (language_three.equals(language_one)){
             quiz3Ref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {

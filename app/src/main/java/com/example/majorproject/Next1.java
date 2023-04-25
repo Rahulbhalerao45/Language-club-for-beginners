@@ -80,7 +80,7 @@ public class Next1 extends AppCompatActivity {
 
         DatabaseReference quiz3Ref = Reference.getReference("quiz").child(language_three);
 
-        if (language_three.equals(language_two)){
+        if (language_three.equals(language_one)){
             quiz3Ref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
