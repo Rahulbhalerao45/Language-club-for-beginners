@@ -79,44 +79,87 @@ public class Next extends AppCompatActivity {
 
         DatabaseReference quiz2Ref = Reference.getReference("quiz").child(language_two);
 
-        quiz2Ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    // Retrieve the questions and options
+        if (language_two.equals(language_one)){
+            quiz2Ref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        // Retrieve the questions and options
 
-                    String question5 = snapshot.child("question2/text").getValue(String.class);
-                    String option5A = snapshot.child("question2/A").getValue(String.class);
-                    String option5B = snapshot.child("question2/B").getValue(String.class);
+                        String question5 = snapshot.child("question5/text").getValue(String.class);
+                        String option5A = snapshot.child("question5/A").getValue(String.class);
+                        String option5B = snapshot.child("question5/B").getValue(String.class);
 
-                    quizQuestion5.setText("Q5." + question5);
-                    quizOption5A.setText(option5A);
-                    quizOption5B.setText(option5B);
+                        quizQuestion5.setText("Q5." + question5);
+                        quizOption5A.setText(option5A);
+                        quizOption5B.setText(option5B);
 
-                    String question4 = snapshot.child("question1/text").getValue(String.class);
-                    String option4A = snapshot.child("question1/A").getValue(String.class);
-                    String option4B = snapshot.child("question1/B").getValue(String.class);
+                        String question44 = snapshot.child("question4/text").getValue(String.class);
+                        String option44A = snapshot.child("question4/A").getValue(String.class);
+                        String option44B = snapshot.child("question4/B").getValue(String.class);
 
-                    quizQuestion4.setText("Q4." + question4);
-                    quizOption4A.setText(option4A);
-                    quizOption4B.setText(option4B);
+                        quizQuestion4.setText("Q4." + question44);
+                        quizOption4A.setText(option44A);
+                        quizOption4B.setText(option44B);
 
-                    String question6 = snapshot.child("question3/text").getValue(String.class);
-                    String option6A = snapshot.child("question3/A").getValue(String.class);
-                    String option6B = snapshot.child("question3/B").getValue(String.class);
+                        String question6 = snapshot.child("question6/text").getValue(String.class);
+                        String option6A = snapshot.child("question6/A").getValue(String.class);
+                        String option6B = snapshot.child("question6/B").getValue(String.class);
 
-                    quizQuestion6.setText("Q6." + question6);
-                    quizOption6A.setText(option6A);
-                    quizOption6B.setText(option6B);
+                        quizQuestion6.setText("Q6." + question6);
+                        quizOption6A.setText(option6A);
+                        quizOption6B.setText(option6B);
 
 
+                    }
                 }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Handle the error
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Handle the error
+                }
+            });
+        }else {
+
+            quiz2Ref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        // Retrieve the questions and options
+
+                        String question5 = snapshot.child("question2/text").getValue(String.class);
+                        String option5A = snapshot.child("question2/A").getValue(String.class);
+                        String option5B = snapshot.child("question2/B").getValue(String.class);
+
+                        quizQuestion5.setText("Q5." + question5);
+                        quizOption5A.setText(option5A);
+                        quizOption5B.setText(option5B);
+
+                        String question4 = snapshot.child("question1/text").getValue(String.class);
+                        String option4A = snapshot.child("question1/A").getValue(String.class);
+                        String option4B = snapshot.child("question1/B").getValue(String.class);
+
+                        quizQuestion4.setText("Q4." + question4);
+                        quizOption4A.setText(option4A);
+                        quizOption4B.setText(option4B);
+
+                        String question6 = snapshot.child("question3/text").getValue(String.class);
+                        String option6A = snapshot.child("question3/A").getValue(String.class);
+                        String option6B = snapshot.child("question3/B").getValue(String.class);
+
+                        quizQuestion6.setText("Q6." + question6);
+                        quizOption6A.setText(option6A);
+                        quizOption6B.setText(option6B);
+
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Handle the error
+                }
+            });
+        }
         next1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

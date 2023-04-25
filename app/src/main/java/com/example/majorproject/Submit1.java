@@ -133,8 +133,6 @@ public class Submit1 extends AppCompatActivity {
                     str8=question8;
                     str9=question9;
 
-
-
                 }
 
             }
@@ -172,66 +170,131 @@ public class Submit1 extends AppCompatActivity {
             }
         });
 
-        quiz2Ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    // Retrieve the questions and options
+        if (language_two.equals(language_one)){
+            quiz2Ref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        // Retrieve the questions and options
 
-                    String question44 = snapshot.child("question1/answer").getValue(String.class);
-                    String question55 = snapshot.child("question2/answer").getValue(String.class);
-                    String question66 = snapshot.child("question3/answer").getValue(String.class);
+                        String question44 = snapshot.child("question4/answer").getValue(String.class);
+                        String question55 = snapshot.child("question5/answer").getValue(String.class);
+                        String question66 = snapshot.child("question6/answer").getValue(String.class);
 
-                    str44=question44;
-                    str55=question55;
-                    str66=question66;
+                        str44=question44;
+                        str55=question55;
+                        str66=question66;
 
-                    answer4.setText( "Correct answer for question4 is " + question44);
-                    answer4.setClickable(false);
-                    answer5.setText( "Correct answer for question5 is " + question55);
-                    answer5.setClickable(false);
-                    answer6.setText( "Correct answer for question6 is " + question66);
-                    answer6.setClickable(false);
+                        answer4.setText( "Correct answer for question4 is " + question44);
+                        answer4.setClickable(false);
+                        answer5.setText( "Correct answer for question5 is " + question55);
+                        answer5.setClickable(false);
+                        answer6.setText( "Correct answer for question6 is " + question66);
+                        answer6.setClickable(false);
 
 
+                    }
                 }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Handle the error
-            }
-        });
-
-        quiz3Ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    // Retrieve the questions and options
-
-                    String question77 = snapshot.child("question1/answer").getValue(String.class);
-                    String question88 = snapshot.child("question2/answer").getValue(String.class);
-                    String question99 = snapshot.child("question3/answer").getValue(String.class);
-
-                    str77=question77;
-                    str88=question88;
-                    str99=question99;
-
-                    answer7.setText( "Correct answer for question7 is " + question77);
-                    answer7.setClickable(false);
-                    answer8.setText( "Correct answer for question8 is " + question88);
-                    answer8.setClickable(false);
-                    answer9.setText( "Correct answer for question9 is " + question99);
-                    answer9.setClickable(false);
-
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Handle the error
                 }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Handle the error
-            }
-        });
+            });
+        } else {
+            quiz2Ref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        // Retrieve the questions and options
+
+                        String question44 = snapshot.child("question1/answer").getValue(String.class);
+                        String question55 = snapshot.child("question2/answer").getValue(String.class);
+                        String question66 = snapshot.child("question3/answer").getValue(String.class);
+
+                        str44 = question44;
+                        str55 = question55;
+                        str66 = question66;
+
+                        answer4.setText("Correct answer for question4 is " + question44);
+                        answer4.setClickable(false);
+                        answer5.setText("Correct answer for question5 is " + question55);
+                        answer5.setClickable(false);
+                        answer6.setText("Correct answer for question6 is " + question66);
+                        answer6.setClickable(false);
 
 
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Handle the error
+                }
+            });
+
+        }
+
+        if (language_three.equals(language_two)){
+            quiz3Ref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        // Retrieve the questions and options
+
+                        String question77 = snapshot.child("question7/answer").getValue(String.class);
+                        String question88 = snapshot.child("question8/answer").getValue(String.class);
+                        String question99 = snapshot.child("question9/answer").getValue(String.class);
+
+                        str77 = question77;
+                        str88 = question88;
+                        str99 = question99;
+
+                        answer7.setText("Correct answer for question7 is " + question77);
+                        answer7.setClickable(false);
+                        answer8.setText("Correct answer for question8 is " + question88);
+                        answer8.setClickable(false);
+                        answer9.setText("Correct answer for question9 is " + question99);
+                        answer9.setClickable(false);
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Handle the error
+                }
+            });
+        } else {
+            quiz3Ref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        // Retrieve the questions and options
+
+                        String question77 = snapshot.child("question1/answer").getValue(String.class);
+                        String question88 = snapshot.child("question2/answer").getValue(String.class);
+                        String question99 = snapshot.child("question3/answer").getValue(String.class);
+
+                        str77 = question77;
+                        str88 = question88;
+                        str99 = question99;
+
+                        answer7.setText("Correct answer for question7 is " + question77);
+                        answer7.setClickable(false);
+                        answer8.setText("Correct answer for question8 is " + question88);
+                        answer8.setClickable(false);
+                        answer9.setText("Correct answer for question9 is " + question99);
+                        answer9.setClickable(false);
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Handle the error
+                }
+            });
+        }
 
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override

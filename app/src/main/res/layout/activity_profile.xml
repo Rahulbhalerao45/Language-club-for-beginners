@@ -21,12 +21,12 @@
 
         <Button
             android:id="@+id/ranking1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="25dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="25dp"
             android:layout_gravity="right"
-            android:textSize="15dp"
+            android:textSize="13dp"
             android:padding="10dp"
             android:text=""
             android:background="@drawable/circle_button" />
