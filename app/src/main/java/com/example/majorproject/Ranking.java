@@ -17,6 +17,8 @@ import java.util.List;
 
 public class Ranking extends AppCompatActivity {
 
+    String username;
+
     FirebaseDatabase database2;
     DatabaseReference reference2;
 
@@ -26,6 +28,8 @@ public class Ranking extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking);
+
+        username = getIntent().getStringExtra("USERNAME");
 
         top1 = findViewById(R.id.top1);
         top2 = findViewById(R.id.top2);
