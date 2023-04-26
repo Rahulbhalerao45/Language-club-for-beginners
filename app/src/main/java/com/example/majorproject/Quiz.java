@@ -128,9 +128,9 @@ public class Quiz extends AppCompatActivity {
                 int selectedOption3 = group3.getCheckedRadioButtonId();
 
 // Convert the option IDs to strings
-                String selectedOption1String = selectedOption1 == R.id.qanswer1 ? "A" : "B";
-                String selectedOption2String = selectedOption2 == R.id.qanswer3 ? "A" : "B";
-                String selectedOption3String = selectedOption3 == R.id.qanswer5 ? "A" : "B";
+                String selectedOption1String = selectedOption1 == -1 ? "N/A" : (selectedOption1 == R.id.qanswer1 ? "A" : "B");
+                String selectedOption2String = selectedOption2 == -1 ? "N/A" : (selectedOption2 == R.id.qanswer3 ? "A" : "B");
+                String selectedOption3String = selectedOption3 == -1 ? "N/A" : (selectedOption3 == R.id.qanswer5 ? "A" : "B");
 
 // Create a Firebase reference to the user's quiz results
                 DatabaseReference userQuizRef = FirebaseDatabase.getInstance().getReference()
@@ -142,7 +142,7 @@ public class Quiz extends AppCompatActivity {
                 userQuizRef.child("question2").setValue(selectedOption2String);
                 userQuizRef.child("question3").setValue(selectedOption3String);
 
-                if (group1.getCheckedRadioButtonId() != -1 && group2.getCheckedRadioButtonId() != -1 && group3.getCheckedRadioButtonId() != -1) {
+
                 Intent intent = new Intent(Quiz.this, Next.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
@@ -150,9 +150,7 @@ public class Quiz extends AppCompatActivity {
                 intent.putExtra("LANGUAGE2", language_two);
                 intent.putExtra("LANGUAGE3", language_three);
                 startActivity(intent);
-                } else {
-                    Toast.makeText(Quiz.this, "Please select an option for each question.", Toast.LENGTH_SHORT).show();
-                }
+
             }
 
         });
