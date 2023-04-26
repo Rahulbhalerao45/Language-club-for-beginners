@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,12 +18,14 @@ import java.util.List;
 
 public class Ranking extends AppCompatActivity {
 
-    String username;
+    String username, userpoints;
 
     FirebaseDatabase database2;
     DatabaseReference reference2;
 
     RadioButton top1, top2, top3, top4, top5;
+
+    TextView points;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +33,17 @@ public class Ranking extends AppCompatActivity {
         setContentView(R.layout.activity_ranking);
 
         username = getIntent().getStringExtra("USERNAME");
+        userpoints = getIntent().getStringExtra("RANK");
+
 
         top1 = findViewById(R.id.top1);
         top2 = findViewById(R.id.top2);
         top3 = findViewById(R.id.top3);
         top4 = findViewById(R.id.top4);
         top5 = findViewById(R.id.top5);
+        points = findViewById(R.id.points1);
+
+        points.setText("Your Learning Points is : " + userpoints + "👍");
 
 
         database2 = FirebaseDatabase.getInstance();

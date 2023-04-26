@@ -44,7 +44,7 @@ public class Profile extends AppCompatActivity {
 
     ArrayAdapter<String> adapterItems4;
 
-    String username, selectedLanguage4, language;
+    String username, selectedLanguage4, language, str3;
 
     DatabaseReference databaseReference;
 
@@ -99,7 +99,7 @@ public class Profile extends AppCompatActivity {
                 if (currentLearningPoint == null) {
                     currentLearningPoint = 0;
                 }
-                String str3=currentLearningPoint.toString();
+                 str3=currentLearningPoint.toString();
 
                 // Update the text or label of the ranking button to display the user's points
                 ranking1.setText( str3);
@@ -234,6 +234,7 @@ public class Profile extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Profile.this, Ranking.class);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("RANK", str3);
                 startActivity(intent);
 
 
