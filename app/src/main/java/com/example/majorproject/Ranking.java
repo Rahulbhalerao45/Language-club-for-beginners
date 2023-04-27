@@ -3,6 +3,7 @@ package com.example.majorproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -79,6 +80,10 @@ public class Ranking extends AppCompatActivity {
                 top3.setText(topans.get(2));
                 top4.setText(topans.get(3));
                 top5.setText(topans.get(4));
+
+                if (topUsers.contains(username)) {
+                    points.setVisibility(View.GONE);
+                }
 
             }
 
