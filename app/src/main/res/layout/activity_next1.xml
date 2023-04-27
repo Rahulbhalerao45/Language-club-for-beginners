@@ -43,6 +43,7 @@
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:hint="Username"
+                android:textStyle="bold"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
@@ -50,6 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Question1"
+                android:textStyle="bold"
                 android:id="@+id/quiz_question1"
                 android:textSize="15dp"
                 android:text=""/>
@@ -75,6 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Question2"
+                android:textStyle="bold"
                 android:id="@+id/quiz_question2"
                 android:textSize="15dp"
                 android:text=""/>
@@ -100,6 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Question3"
+                android:textStyle="bold"
                 android:id="@+id/quiz_question3"
                 android:textSize="15dp"
                 android:text=""/>
@@ -125,6 +129,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="SUBMIT"
+                android:textStyle="bold"
                 android:id="@+id/submit"
                 android:textSize="18sp"
                 android:layout_marginTop="10dp"
@@ -137,6 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Back"
+                android:textStyle="bold"
                 android:id="@+id/quiz_return_button"
                 android:textSize="18sp"
                 android:layout_marginTop="10dp"
@@ -147,6 +153,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/quiz_logout"
                 android:text="Logout"
+                android:textStyle="bold"
                 android:layout_gravity="center"
                 android:padding="8dp"
                 android:layout_marginTop="10dp"

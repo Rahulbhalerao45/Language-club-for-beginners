@@ -31,6 +31,7 @@
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:hint="Username"
+                android:textStyle="bold"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
@@ -44,6 +45,7 @@
                 android:id="@+id/sender_chat"
                 android:textSize="18dp"
                 android:hint="Senders Text"
+                android:textStyle="bold"
                 android:drawableLeft="@drawable/baseline_person_pin_24"
                 android:focusable="false"
                 android:clickable="false"
@@ -59,6 +61,7 @@
                 android:id="@+id/enter_chat"
                 android:gravity="right"
                 android:hint="Enter Your Text"
+                android:textStyle="bold"
                 android:drawableRight="@drawable/baseline_person_pin_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
@@ -72,6 +75,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="Send"
+                android:textStyle="bold"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
 
@@ -81,6 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Back"
+                android:textStyle="bold"
                 android:id="@+id/return1_button"
                 android:textSize="18sp"
                 android:layout_marginTop="10dp"
@@ -94,6 +99,7 @@
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:text="Logout"
+                android:textStyle="bold"
                 android:textColor="@color/lavender"
                 android:textSize="18sp" />
 

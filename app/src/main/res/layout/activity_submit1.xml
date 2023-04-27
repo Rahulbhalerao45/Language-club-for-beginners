@@ -43,6 +43,7 @@
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:hint="Username"
+                android:textStyle="bold"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
@@ -118,6 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Exit"
+                android:textStyle="bold"
                 android:id="@+id/submit1_return_button"
                 android:textSize="18sp"
                 android:layout_marginTop="10dp"

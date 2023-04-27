@@ -42,6 +42,7 @@
                 android:layout_marginTop="40dp"
                 android:padding="8dp"
                 android:hint="Name"
+                android:textStyle="bold"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
@@ -54,6 +55,7 @@
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:hint="Email"
+                android:textStyle="bold"
                 android:drawableLeft="@drawable/baseline_email_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
@@ -83,6 +85,7 @@
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:hint="Username"
+                android:textStyle="bold"
                 android:drawableLeft="@drawable/baseline_person_pin_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
@@ -96,6 +99,7 @@
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:hint="Password"
+                android:textStyle="bold"
                 android:inputType="textPassword"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
@@ -113,6 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Sign Up"
+                android:textStyle="bold"
                 android:id="@+id/signup_button"
                 android:textSize="18sp"
                 android:layout_marginTop="15dp"
@@ -123,6 +128,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/loginRedirectText"
                 android:text="Already an user? Login"
+                android:textStyle="bold"
                 android:layout_gravity="center"
                 android:padding="8dp"
                 android:layout_marginTop="10dp"
