@@ -44,8 +44,11 @@ public class SignupActivity extends AppCompatActivity {
     private String getPasswordStrengthEmoji(String password) {
         if (password.length() < 8) {
             return "🔴"; // red circle emoji for weak passwords
+        } else if (password.matches(".*[a-zA-Z].*") && password.matches(".*[0-9].*") && !password.matches("^[a-zA-Z0-9]*$")) {
+            return "🟠"; // orange circle emoji for medium strength passwords
+        } else {
+            return "🟢"; // green circle emoji for strong passwords
         }
-        return "🟢";
     }
 
     CheckBox showPasswordCheckBox;
