@@ -137,29 +137,14 @@ public class SignupActivity extends AppCompatActivity {
                                             } else {
                                                 if(TextUtils.isEmpty(signupPassword.getText().toString())) {
                                                     Toast.makeText(SignupActivity.this, "Password cannot be empty..", Toast.LENGTH_SHORT).show();
-                                                }else {
-                                                    reference.orderByChild("password").equalTo(password).addListenerForSingleValueEvent(new ValueEventListener() {
-                                                        @Override
-                                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                            if (snapshot.exists()) {
-                                                                // Show error message for password already exists
-                                                                signupPassword.setError("Password already exists");
-                                                                signupPassword.requestFocus();
-                                                            } else {
-                                                                HelperClass helperClass = new HelperClass(name, email, language, username, password);
-                                                                reference.child(username).setValue(helperClass);
+                                                } else {
+                                                    HelperClass helperClass = new HelperClass(name, email, language, username, password);
+                                                    reference.child(username).setValue(helperClass);
 
-                                                                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-                                                                startActivity(intent);
-                                                            }
-                                                        }
-
-                                                        @Override
-                                                        public void onCancelled(@NonNull DatabaseError error) {
-
-                                                        }
-                                                    });
+                                                    Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                                                    startActivity(intent);
                                                 }
+
                                             }
                                         }
 
