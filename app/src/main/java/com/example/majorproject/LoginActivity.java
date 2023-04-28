@@ -62,10 +62,10 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (!validateUsername() | !validatePassword()){
+                if (!validateUsername() | !validatePassword()) {
 
 
-                }else{
+                } else {
                     checkUser();
                 }
             }
@@ -81,12 +81,12 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public Boolean validateUsername(){
+    public Boolean validateUsername() {
         String val = loginUsername.getText().toString();
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             loginUsername.setError("Username Cannot be empty");
             return false;
-        }else{
+        } else {
             loginUsername.setError(null);
             return true;
         }
@@ -103,51 +103,46 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public void checkUser(){
-        String userUsername = loginUsername.getText().toString().trim();
+    public void checkUser() {
+        String userIdentifier = loginUsername.getText().toString().trim();
         String userPassword = loginPassword.getText().toString().trim();
 
-
-
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
-
+        Query checkUserDatabase = reference.orderByChild("username").equalTo(userIdentifier);
+        Query checkEmailDatabase = reference.orderByChild("email").equalTo(userIdentifier);
 
         checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
+                if (snapshot.exists()) {
                     for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                         String passwordFromDB = userSnapshot.child("password").getValue(String.class);
                         String languageFromDB = userSnapshot.child("language").getValue(String.class);
+                        String usernameFromDB = userSnapshot.child("username").getValue(String.class);
+
                         if (passwordFromDB.equals(userPassword)) {
                             loginUsername.setError(null);
                             loginPassword.setError(null);
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            intent.putExtra("USERNAME", userUsername);
+                            intent.putExtra("USERNAME", usernameFromDB);
                             intent.putExtra("LANGUAGE", languageFromDB);
                             startActivity(intent);
 
-                            database2 = FirebaseDatabase.getInstance();
-                            reference2 = database2.getReference("LearningPoints");
+                            // Update learning points
+                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("LearningPoints");
 
-// Assuming `username` is the variable that holds the user's username
-                            reference2.child(userUsername).addListenerForSingleValueEvent(new ValueEventListener() {
+                            reference.child(usernameFromDB).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    // Retrieve the current value of the learning point
                                     Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
 
-                                    // If the user has no learning points yet, the current value will be null, so set it to 0
                                     if (currentLearningPoint == null) {
                                         currentLearningPoint = 0;
                                     }
 
-                                    // Increment the learning point by 1
                                     Integer newLearningPoint = currentLearningPoint + 1;
 
-                                    // Set the updated value to the database
-                                    reference2.child(userUsername).setValue(newLearningPoint);
+                                    reference.child(usernameFromDB).setValue(newLearningPoint);
                                 }
 
                                 @Override
@@ -161,14 +156,67 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 } else {
-                    loginUsername.setError("User does not exist");
-                    loginUsername.requestFocus();
+                    checkEmailDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                                    String passwordFromDB = userSnapshot.child("password").getValue(String.class);
+                                    String languageFromDB = userSnapshot.child("language").getValue(String.class);
+                                    String usernameFromDB = userSnapshot.child("username").getValue(String.class);
+
+                                    if (passwordFromDB.equals(userPassword)) {
+                                        loginUsername.setError(null);
+                                        loginPassword.setError(null);
+                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        intent.putExtra("USERNAME", usernameFromDB);
+                                        intent.putExtra("LANGUAGE", languageFromDB);
+                                        startActivity(intent);
+
+                                        // Update learning points
+                                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("LearningPoints");
+
+                                        reference.child(usernameFromDB).addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
+
+                                                if (currentLearningPoint == null) {
+                                                    currentLearningPoint = 0;
+                                                }
+
+                                                Integer newLearningPoint = currentLearningPoint + 1;
+
+                                                reference.child(usernameFromDB).setValue(newLearningPoint);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+                                                // Handle any errors that occur
+                                            }
+                                        });
+                                    } else {
+                                        loginPassword.setError("Invalid Password");
+                                        loginPassword.requestFocus();
+                                    }
+                                }
+                            } else {
+                                loginUsername.setError("User does not exist");
+                                loginUsername.requestFocus();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle database error
+
             }
         });
     }

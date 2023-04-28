@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/background6"
     tools:context=".Ranking">
 
     <androidx.cardview.widget.CardView
@@ -91,6 +90,8 @@
     </androidx.cardview.widget.CardView>
 
 
+
+
     <TextView
         android:id="@+id/points1"
         android:layout_width="wrap_content"
@@ -101,6 +102,7 @@
         android:text=""
         android:textColor="@color/white"
         android:textSize="30sp" />
+
 
 
 </LinearLayout>

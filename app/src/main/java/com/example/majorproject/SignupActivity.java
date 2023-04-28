@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -41,17 +42,33 @@ public class SignupActivity extends AppCompatActivity {
 
     ArrayAdapter adapterItems;
 
-    private String getPasswordStrengthEmoji(String password) {
-        if (password.length() < 8) {
-            return "🔴"; // red circle emoji for weak passwords
-        } else if (password.matches(".*[a-zA-Z].*") && password.matches(".*[0-9].*")) {
-            return "🟢"; // orange circle emoji for medium strength passwords
+
+
+    CheckBox showPasswordCheckBox;
+
+    private boolean isValidEmail(String email) {
+        if (TextUtils.isEmpty(email)) {
+            return false;
         } else {
-            return "🟠"; // green circle emoji for strong passwords
+            // Check for a valid TLD
+            String[] emailParts = email.split("@");
+            if (emailParts.length < 2) {
+                return false;
+            }
+            String domain = emailParts[1];
+            if (TextUtils.isEmpty(domain)) {
+                return false;
+            } else {
+                String[] domainParts = domain.split("\\.");
+                if (domainParts.length < 2 || domainParts[domainParts.length-1].length() < 2) {
+                    return false;
+                }
+            }
+            // Check for a valid email format
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
         }
     }
 
-    CheckBox showPasswordCheckBox;
 
 
 
@@ -108,9 +125,6 @@ public class SignupActivity extends AppCompatActivity {
                 final String username = signupUsername.getText().toString();
                 final String password = signupPassword.getText().toString();
 
-                String passwordStrengthEmoji = getPasswordStrengthEmoji(password);
-
-                Toast.makeText(SignupActivity.this, "Password strength: " + passwordStrengthEmoji, Toast.LENGTH_SHORT).show();
 
 
                 if(TextUtils.isEmpty(signupUsername.getText().toString())) {
@@ -124,9 +138,14 @@ public class SignupActivity extends AppCompatActivity {
                                 signupUsername.setError("Username already exists");
                                 signupUsername.requestFocus();
                             } else {
-                                if(TextUtils.isEmpty(signupEmail.getText().toString())) {
+                                if (TextUtils.isEmpty(signupEmail.getText().toString())) {
                                     Toast.makeText(SignupActivity.this, "Email cannot be empty..", Toast.LENGTH_SHORT).show();
-                                }else {
+                                }
+                                if (!isValidEmail(email)) {
+                                    signupEmail.setError("Invalid email address");
+                                    signupEmail.requestFocus();
+                                }
+                                else {
                                     reference.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -1,6 +1,7 @@
 package com.example.majorproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
 import android.view.View;
@@ -69,10 +70,15 @@ public class Ranking extends AppCompatActivity {
                 // Reverse the lists to get them in descending order
                 Collections.reverse(topUsers);
                 Collections.reverse(topPoints);
+                int usernum =100;
+                String str1=username;
 
                 // Print out the top 5 highest points users
                 for (int i = 0; i < topUsers.size(); i++) {
                     topans.add(i,(i + 1) + ". " + topUsers.get(i) + " - " + topPoints.get(i) + " points");
+                    if(str1.equals(topUsers.get(i))){
+                        usernum=i;
+                    }
 
                 }
                 top1.setText(topans.get(0));
@@ -84,6 +90,38 @@ public class Ranking extends AppCompatActivity {
                 if (topUsers.contains(username)) {
                     points.setVisibility(View.GONE);
                 }
+
+                // Check if the top user has crossed 100 points
+                // Check if the top user has crossed 100 points
+                if (usernum==0) {
+                    // If the top user has crossed 100 points, change the background activity
+                    getWindow().getDecorView().setBackgroundResource(R.drawable.top);
+                }
+
+                if (usernum==1) {
+                    // If the top user has crossed 100 points, change the background activity
+                    getWindow().getDecorView().setBackgroundResource(R.drawable.background2);
+                }
+                if (usernum==2) {
+                    // If the top user has crossed 100 points, change the background activity
+                    getWindow().getDecorView().setBackgroundResource(R.drawable.background3);
+                }
+
+                if (usernum==3) {
+                    // If the top user has crossed 100 points, change the background activity
+                    getWindow().getDecorView().setBackgroundResource(R.drawable.background4);
+                }
+                if (usernum==4) {
+                    // If the top user has crossed 100 points, change the background activity
+                    getWindow().getDecorView().setBackgroundResource(R.drawable.background5);
+                }
+
+                if (usernum==100) {
+                    // If the top user has crossed 100 points, change the background activity
+                    getWindow().getDecorView().setBackgroundResource(R.drawable.background6);
+                }
+
+
 
             }
 
