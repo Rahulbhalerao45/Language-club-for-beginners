@@ -62,13 +62,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Retrieve the username passed from LoginActivity
+
          String username = getIntent().getStringExtra("USERNAME");
          String language = getIntent().getStringExtra("LANGUAGE");
 
         String score = getIntent().getStringExtra("SCORE");
 
-        // Initialize the views
+
         mainUsername = findViewById(R.id.main_username);
         mainEnterText = findViewById(R.id.main_entertext);
         mainButton = findViewById(R.id.main_button);
@@ -168,10 +168,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Set the username in the mainUsername EditText view
+
 
         mainUsername.setText("" + username + "--" + language + "");
-        mainUsername.setEnabled(false); // disable editing of the username field
+        mainUsername.setEnabled(false);
 
 
         mainButton.setOnClickListener(new View.OnClickListener() {
@@ -224,7 +224,6 @@ public class MainActivity extends AppCompatActivity {
                             database2 = FirebaseDatabase.getInstance();
                             reference2 = database2.getReference("LearningPoints");
 
-// Assuming `username` is the variable that holds the user's username
                             reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -341,28 +340,24 @@ public class MainActivity extends AppCompatActivity {
                             database2 = FirebaseDatabase.getInstance();
                             reference2 = database2.getReference("LearningPoints");
 
-// Assuming `username` is the variable that holds the user's username
                             reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    // Retrieve the current value of the learning point
+
                                     Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
 
-                                    // If the user has no learning points yet, the current value will be null, so set it to 0
+
                                     if (currentLearningPoint == null) {
                                         currentLearningPoint = 0;
                                     }
 
-                                    // Increment the learning point by 1
                                     Integer newLearningPoint = currentLearningPoint + 1;
 
-                                    // Set the updated value to the database
                                     reference2.child(username).setValue(newLearningPoint);
                                 }
 
                                 @Override
                                 public void onCancelled(DatabaseError databaseError) {
-                                    // Handle any errors that occur
                                 }
                             });
                         }
@@ -498,29 +493,23 @@ public class MainActivity extends AppCompatActivity {
                             database2 = FirebaseDatabase.getInstance();
                             reference2 = database2.getReference("LearningPoints");
 
-// Assuming `username` is the variable that holds the user's username
                             reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    // Retrieve the current value of the learning point
                                     Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
 
-                                    // If the user has no learning points yet, the current value will be null, so set it to 0
                                     if (currentLearningPoint == null) {
                                         currentLearningPoint = 0;
                                     }
 
-                                    // Increment the learning point by 1
                                     Integer newLearningPoint = currentLearningPoint + 1;
 
-                                    // Set the updated value to the database
                                     reference2.child(username).setValue(newLearningPoint);
                                 }
 
                                 @Override
                                 public void onCancelled(DatabaseError databaseError) {
-                                    // Handle any errors that occur
-                                }
+                                 }
                             });
                         }
                     }).addOnFailureListener(new OnFailureListener() {

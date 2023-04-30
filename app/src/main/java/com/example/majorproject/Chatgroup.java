@@ -35,7 +35,7 @@ public class Chatgroup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatgroup);
 
-        // Retrieve the username and language passed from LoginActivity
+
         username = getIntent().getStringExtra("USERNAME");
         language = getIntent().getStringExtra("LANGUAGE");
         String selectedLanguage1 = getIntent().getStringExtra("LANGUAGE1");
@@ -51,26 +51,24 @@ public class Chatgroup extends AppCompatActivity {
         logoutRedirectText = findViewById(R.id.logout5);
 
         mainUsername.setText(username + "--" + language);
-        mainUsername.setEnabled(false); // disable editing of the username field
+        mainUsername.setEnabled(false);
 
-        // Get a reference to the chat messages of the user's language
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("chat_" + language);
 
 
-        // Add a value event listener to the reference to listen for changes in the entire reference
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // Clear the sendersText TextView before updating it
+
                 sendersText.setText("");
 
-                // Loop through all the chat messages in the reference and update the sendersText TextView
                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                     String message = childSnapshot.getValue(String.class);
                     String sender = childSnapshot.getKey();
 
-                    // If the sender is not the current user, update the sendersText TextView
+
                     if (!sender.equals(username)) {
                         sendersText.append(sender + ": " + message + "\n");
                     }
@@ -85,10 +83,10 @@ public class Chatgroup extends AppCompatActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Get the text entered by the user and add it to the chat messages of the user's language
+
                 String message = enterText.getText().toString();
                 reference.child(username).setValue(message);
-                // Clear the enterText EditText
+
                 enterText.setText("");
             }
         });

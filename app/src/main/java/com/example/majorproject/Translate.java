@@ -39,7 +39,6 @@ public class Translate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_translate);
 
-        // Retrieve the username passed from LoginActivity
         String username = getIntent().getStringExtra("USERNAME");
         String language = getIntent().getStringExtra("LANGUAGE");
 
@@ -57,19 +56,17 @@ public class Translate extends AppCompatActivity {
         logoutRedirectText = findViewById(R.id.logout2);
         mainEnterText = findViewById(R.id.main_entertext1);
 
-        // Retrieve the selected languages passed from MainActivity
         Intent intent = getIntent();
         String language1 = intent.getStringExtra("LANGUAGE1");
         String language2 = intent.getStringExtra("LANGUAGE2");
         String language3 = intent.getStringExtra("LANGUAGE3");
 
-        // Set the selected languages in the TextViews
         Language1.setText(language1);
         Language2.setText(language2);
         Language3.setText(language3);
 
         mainUsername.setText("" + username + "--" + language + "");
-        mainUsername.setEnabled(false); // disable editing of the username field
+        mainUsername.setEnabled(false);
 
         String enteredText = intent.getStringExtra("ENTERED_TEXT");
         mainEnterText.setText(enteredText);

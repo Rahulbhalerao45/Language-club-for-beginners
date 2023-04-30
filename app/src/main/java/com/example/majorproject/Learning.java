@@ -57,7 +57,7 @@ public class Learning extends AppCompatActivity {
         language_view = findViewById(R.id.language_view);
 
         mainUsername.setText("" + username + "--" + language + "");
-        mainUsername.setEnabled(false); // disable editing of the username field
+        mainUsername.setEnabled(false);
 
         language_view.setText("" + language_one + "-" + language_two + "-" + language_three + "");
         language_view.setEnabled(false);

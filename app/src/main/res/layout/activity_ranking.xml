@@ -30,7 +30,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="0dp"
                 android:padding="8dp"
-                android:text="RANKING 👍👍"
+                android:text="RANKING"
                 android:textStyle="bold"
                 android:textColor="@color/lavender"
                 android:textSize="30sp" />

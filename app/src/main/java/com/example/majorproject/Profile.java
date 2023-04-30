@@ -80,7 +80,7 @@ public class Profile extends AppCompatActivity {
         selectLanguage4 = findViewById(R.id.auto_complete_txt4);
 
         mainUsername.setText("" + username + "--" + language + "");
-        mainUsername.setEnabled(false); // disable editing of the username field
+        mainUsername.setEnabled(false);
 
         ranking.setText("You Scored " +score + " out of 9");
         ranking.setEnabled(false);
@@ -88,26 +88,21 @@ public class Profile extends AppCompatActivity {
         database2 = FirebaseDatabase.getInstance();
         reference2 = database2.getReference("LearningPoints");
 
-// Assuming `username` is the variable that holds the user's username
         reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Retrieve the current value of the learning point
                 Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
 
-                // If the user has no learning points yet, the current value will be null, so set it to 0
                 if (currentLearningPoint == null) {
                     currentLearningPoint = 0;
                 }
                  str3=currentLearningPoint.toString();
 
-                // Update the text or label of the ranking button to display the user's points
                 ranking1.setText( str3);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle any errors that occur
             }
         });
 

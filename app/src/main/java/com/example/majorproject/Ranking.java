@@ -45,7 +45,7 @@ public class Ranking extends AppCompatActivity {
         top5 = findViewById(R.id.top5);
         points = findViewById(R.id.points1);
 
-        points.setText("Your Learning Points is : " + userpoints + "👍");
+        points.setText("Your Learning Points is : " + userpoints );
 
 
         database2 = FirebaseDatabase.getInstance();
@@ -62,18 +62,15 @@ public class Ranking extends AppCompatActivity {
                     String username = userSnapshot.getKey();
                     Integer points = userSnapshot.getValue(Integer.class);
 
-                    // Add the username and points to their respective lists
                     topUsers.add(username);
                     topPoints.add(points);
                 }
 
-                // Reverse the lists to get them in descending order
                 Collections.reverse(topUsers);
                 Collections.reverse(topPoints);
                 int usernum =100;
                 String str1=username;
 
-                // Print out the top 5 highest points users
                 for (int i = 0; i < topUsers.size(); i++) {
                     topans.add(i,(i + 1) + ". " + topUsers.get(i) + " - " + topPoints.get(i) + " points");
                     if(str1.equals(topUsers.get(i))){
@@ -91,33 +88,26 @@ public class Ranking extends AppCompatActivity {
                     points.setVisibility(View.GONE);
                 }
 
-                // Check if the top user has crossed 100 points
-                // Check if the top user has crossed 100 points
+
                 if (usernum==0) {
-                    // If the top user has crossed 100 points, change the background activity
                     getWindow().getDecorView().setBackgroundResource(R.drawable.top);
                 }
 
                 if (usernum==1) {
-                    // If the top user has crossed 100 points, change the background activity
-                    getWindow().getDecorView().setBackgroundResource(R.drawable.background2);
+                    getWindow().getDecorView().setBackgroundResource(R.drawable.third);
                 }
                 if (usernum==2) {
-                    // If the top user has crossed 100 points, change the background activity
-                    getWindow().getDecorView().setBackgroundResource(R.drawable.background3);
+                    getWindow().getDecorView().setBackgroundResource(R.drawable.second);
                 }
 
                 if (usernum==3) {
-                    // If the top user has crossed 100 points, change the background activity
-                    getWindow().getDecorView().setBackgroundResource(R.drawable.background4);
+                    getWindow().getDecorView().setBackgroundResource(R.drawable.fourth);
                 }
                 if (usernum==4) {
-                    // If the top user has crossed 100 points, change the background activity
-                    getWindow().getDecorView().setBackgroundResource(R.drawable.background5);
+                    getWindow().getDecorView().setBackgroundResource(R.drawable.fifth);
                 }
 
                 if (usernum==100) {
-                    // If the top user has crossed 100 points, change the background activity
                     getWindow().getDecorView().setBackgroundResource(R.drawable.background6);
                 }
 
@@ -127,7 +117,6 @@ public class Ranking extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle any errors that occur
             }
         });
 

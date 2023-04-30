@@ -50,7 +50,6 @@ public class SignupActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(email)) {
             return false;
         } else {
-            // Check for a valid TLD
             String[] emailParts = email.split("@");
             if (emailParts.length < 2) {
                 return false;
@@ -64,7 +63,6 @@ public class SignupActivity extends AppCompatActivity {
                     return false;
                 }
             }
-            // Check for a valid email format
             return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
         }
     }

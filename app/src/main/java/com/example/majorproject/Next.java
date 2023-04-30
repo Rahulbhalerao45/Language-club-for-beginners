@@ -28,12 +28,15 @@ public class Next extends AppCompatActivity {
 
     RadioGroup group1, group2, group3;
 
-    String username, language, language_one, language_two, language_three;
+    String username, language, language_one, language_two, language_three, str3;
     TextView logoutRedirectText, quizQuestion4, quizQuestion5, quizQuestion6, quiz_view;
 
     DatabaseReference quiz1Ref, quiz2Ref, quiz3Ref;// reference to the quiz data in Firebase
 
     FirebaseDatabase Reference;
+
+    FirebaseDatabase database2;
+    DatabaseReference reference2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,117 +71,172 @@ public class Next extends AppCompatActivity {
         quiz_view = findViewById(R.id.quiz_view);
 
         mainUsername.setText("" + username + "--" + language + "");
-        mainUsername.setEnabled(false); // disable editing of the username field
+        mainUsername.setEnabled(false);
 
         quiz_view.setText("" + language_one + "-" + language_two + "-" + language_three + "");
         quiz_view.setEnabled(false);
         quiz_view.setVisibility(View.INVISIBLE);
 
-        FirebaseDatabase Reference = FirebaseDatabase.getInstance();
+        database2 = FirebaseDatabase.getInstance();
+        reference2 = database2.getReference("LearningPoints");
 
+        reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
 
-        DatabaseReference quiz2Ref = Reference.getReference("quiz").child(language_two);
-
-        if (language_two.equals(language_one)){
-            quiz2Ref.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (snapshot.exists()) {
-                        // Retrieve the questions and options
-
-                        String question5 = snapshot.child("question5/text").getValue(String.class);
-                        String option5A = snapshot.child("question5/A").getValue(String.class);
-                        String option5B = snapshot.child("question5/B").getValue(String.class);
-
-                        quizQuestion5.setText("Q5 : " + question5);
-                        quizOption5A.setText(option5A);
-                        quizOption5B.setText(option5B);
-
-                        String question44 = snapshot.child("question4/text").getValue(String.class);
-                        String option44A = snapshot.child("question4/A").getValue(String.class);
-                        String option44B = snapshot.child("question4/B").getValue(String.class);
-
-                        quizQuestion4.setText("Q4 : " + question44);
-                        quizOption4A.setText(option44A);
-                        quizOption4B.setText(option44B);
-
-                        String question6 = snapshot.child("question6/text").getValue(String.class);
-                        String option6A = snapshot.child("question6/A").getValue(String.class);
-                        String option6B = snapshot.child("question6/B").getValue(String.class);
-
-                        quizQuestion6.setText("Q6 : " + question6);
-                        quizOption6A.setText(option6A);
-                        quizOption6B.setText(option6B);
-
-
-                    }
+                if (currentLearningPoint == null) {
+                    currentLearningPoint = 0;
                 }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    // Handle the error
+                str3=currentLearningPoint.toString();
+
+                if (currentLearningPoint <= 15) {
+
+                    FirebaseDatabase Reference = FirebaseDatabase.getInstance();
+
+                    DatabaseReference quiz2Ref = Reference.getReference("quiz").child(language_two);
+
+                    quiz2Ref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                // Retrieve the questions and options
+                                String question1 = snapshot.child("question4/text").getValue(String.class);
+                                String option1A = snapshot.child("question4/A").getValue(String.class);
+                                String option1B = snapshot.child("question4/B").getValue(String.class);
+
+                                quizQuestion4.setText("Q4 : " + question1);
+                                quizOption4A.setText(option1A);
+                                quizOption4B.setText(option1B);
+
+                                String question2 = snapshot.child("question5/text").getValue(String.class);
+                                String option2A = snapshot.child("question5/A").getValue(String.class);
+                                String option2B = snapshot.child("question5/B").getValue(String.class);
+
+                                quizQuestion5.setText("Q5 : " + question2);
+                                quizOption5A.setText(option2A);
+                                quizOption5B.setText(option2B);
+
+                                String question3 = snapshot.child("question6/text").getValue(String.class);
+                                String option3A = snapshot.child("question6/A").getValue(String.class);
+                                String option3B = snapshot.child("question6/B").getValue(String.class);
+
+                                quizQuestion6.setText("Q6 : " + question3);
+                                quizOption6A.setText(option3A);
+                                quizOption6B.setText(option3B);
+
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                } else  if (currentLearningPoint <= 25) {
+
+                    FirebaseDatabase Reference = FirebaseDatabase.getInstance();
+
+                    DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_two);
+
+                    quiz1Ref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                // Retrieve the questions and options
+                                String question1 = snapshot.child("question13/text").getValue(String.class);
+                                String option1A = snapshot.child("question13/A").getValue(String.class);
+                                String option1B = snapshot.child("question13/B").getValue(String.class);
+
+                                quizQuestion4.setText("Q13 : " + question1);
+                                quizOption4A.setText(option1A);
+                                quizOption4B.setText(option1B);
+
+                                String question2 = snapshot.child("question14/text").getValue(String.class);
+                                String option2A = snapshot.child("question14/A").getValue(String.class);
+                                String option2B = snapshot.child("question14/B").getValue(String.class);
+
+                                quizQuestion5.setText("Q14 : " + question2);
+                                quizOption5A.setText(option2A);
+                                quizOption5B.setText(option2B);
+
+                                String question3 = snapshot.child("question15/text").getValue(String.class);
+                                String option3A = snapshot.child("question15/A").getValue(String.class);
+                                String option3B = snapshot.child("question15/B").getValue(String.class);
+
+                                quizQuestion6.setText("Q15 : " + question3);
+                                quizOption6A.setText(option3A);
+                                quizOption6B.setText(option3B);
+
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                } else if (currentLearningPoint >= 25) {
+                    FirebaseDatabase Reference = FirebaseDatabase.getInstance();
+
+                    DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_two);
+
+                    quiz1Ref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                // Retrieve the questions and options
+                                String question1 = snapshot.child("question22/text").getValue(String.class);
+                                String option1A = snapshot.child("question22/A").getValue(String.class);
+                                String option1B = snapshot.child("question22/B").getValue(String.class);
+
+                                quizQuestion4.setText("Q22 : " + question1);
+                                quizOption4A.setText(option1A);
+                                quizOption4B.setText(option1B);
+
+                                String question2 = snapshot.child("question23/text").getValue(String.class);
+                                String option2A = snapshot.child("question23/A").getValue(String.class);
+                                String option2B = snapshot.child("question23/B").getValue(String.class);
+
+                                quizQuestion5.setText("Q23 : " + question2);
+                                quizOption5A.setText(option2A);
+                                quizOption5B.setText(option2B);
+
+                                String question3 = snapshot.child("question24/text").getValue(String.class);
+                                String option3A = snapshot.child("question24/A").getValue(String.class);
+                                String option3B = snapshot.child("question24/B").getValue(String.class);
+
+                                quizQuestion6.setText("Q24 : " + question3);
+                                quizOption6A.setText(option3A);
+                                quizOption6B.setText(option3B);
+
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+
                 }
-            });
-        }else {
+            }
 
-            quiz2Ref.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (snapshot.exists()) {
-                        // Retrieve the questions and options
-
-                        String question5 = snapshot.child("question2/text").getValue(String.class);
-                        String option5A = snapshot.child("question2/A").getValue(String.class);
-                        String option5B = snapshot.child("question2/B").getValue(String.class);
-
-                        quizQuestion5.setText("Q5." + question5);
-                        quizOption5A.setText(option5A);
-                        quizOption5B.setText(option5B);
-
-                        String question4 = snapshot.child("question1/text").getValue(String.class);
-                        String option4A = snapshot.child("question1/A").getValue(String.class);
-                        String option4B = snapshot.child("question1/B").getValue(String.class);
-
-                        quizQuestion4.setText("Q4." + question4);
-                        quizOption4A.setText(option4A);
-                        quizOption4B.setText(option4B);
-
-                        String question6 = snapshot.child("question3/text").getValue(String.class);
-                        String option6A = snapshot.child("question3/A").getValue(String.class);
-                        String option6B = snapshot.child("question3/B").getValue(String.class);
-
-                        quizQuestion6.setText("Q6." + question6);
-                        quizOption6A.setText(option6A);
-                        quizOption6B.setText(option6B);
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
 
 
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    // Handle the error
-                }
-            });
-        }
         next1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Get the selected options
                 int selectedOption1 = group1.getCheckedRadioButtonId();
                 int selectedOption2 = group2.getCheckedRadioButtonId();
                 int selectedOption3 = group3.getCheckedRadioButtonId();
 
-// Convert the option IDs to strings
                 String selectedOption1String = selectedOption1 == -1 ? "N/A" : (selectedOption1 == R.id.qanswer7 ? "A" : "B");
                 String selectedOption2String = selectedOption2 == -1 ? "N/A" : (selectedOption2 == R.id.qanswer9 ? "A" : "B");
                 String selectedOption3String = selectedOption3 == -1 ? "N/A" : (selectedOption3 == R.id.qanswer11 ? "A" : "B");
 
-// Create a Firebase reference to the user's quiz results
                 DatabaseReference userQuizRef = FirebaseDatabase.getInstance().getReference()
                         .child("quiz_results")
                         .child(username);
 
-// Store the selected options in Firebase
                 userQuizRef.child("question4").setValue(selectedOption1String);
                 userQuizRef.child("question5").setValue(selectedOption2String);
                 userQuizRef.child("question6").setValue(selectedOption3String);
