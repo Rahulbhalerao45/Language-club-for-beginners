@@ -99,13 +99,16 @@ public class Submit1 extends AppCompatActivity {
         quiz_view = findViewById(R.id.quiz_view);
 
         mainUsername.setText("" + username + "--" + language + "");
-        mainUsername.setEnabled(false);
+        mainUsername.setEnabled(false); // disable editing of the username field
 
         quiz_view.setText("" + language_one + "-" + language_two + "-" + language_three + "");
         quiz_view.setEnabled(false);
         quiz_view.setVisibility(View.INVISIBLE);
         FirebaseDatabase Reference = FirebaseDatabase.getInstance();
 
+        DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_one);
+        DatabaseReference quiz2Ref = Reference.getReference("quiz").child(language_two);
+        DatabaseReference quiz3Ref = Reference.getReference("quiz").child(language_three);
         DatabaseReference quiz4Ref = Reference.getReference("quiz_results").child(username);
 
         quiz4Ref.addValueEventListener(new ValueEventListener() {
@@ -142,13 +145,12 @@ public class Submit1 extends AppCompatActivity {
             }
         });
 
-
         database3 = FirebaseDatabase.getInstance();
         reference3 = database3.getReference("LearningPoints");
 
-        reference3.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+        reference3.child(username).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
 
                 if (currentLearningPoint == null) {
@@ -167,6 +169,7 @@ public class Submit1 extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
+                                // Retrieve the questions and options
                                 String question11 = snapshot.child("question1/answer").getValue(String.class);
                                 String question22 = snapshot.child("question2/answer").getValue(String.class);
                                 String question33 = snapshot.child("question3/answer").getValue(String.class);
@@ -351,7 +354,6 @@ public class Submit1 extends AppCompatActivity {
                         }
                     });
                 } else if (currentLearningPoint >= 25 ) {
-
                     FirebaseDatabase Reference = FirebaseDatabase.getInstance();
 
                     DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_one);
@@ -448,9 +450,12 @@ public class Submit1 extends AppCompatActivity {
                         }
                     });
                 }
+
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 
@@ -504,22 +509,28 @@ public class Submit1 extends AppCompatActivity {
                 database2 = FirebaseDatabase.getInstance();
                 reference2 = database2.getReference("LearningPoints");
 
+// Assuming `username` is the variable that holds the user's username
                 reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+                        // Retrieve the current value of the learning point
                         Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
 
+                        // If the user has no learning points yet, the current value will be null, so set it to 0
                         if (currentLearningPoint == null) {
                             currentLearningPoint = 0;
                         }
 
+                        // Increment the learning point by 1
                         Integer newLearningPoint = currentLearningPoint + score1;
 
+                        // Set the updated value to the database
                         reference2.child(username).setValue(newLearningPoint);
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
+                        // Handle any errors that occur
                     }
                 });
             }
