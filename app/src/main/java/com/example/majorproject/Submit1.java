@@ -106,9 +106,6 @@ public class Submit1 extends AppCompatActivity {
         quiz_view.setVisibility(View.INVISIBLE);
         FirebaseDatabase Reference = FirebaseDatabase.getInstance();
 
-        DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_one);
-        DatabaseReference quiz2Ref = Reference.getReference("quiz").child(language_two);
-        DatabaseReference quiz3Ref = Reference.getReference("quiz").child(language_three);
         DatabaseReference quiz4Ref = Reference.getReference("quiz_results").child(username);
 
         quiz4Ref.addValueEventListener(new ValueEventListener() {
@@ -145,6 +142,7 @@ public class Submit1 extends AppCompatActivity {
             }
         });
 
+
         database3 = FirebaseDatabase.getInstance();
         reference3 = database3.getReference("LearningPoints");
 
@@ -169,7 +167,6 @@ public class Submit1 extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
-                                // Retrieve the questions and options
                                 String question11 = snapshot.child("question1/answer").getValue(String.class);
                                 String question22 = snapshot.child("question2/answer").getValue(String.class);
                                 String question33 = snapshot.child("question3/answer").getValue(String.class);

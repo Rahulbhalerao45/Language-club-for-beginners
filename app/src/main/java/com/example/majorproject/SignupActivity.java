@@ -151,9 +151,16 @@ public class SignupActivity extends AppCompatActivity {
                                                 // Show error message for email ID already exists
                                                 signupEmail.setError("Email ID already exists");
                                                 signupEmail.requestFocus();
-                                            } else {
+                                            }
+                                            else {
                                                 if(TextUtils.isEmpty(signupPassword.getText().toString())) {
                                                     Toast.makeText(SignupActivity.this, "Password cannot be empty..", Toast.LENGTH_SHORT).show();
+                                                } else
+                                                if (password.length() < 6) {
+                                                    Toast.makeText(SignupActivity.this, "Password must be at least 6 characters long.", Toast.LENGTH_SHORT).show();
+                                                }
+                                                else if (!password.matches("^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{6,}$")) {
+                                                    Toast.makeText(SignupActivity.this, "Password must contain at least one number, one letter, one special character, and no white spaces.", Toast.LENGTH_SHORT).show();
                                                 } else {
                                                     HelperClass helperClass = new HelperClass(name, email, language, username, password);
                                                     reference.child(username).setValue(helperClass);
