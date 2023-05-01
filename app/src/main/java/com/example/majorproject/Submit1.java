@@ -158,13 +158,13 @@ public class Submit1 extends AppCompatActivity {
                 }
                 str3 = currentLearningPoint.toString();
 
-                if (currentLearningPoint <= 15 ) {
-
+                if (currentLearningPoint <= 15) {
                     FirebaseDatabase Reference = FirebaseDatabase.getInstance();
 
                     DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_one);
                     DatabaseReference quiz2Ref = Reference.getReference("quiz").child(language_two);
                     DatabaseReference quiz3Ref = Reference.getReference("quiz").child(language_three);
+
                     quiz1Ref.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -192,6 +192,7 @@ public class Submit1 extends AppCompatActivity {
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
+                            // Handle the error
                         }
                     });
 
@@ -199,6 +200,7 @@ public class Submit1 extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
+                                // Retrieve the questions and options
 
                                 String question44 = snapshot.child("question4/answer").getValue(String.class);
                                 String question55 = snapshot.child("question5/answer").getValue(String.class);
@@ -223,6 +225,7 @@ public class Submit1 extends AppCompatActivity {
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
+                            // Handle the error
                         }
                     });
 
@@ -230,6 +233,7 @@ public class Submit1 extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
+                                // Retrieve the questions and options
 
                                 String question77 = snapshot.child("question7/answer").getValue(String.class);
                                 String question88 = snapshot.child("question8/answer").getValue(String.class);
@@ -254,19 +258,23 @@ public class Submit1 extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
+                            // Handle the error
                         }
                     });
-                } else if (currentLearningPoint <= 25 ) {
-
+                    
+                    
+                } else if (currentLearningPoint <= 25) {
                     FirebaseDatabase Reference = FirebaseDatabase.getInstance();
 
                     DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_one);
                     DatabaseReference quiz2Ref = Reference.getReference("quiz").child(language_two);
                     DatabaseReference quiz3Ref = Reference.getReference("quiz").child(language_three);
+
                     quiz1Ref.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
+                                // Retrieve the questions and options
                                 String question11 = snapshot.child("question10/answer").getValue(String.class);
                                 String question22 = snapshot.child("question11/answer").getValue(String.class);
                                 String question33 = snapshot.child("question12/answer").getValue(String.class);
@@ -289,6 +297,7 @@ public class Submit1 extends AppCompatActivity {
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
+                            // Handle the error
                         }
                     });
 
@@ -296,6 +305,7 @@ public class Submit1 extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
+                                // Retrieve the questions and options
 
                                 String question44 = snapshot.child("question13/answer").getValue(String.class);
                                 String question55 = snapshot.child("question14/answer").getValue(String.class);
@@ -320,6 +330,7 @@ public class Submit1 extends AppCompatActivity {
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
+                            // Handle the error
                         }
                     });
 
@@ -327,6 +338,7 @@ public class Submit1 extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
+                                // Retrieve the questions and options
 
                                 String question77 = snapshot.child("question16/answer").getValue(String.class);
                                 String question88 = snapshot.child("question17/answer").getValue(String.class);
@@ -351,18 +363,21 @@ public class Submit1 extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
+                            // Handle the error
                         }
                     });
-                } else if (currentLearningPoint >= 25 ) {
+                } else if (currentLearningPoint >= 25) {
                     FirebaseDatabase Reference = FirebaseDatabase.getInstance();
 
                     DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_one);
                     DatabaseReference quiz2Ref = Reference.getReference("quiz").child(language_two);
                     DatabaseReference quiz3Ref = Reference.getReference("quiz").child(language_three);
+
                     quiz1Ref.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
+                                // Retrieve the questions and options
                                 String question11 = snapshot.child("question19/answer").getValue(String.class);
                                 String question22 = snapshot.child("question20/answer").getValue(String.class);
                                 String question33 = snapshot.child("question21/answer").getValue(String.class);
@@ -385,6 +400,7 @@ public class Submit1 extends AppCompatActivity {
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
+                            // Handle the error
                         }
                     });
 
@@ -392,6 +408,7 @@ public class Submit1 extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
+                                // Retrieve the questions and options
 
                                 String question44 = snapshot.child("question22/answer").getValue(String.class);
                                 String question55 = snapshot.child("question23/answer").getValue(String.class);
@@ -416,6 +433,7 @@ public class Submit1 extends AppCompatActivity {
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
+                            // Handle the error
                         }
                     });
 
@@ -423,6 +441,7 @@ public class Submit1 extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
+                                // Retrieve the questions and options
 
                                 String question77 = snapshot.child("question25/answer").getValue(String.class);
                                 String question88 = snapshot.child("question26/answer").getValue(String.class);
@@ -447,8 +466,10 @@ public class Submit1 extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
+                            // Handle the error
                         }
                     });
+                    
                 }
 
             }
@@ -458,6 +479,8 @@ public class Submit1 extends AppCompatActivity {
 
             }
         });
+
+        
 
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
