@@ -3,7 +3,9 @@ package com.example.majorproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -32,7 +34,10 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseDatabase database2;
     DatabaseReference reference2;
 
-    CheckBox showPasswordCheckBox;
+    CheckBox showPasswordCheckBox, rememberMeCheckBox;
+
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +45,22 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         showPasswordCheckBox = findViewById(R.id.show_password_checkbox);
+        rememberMeCheckBox = findViewById(R.id.remember_me_checkbox);
 
         loginUsername = findViewById(R.id.login_username);
         loginPassword = findViewById(R.id.login_password);
         signupRedirectText = findViewById(R.id.signupRedirectText);
         loginButton = findViewById(R.id.login_button);
+
+        sharedPreferences = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        // check if remember me is checked
+        if (sharedPreferences.getBoolean("rememberMe", false)) {
+            loginUsername.setText(sharedPreferences.getString("username", ""));
+            loginPassword.setText(sharedPreferences.getString("password", ""));
+            rememberMeCheckBox.setChecked(true);
+        }
 
         showPasswordCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -63,11 +79,20 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (!validateUsername() | !validatePassword()) {
-
-
-                } else {
-                    checkUser();
+                    return;
                 }
+
+                if (rememberMeCheckBox.isChecked()) {
+                    editor.putBoolean("rememberMe", true);
+                    editor.putString("username", loginUsername.getText().toString().trim());
+                    editor.putString("password", loginPassword.getText().toString().trim());
+                    editor.apply();
+                } else {
+                    editor.clear();
+                    editor.apply();
+                }
+
+                checkUser();
             }
         });
 
