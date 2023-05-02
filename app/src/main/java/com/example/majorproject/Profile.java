@@ -32,7 +32,7 @@ import java.util.Locale;
 
 public class Profile extends AppCompatActivity {
 
-    EditText mainUsername, ranking;
+    EditText  ranking;
 
     Spinner search, attempts;
 
@@ -54,7 +54,7 @@ public class Profile extends AppCompatActivity {
     FirebaseDatabase database2;
     DatabaseReference reference2;
  
-    TextView logoutRedirectText;
+    TextView logoutRedirectText, mainUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

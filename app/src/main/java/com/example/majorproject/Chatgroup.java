@@ -21,9 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Chatgroup extends AppCompatActivity {
 
-    EditText mainUsername, enterText;
+    EditText  enterText;
     Button return1Button, sendButton;
-    TextView logoutRedirectText, sendersText;
+    TextView logoutRedirectText, sendersText, mainUsername;
 
     String username, language;
 
@@ -51,7 +51,7 @@ public class Chatgroup extends AppCompatActivity {
         logoutRedirectText = findViewById(R.id.logout5);
 
         mainUsername.setText(username + "--" + language);
-        mainUsername.setEnabled(false);
+//        mainUsername.setEnabled(false);
 
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("chat_" + language);
@@ -110,6 +110,20 @@ public class Chatgroup extends AppCompatActivity {
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(Chatgroup.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        mainUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(Chatgroup.this, Profile.class);
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
+                intent.putExtra("LANGUAGE1", selectedLanguage1);
+                intent.putExtra("LANGUAGE2", selectedLanguage2);
+                intent.putExtra("LANGUAGE3", selectedLanguage3);
+                intent.putExtra("SCORE", score);
                 startActivity(intent);
             }
         });

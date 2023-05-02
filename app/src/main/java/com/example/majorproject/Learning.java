@@ -23,11 +23,11 @@ public class Learning extends AppCompatActivity {
 
     Button learningButton1, learningButton2, learningButton3, return3Button;
 
-    EditText mainUsername;
+
 
     String username, language, language_one, language_two, language_three, selectedLanguage1, selectedLanguage2, selectedLanguage3;
 
-    TextView logoutRedirectText, language_view;
+    TextView logoutRedirectText, language_view, mainUsername;
 
 
 

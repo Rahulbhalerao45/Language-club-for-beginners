@@ -22,14 +22,14 @@ import com.google.firebase.database.ValueEventListener;
 public class Next extends AppCompatActivity {
 
 
-    EditText mainUsername;
+
     Button returnButton, next1Button;
     RadioButton quizOption4A, quizOption4B, quizOption5A, quizOption5B, quizOption6A, quizOption6B;
 
     RadioGroup group1, group2, group3;
 
     String username, language, language_one, language_two, language_three, str3;
-    TextView logoutRedirectText, quizQuestion4, quizQuestion5, quizQuestion6, quiz_view;
+    TextView logoutRedirectText, quizQuestion4, quizQuestion5, quizQuestion6, quiz_view, mainUsername;
 
     DatabaseReference quiz1Ref, quiz2Ref, quiz3Ref;// reference to the quiz data in Firebase
 
@@ -172,7 +172,7 @@ public class Next extends AppCompatActivity {
                         public void onCancelled(@NonNull DatabaseError error) {
                         }
                     });
-                } else if (currentLearningPoint >= 25) {
+                } else if (currentLearningPoint > 25) {
                     FirebaseDatabase Reference = FirebaseDatabase.getInstance();
 
                     DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_two);

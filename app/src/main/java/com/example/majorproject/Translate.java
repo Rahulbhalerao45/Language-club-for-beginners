@@ -23,7 +23,7 @@ import java.util.Locale;
 
 public class Translate extends AppCompatActivity {
 
-    EditText mainUsername, mainEnterText, result1, result2, result3;
+    EditText  mainEnterText, result1, result2, result3;
     Button backButton;
     TextView Language1, Language2, Language3;
 
@@ -32,7 +32,7 @@ public class Translate extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference reference;
 
-    TextView logoutRedirectText;
+    TextView logoutRedirectText, mainUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,7 @@ public class Translate extends AppCompatActivity {
         Language3.setText(language3);
 
         mainUsername.setText("" + username + "--" + language + "");
-        mainUsername.setEnabled(false);
+//        mainUsername.setEnabled(false);
 
         String enteredText = intent.getStringExtra("ENTERED_TEXT");
         mainEnterText.setText(enteredText);
@@ -120,6 +120,16 @@ public class Translate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(Translate.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        mainUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(Translate.this, Profile.class);
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
+                intent.putExtra("SCORE", score);
                 startActivity(intent);
             }
         });

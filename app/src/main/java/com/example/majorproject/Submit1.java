@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Submit1 extends AppCompatActivity {
 
 
-    EditText mainUsername;
+
     Button returnButton;
 
     String username, language, language_one, language_two, language_three;
@@ -30,7 +30,7 @@ public class Submit1 extends AppCompatActivity {
 
     RadioButton answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9;
 
-    TextView scoreTextView, quiz_view;
+    TextView scoreTextView, quiz_view, mainUsername;
 
     DatabaseReference quiz1Ref, quiz2Ref, quiz3Ref;// reference to the quiz data in Firebase
 
@@ -366,7 +366,7 @@ public class Submit1 extends AppCompatActivity {
                             // Handle the error
                         }
                     });
-                } else if (currentLearningPoint >= 25) {
+                } else if (currentLearningPoint > 25) {
                     FirebaseDatabase Reference = FirebaseDatabase.getInstance();
 
                     DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_one);

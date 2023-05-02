@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    EditText mainUsername, mainEnterText;
+    EditText  mainEnterText;
     Button mainButton, learningButton;
     FirebaseDatabase database;
     DatabaseReference reference;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     String rus1 = "", rus2 = "", rus3 = "";
 
-    TextView logoutRedirectText;
+    TextView logoutRedirectText, mainUsername;
 
 
 
@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         mainUsername.setText("" + username + "--" + language + "");
-        mainUsername.setEnabled(false);
+//        mainUsername.setEnabled(false);
 
 
         mainButton.setOnClickListener(new View.OnClickListener() {
@@ -544,6 +544,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mainUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(MainActivity.this, Profile.class);
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
+                intent.putExtra("LANGUAGE1", selectedLanguage1);
+                intent.putExtra("LANGUAGE2", selectedLanguage2);
+                intent.putExtra("LANGUAGE3", selectedLanguage3);
+                intent.putExtra("SCORE", score);
                 startActivity(intent);
             }
         });
