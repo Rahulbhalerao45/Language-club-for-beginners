@@ -29,7 +29,7 @@ public class Quiz extends AppCompatActivity {
 
     RadioGroup group1, group2, group3;
 
-    String username, language, language_one, language_two, language_three, str3;
+    String username, language, language_one, language_two, language_three, strt;
     TextView logoutRedirectText, quizQuestion1, quizQuestion2, quizQuestion3, quiz_view;
 
     DatabaseReference quiz1Ref, quiz2Ref, quiz3Ref;// reference to the quiz data in Firebase
@@ -91,7 +91,6 @@ public class Quiz extends AppCompatActivity {
                 if (currentLearningPoint == null) {
                     currentLearningPoint = 0;
                 }
-                str3=currentLearningPoint.toString();
 
                 if (currentLearningPoint <= 15) {
 

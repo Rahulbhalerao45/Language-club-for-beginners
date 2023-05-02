@@ -44,7 +44,7 @@ public class Profile extends AppCompatActivity {
 
     ArrayAdapter<String> adapterItems4;
 
-    String username, selectedLanguage4, language, str3;
+    String username, selectedLanguage4, language, str0;
 
     DatabaseReference databaseReference;
 
@@ -96,9 +96,9 @@ public class Profile extends AppCompatActivity {
                 if (currentLearningPoint == null) {
                     currentLearningPoint = 0;
                 }
-                 str3=currentLearningPoint.toString();
+                 str0=currentLearningPoint.toString();
 
-                ranking1.setText( str3);
+                ranking1.setText(str0);
             }
 
             @Override
@@ -229,7 +229,7 @@ public class Profile extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Profile.this, Ranking.class);
                 intent.putExtra("USERNAME", username);
-                intent.putExtra("RANK", str3);
+                intent.putExtra("RANK", str0);
                 startActivity(intent);
 
 

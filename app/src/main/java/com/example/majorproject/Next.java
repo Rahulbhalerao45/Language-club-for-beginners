@@ -88,7 +88,7 @@ public class Next extends AppCompatActivity {
                 if (currentLearningPoint == null) {
                     currentLearningPoint = 0;
                 }
-                str3=currentLearningPoint.toString();
+
 
                 if (currentLearningPoint <= 15) {
 

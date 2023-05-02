@@ -156,7 +156,7 @@ public class Submit1 extends AppCompatActivity {
                 if (currentLearningPoint == null) {
                     currentLearningPoint = 0;
                 }
-                str3 = currentLearningPoint.toString();
+
 
                 if (currentLearningPoint <= 15) {
                     FirebaseDatabase Reference = FirebaseDatabase.getInstance();
@@ -516,7 +516,7 @@ public class Submit1 extends AppCompatActivity {
                     score1++;
                 }
                 S1 = String.valueOf(score1);
-                Toast.makeText(Submit1.this, "You Scored " +score1 + " out of 9", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Submit1.this, "You scored " + score1 + " out of 9", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Submit1.this, Profile.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);

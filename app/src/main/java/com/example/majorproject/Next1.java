@@ -90,7 +90,7 @@ public class Next1 extends AppCompatActivity {
                 if (currentLearningPoint == null) {
                     currentLearningPoint = 0;
                 }
-                str3=currentLearningPoint.toString();
+
 
                 if (currentLearningPoint <= 15) {
 
