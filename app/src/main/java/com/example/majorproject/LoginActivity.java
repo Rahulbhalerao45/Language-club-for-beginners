@@ -21,6 +21,8 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,15 +53,22 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(task -> {
-                    if (!task.isSuccessful()) {
-                        Log.w(TAG, "Fetching FCM registration token failed", task.getException());
-                        return;
-                    }
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
 
-                    String token = task.getResult();
-                    // Send token to server or save it for future use
+                        // Get new FCM registration token
+                        String token = task.getResult();
+                        Log.d(TAG, "FCM registration token: " + token);
+
+                        // TODO: Save the token to your server or use it to send messages
+                    }
                 });
+
 
 
         showPasswordCheckBox = findViewById(R.id.show_password_checkbox);
