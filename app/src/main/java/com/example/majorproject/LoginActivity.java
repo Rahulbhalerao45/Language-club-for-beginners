@@ -133,6 +133,9 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+
+
+
     public Boolean validateUsername() {
         String val = loginUsername.getText().toString();
         if (val.isEmpty()) {
