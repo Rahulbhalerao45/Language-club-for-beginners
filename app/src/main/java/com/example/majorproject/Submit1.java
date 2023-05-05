@@ -19,6 +19,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class Submit1 extends AppCompatActivity {
 
 
@@ -35,6 +39,9 @@ public class Submit1 extends AppCompatActivity {
     DatabaseReference quiz1Ref, quiz2Ref, quiz3Ref;// reference to the quiz data in Firebase
 
     FirebaseDatabase Reference;
+
+    FirebaseDatabase database1;
+    DatabaseReference reference1;
 
     FirebaseDatabase database2;
     DatabaseReference reference2;
@@ -516,7 +523,7 @@ public class Submit1 extends AppCompatActivity {
                     score1++;
                 }
                 S1 = String.valueOf(score1);
-                Toast.makeText(Submit1.this, "You scored " + score1 + " out of 9", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Submit1.this, "You scored " + score1 + " out of 9", Toast.LENGTH_SHORT);
                 Intent intent = new Intent(Submit1.this, Profile.class);
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("LANGUAGE", language);
@@ -528,6 +535,29 @@ public class Submit1 extends AppCompatActivity {
                 intent.putExtra("LANGUAGE3", selectedLanguage3);
                 intent.putExtra("SCORE", S1);
                 startActivity(intent);
+
+                database1 = FirebaseDatabase.getInstance();
+                reference1 = database1.getReference("attempts").child(username);
+                String score="You Scored " + S1 + " out of 9";
+                String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                HelperClass2 helperClass2 = new HelperClass2(username, score, currentDate, currentTime);
+
+                reference1.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        int attemptsCount = (int) snapshot.getChildrenCount();
+
+                        String attemptskey = "attempts" + (attemptsCount + 1);
+
+                        reference1.child(attemptskey).setValue(helperClass2);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                Toast.makeText(Submit1.this, "Score Saved Successfully👍👍", Toast.LENGTH_SHORT).show();
 
                 database2 = FirebaseDatabase.getInstance();
                 reference2 = database2.getReference("LearningPoints");

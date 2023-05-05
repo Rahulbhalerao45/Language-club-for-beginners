@@ -36,7 +36,7 @@ public class Profile extends AppCompatActivity {
 
     Spinner search, attempts;
 
-    Button return2Button, save, updateButton, ranking1;
+    Button return2Button, updateButton, ranking1;
 
     String[] item = {"Hindi(हिंदी)", "Marathi(मराठी)", "Telugu(తెలుగు)", "Tamil(தமிழ்)", "Bengali(বাঙ্গালি)"};
 
@@ -74,7 +74,6 @@ public class Profile extends AppCompatActivity {
         attempts = findViewById(R.id.attempts);
         return2Button = findViewById(R.id.return2_button);
         logoutRedirectText = findViewById(R.id.profile_logout);
-        save = findViewById(R.id.save);
         ranking1 = findViewById(R.id.ranking1);
         updateButton = findViewById(R.id.update_button);
         selectLanguage4 = findViewById(R.id.auto_complete_txt4);
@@ -170,43 +169,6 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Profile.this, Profile.class);
-                intent.putExtra("USERNAME", username);
-                intent.putExtra("LANGUAGE", language);
-                intent.putExtra("LANGUAGE1", selectedLanguage1);
-                intent.putExtra("LANGUAGE2", selectedLanguage2);
-                intent.putExtra("LANGUAGE3", selectedLanguage3);
-                intent.putExtra("SCORE", score);
-                startActivity(intent);
-
-                database1 = FirebaseDatabase.getInstance();
-                reference1 = database1.getReference("attempts").child(username);
-                String score = ranking.getText().toString();
-                String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-                String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
-                HelperClass2 helperClass2 = new HelperClass2(username, score, currentDate, currentTime);
-
-                reference1.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        int attemptsCount = (int) snapshot.getChildrenCount();
-
-                        String attemptskey = "attempts" + (attemptsCount + 1);
-
-                        reference1.child(attemptskey).setValue(helperClass2);
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-                Toast.makeText(Profile.this, "Score Saved Successfully👍👍", Toast.LENGTH_SHORT).show();
-
-            }
-        });
 
         return2Button.setOnClickListener(new View.OnClickListener() {
             @Override
