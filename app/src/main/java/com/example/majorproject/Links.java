@@ -81,6 +81,27 @@ public class Links extends AppCompatActivity {
                                 public void onClick(View v) {
                                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(hyperlink));
                                     startActivity(browserIntent);
+                                    database2 = FirebaseDatabase.getInstance();
+                                    reference2 = database2.getReference("LearningPoints");
+
+                                    reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
+
+                                            if (currentLearningPoint == null) {
+                                                currentLearningPoint = 0;
+                                            }
+
+                                            Integer newLearningPoint = currentLearningPoint + 2;
+
+                                            reference2.child(username).setValue(newLearningPoint);
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+                                        }
+                                    });
                                 }
                             });
                         }
@@ -111,6 +132,27 @@ public class Links extends AppCompatActivity {
                                 public void onClick(View v) {
                                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(hyperlink));
                                     startActivity(browserIntent);
+                                    database2 = FirebaseDatabase.getInstance();
+                                    reference2 = database2.getReference("LearningPoints");
+
+                                    reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
+
+                                            if (currentLearningPoint == null) {
+                                                currentLearningPoint = 0;
+                                            }
+
+                                            Integer newLearningPoint = currentLearningPoint + 2;
+
+                                            reference2.child(username).setValue(newLearningPoint);
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+                                        }
+                                    });
                                 }
                             });
                         }
@@ -141,6 +183,27 @@ public class Links extends AppCompatActivity {
                                 public void onClick(View v) {
                                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(hyperlink));
                                     startActivity(browserIntent);
+                                    database2 = FirebaseDatabase.getInstance();
+                                    reference2 = database2.getReference("LearningPoints");
+
+                                    reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
+
+                                            if (currentLearningPoint == null) {
+                                                currentLearningPoint = 0;
+                                            }
+
+                                            Integer newLearningPoint = currentLearningPoint + 2;
+
+                                            reference2.child(username).setValue(newLearningPoint);
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+                                        }
+                                    });
                                 }
                             });
                         }
