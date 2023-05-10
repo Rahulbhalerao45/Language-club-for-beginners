@@ -1,9 +1,15 @@
 package com.example.majorproject;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -44,6 +50,7 @@ public class Ranking extends AppCompatActivity {
         top4 = findViewById(R.id.top4);
         top5 = findViewById(R.id.top5);
         points = findViewById(R.id.points1);
+
 
         points.setText("Your Learning Points is : " + userpoints );
 

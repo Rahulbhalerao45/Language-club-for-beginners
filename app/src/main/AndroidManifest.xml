@@ -20,6 +20,9 @@
         android:theme="@style/Theme.MAJORPROJECT"
         tools:targetApi="31">
         <activity
+            android:name=".Links"
+            android:exported="false" />
+        <activity
             android:name=".Ranking"
             android:exported="false" />
         <activity

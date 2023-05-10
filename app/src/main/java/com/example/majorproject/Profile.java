@@ -36,7 +36,7 @@ public class Profile extends AppCompatActivity {
 
     Spinner search, attempts;
 
-    Button return2Button, updateButton, ranking1;
+    Button return2Button, updateButton, ranking1, learn;
 
     String[] item = {"Hindi(हिंदी)", "Marathi(मराठी)", "Telugu(తెలుగు)", "Tamil(தமிழ்)", "Bengali(বাঙ্গালি)"};
 
@@ -77,6 +77,7 @@ public class Profile extends AppCompatActivity {
         ranking1 = findViewById(R.id.ranking1);
         updateButton = findViewById(R.id.update_button);
         selectLanguage4 = findViewById(R.id.auto_complete_txt4);
+        learn = findViewById(R.id.learn);
 
         mainUsername.setText("" + username + "--" + language + "");
         mainUsername.setEnabled(false);
@@ -224,6 +225,22 @@ public class Profile extends AppCompatActivity {
 
             }
 
+        });
+
+        learn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, Links.class);
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("LANGUAGE", language);
+                intent.putExtra("LANGUAGE1", selectedLanguage1);
+                intent.putExtra("LANGUAGE2", selectedLanguage2);
+                intent.putExtra("LANGUAGE3", selectedLanguage3);
+                intent.putExtra("SCORE", score);
+                startActivity(intent);
+
+
+            }
         });
 
     }

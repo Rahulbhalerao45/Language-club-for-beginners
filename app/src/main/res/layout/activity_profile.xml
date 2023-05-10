@@ -124,6 +124,18 @@
                 android:spinnerMode="dialog"
                 android:textColor="@color/black" />
 
+            <Button
+                android:id="@+id/learn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="learn"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                app:cornerRadius="20dp" />
+
+
 
             <Button
                 android:id="@+id/update_button"
@@ -135,6 +147,7 @@
                 android:textStyle="bold"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
+
 
 
             <Button
