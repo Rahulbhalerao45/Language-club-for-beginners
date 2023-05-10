@@ -43,6 +43,7 @@ public class Links extends AppCompatActivity {
         String selectedLanguage1 = getIntent().getStringExtra("LANGUAGE1");
         String selectedLanguage2 = getIntent().getStringExtra("LANGUAGE2");
         String selectedLanguage3 = getIntent().getStringExtra("LANGUAGE3");
+        String selectedLanguage4 = getIntent().getStringExtra("LANGUAGE4");
         String score = getIntent().getStringExtra("SCORE");
 
         // Get a reference to the TextView
@@ -52,183 +53,362 @@ public class Links extends AppCompatActivity {
 
 
 // Get a reference to the Firebase database
+        if (selectedLanguage4 == null) {
+            database2 = FirebaseDatabase.getInstance();
+            reference2 = database2.getReference("LearningPoints");
 
+            reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
 
-        database2 = FirebaseDatabase.getInstance();
-        reference2 = database2.getReference("LearningPoints");
+                    if (currentLearningPoint == null) {
+                        currentLearningPoint = 0;
+                    }
 
-        reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
+                    if (currentLearningPoint <= 15) {
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference ref = database.getReference("hyperlink").child(language);
 
-                if (currentLearningPoint == null) {
-                    currentLearningPoint = 0;
+                        ref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot snapshot) {
+                                // Get the hyperlink from the database
+                                String hyperlink = snapshot.child("1").getValue(String.class);
+
+                                // Set the hyperlink as the text of the TextView
+                                linkTextView.setText("LINK  : " + hyperlink);
+
+                                // Make the text clickable and open the webpage in a browser
+                                linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
+                                linkTextView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(hyperlink));
+                                        startActivity(browserIntent);
+                                        database2 = FirebaseDatabase.getInstance();
+                                        reference2 = database2.getReference("LearningPoints");
+
+                                        reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
+
+                                                if (currentLearningPoint == null) {
+                                                    currentLearningPoint = 0;
+                                                }
+
+                                                Integer newLearningPoint = currentLearningPoint + 2;
+
+                                                reference2.child(username).setValue(newLearningPoint);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Log.d(TAG, "Error reading value: " + databaseError.getMessage());
+                            }
+                        });
+                    } else if (currentLearningPoint <= 25) {
+
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference ref = database.getReference("hyperlink").child(language);
+
+                        ref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot snapshot) {
+                                // Get the hyperlink from the database
+                                String hyperlink = snapshot.child("2").getValue(String.class);
+
+                                // Set the hyperlink as the text of the TextView
+                                linkTextView.setText("LINK  : " + hyperlink);
+
+                                // Make the text clickable and open the webpage in a browser
+                                linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
+                                linkTextView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(hyperlink));
+                                        startActivity(browserIntent);
+                                        database2 = FirebaseDatabase.getInstance();
+                                        reference2 = database2.getReference("LearningPoints");
+
+                                        reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
+
+                                                if (currentLearningPoint == null) {
+                                                    currentLearningPoint = 0;
+                                                }
+
+                                                Integer newLearningPoint = currentLearningPoint + 2;
+
+                                                reference2.child(username).setValue(newLearningPoint);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Log.d(TAG, "Error reading value: " + databaseError.getMessage());
+                            }
+                        });
+                    } else if (currentLearningPoint > 25) {
+
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference ref = database.getReference("hyperlink").child(language);
+
+                        ref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot snapshot) {
+                                // Get the hyperlink from the database
+                                String hyperlink = snapshot.child("3").getValue(String.class);
+
+                                // Set the hyperlink as the text of the TextView
+                                linkTextView.setText("LINK  : " + hyperlink);
+
+                                // Make the text clickable and open the webpage in a browser
+                                linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
+                                linkTextView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(hyperlink));
+                                        startActivity(browserIntent);
+                                        database2 = FirebaseDatabase.getInstance();
+                                        reference2 = database2.getReference("LearningPoints");
+
+                                        reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
+
+                                                if (currentLearningPoint == null) {
+                                                    currentLearningPoint = 0;
+                                                }
+
+                                                Integer newLearningPoint = currentLearningPoint + 2;
+
+                                                reference2.child(username).setValue(newLearningPoint);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Log.d(TAG, "Error reading value: " + databaseError.getMessage());
+                            }
+                        });
+
+                    }
+                    str0=currentLearningPoint.toString();
+
+                    points.setText("Your Points : " + str0);
                 }
 
-                if (currentLearningPoint <= 15) {
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference ref = database.getReference("hyperlink").child(language);
-
-                    ref.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot snapshot) {
-                            // Get the hyperlink from the database
-                            String hyperlink = snapshot.child("1").getValue(String.class);
-
-                            // Set the hyperlink as the text of the TextView
-                            linkTextView.setText("LINK  : " + hyperlink);
-
-                            // Make the text clickable and open the webpage in a browser
-                            linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
-                            linkTextView.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(hyperlink));
-                                    startActivity(browserIntent);
-                                    database2 = FirebaseDatabase.getInstance();
-                                    reference2 = database2.getReference("LearningPoints");
-
-                                    reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                            Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
-
-                                            if (currentLearningPoint == null) {
-                                                currentLearningPoint = 0;
-                                            }
-
-                                            Integer newLearningPoint = currentLearningPoint + 2;
-
-                                            reference2.child(username).setValue(newLearningPoint);
-                                        }
-
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
-                                        }
-                                    });
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            Log.d(TAG, "Error reading value: " + databaseError.getMessage());
-                        }
-                    });
-                } else if (currentLearningPoint <= 25) {
-
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference ref = database.getReference("hyperlink").child(language);
-
-                    ref.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot snapshot) {
-                            // Get the hyperlink from the database
-                            String hyperlink = snapshot.child("2").getValue(String.class);
-
-                            // Set the hyperlink as the text of the TextView
-                            linkTextView.setText("LINK  : " + hyperlink);
-
-                            // Make the text clickable and open the webpage in a browser
-                            linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
-                            linkTextView.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(hyperlink));
-                                    startActivity(browserIntent);
-                                    database2 = FirebaseDatabase.getInstance();
-                                    reference2 = database2.getReference("LearningPoints");
-
-                                    reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                            Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
-
-                                            if (currentLearningPoint == null) {
-                                                currentLearningPoint = 0;
-                                            }
-
-                                            Integer newLearningPoint = currentLearningPoint + 2;
-
-                                            reference2.child(username).setValue(newLearningPoint);
-                                        }
-
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
-                                        }
-                                    });
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            Log.d(TAG, "Error reading value: " + databaseError.getMessage());
-                        }
-                    });
-                } else if (currentLearningPoint > 25) {
-
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference ref = database.getReference("hyperlink").child(language);
-
-                    ref.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot snapshot) {
-                            // Get the hyperlink from the database
-                            String hyperlink = snapshot.child("3").getValue(String.class);
-
-                            // Set the hyperlink as the text of the TextView
-                            linkTextView.setText("LINK  : " + hyperlink);
-
-                            // Make the text clickable and open the webpage in a browser
-                            linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
-                            linkTextView.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(hyperlink));
-                                    startActivity(browserIntent);
-                                    database2 = FirebaseDatabase.getInstance();
-                                    reference2 = database2.getReference("LearningPoints");
-
-                                    reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                            Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
-
-                                            if (currentLearningPoint == null) {
-                                                currentLearningPoint = 0;
-                                            }
-
-                                            Integer newLearningPoint = currentLearningPoint + 2;
-
-                                            reference2.child(username).setValue(newLearningPoint);
-                                        }
-
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
-                                        }
-                                    });
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            Log.d(TAG, "Error reading value: " + databaseError.getMessage());
-                        }
-                    });
-
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
                 }
-                str0=currentLearningPoint.toString();
+            });
+        } else if (selectedLanguage4 != null) {
 
-                points.setText("Your Points : " + str0);
-            }
+            database2 = FirebaseDatabase.getInstance();
+            reference2 = database2.getReference("LearningPoints");
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
+            reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
+
+                    if (currentLearningPoint == null) {
+                        currentLearningPoint = 0;
+                    }
+
+                    if (currentLearningPoint <= 15) {
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference ref = database.getReference("hyperlink").child(selectedLanguage4);
+
+                        ref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot snapshot) {
+                                // Get the hyperlink from the database
+                                String hyperlink = snapshot.child("1").getValue(String.class);
+
+                                // Set the hyperlink as the text of the TextView
+                                linkTextView.setText("LINK  : " + hyperlink);
+
+                                // Make the text clickable and open the webpage in a browser
+                                linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
+                                linkTextView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(hyperlink));
+                                        startActivity(browserIntent);
+                                        database2 = FirebaseDatabase.getInstance();
+                                        reference2 = database2.getReference("LearningPoints");
+
+                                        reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
+
+                                                if (currentLearningPoint == null) {
+                                                    currentLearningPoint = 0;
+                                                }
+
+                                                Integer newLearningPoint = currentLearningPoint + 2;
+
+                                                reference2.child(username).setValue(newLearningPoint);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Log.d(TAG, "Error reading value: " + databaseError.getMessage());
+                            }
+                        });
+                    } else if (currentLearningPoint <= 25) {
+
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference ref = database.getReference("hyperlink").child(selectedLanguage4);
+
+                        ref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot snapshot) {
+                                // Get the hyperlink from the database
+                                String hyperlink = snapshot.child("2").getValue(String.class);
+
+                                // Set the hyperlink as the text of the TextView
+                                linkTextView.setText("LINK  : " + hyperlink);
+
+                                // Make the text clickable and open the webpage in a browser
+                                linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
+                                linkTextView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(hyperlink));
+                                        startActivity(browserIntent);
+                                        database2 = FirebaseDatabase.getInstance();
+                                        reference2 = database2.getReference("LearningPoints");
+
+                                        reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
+
+                                                if (currentLearningPoint == null) {
+                                                    currentLearningPoint = 0;
+                                                }
+
+                                                Integer newLearningPoint = currentLearningPoint + 2;
+
+                                                reference2.child(username).setValue(newLearningPoint);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Log.d(TAG, "Error reading value: " + databaseError.getMessage());
+                            }
+                        });
+                    } else if (currentLearningPoint > 25) {
+
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference ref = database.getReference("hyperlink").child(selectedLanguage4);
+
+                        ref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot snapshot) {
+                                // Get the hyperlink from the database
+                                String hyperlink = snapshot.child("3").getValue(String.class);
+
+                                // Set the hyperlink as the text of the TextView
+                                linkTextView.setText("LINK  : " + hyperlink);
+
+                                // Make the text clickable and open the webpage in a browser
+                                linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
+                                linkTextView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(hyperlink));
+                                        startActivity(browserIntent);
+                                        database2 = FirebaseDatabase.getInstance();
+                                        reference2 = database2.getReference("LearningPoints");
+
+                                        reference2.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                Integer currentLearningPoint = dataSnapshot.getValue(Integer.class);
+
+                                                if (currentLearningPoint == null) {
+                                                    currentLearningPoint = 0;
+                                                }
+
+                                                Integer newLearningPoint = currentLearningPoint + 2;
+
+                                                reference2.child(username).setValue(newLearningPoint);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Log.d(TAG, "Error reading value: " + databaseError.getMessage());
+                            }
+                        });
+
+                    }
+                    str0=currentLearningPoint.toString();
+
+                    points.setText("Your Points : " + str0);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
+
+        }
+
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
