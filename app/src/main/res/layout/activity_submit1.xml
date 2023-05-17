@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/background6"
-    tools:context=".Submit1">
+    tools:context="com.project.majorproject.Submit1">
 
     <TextView
         android:layout_width="400dp"

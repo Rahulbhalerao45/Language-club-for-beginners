@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".Ranking"
+    tools:context="com.project.majorproject.Ranking"
     android:background="@drawable/background6">
 
     <androidx.cardview.widget.CardView

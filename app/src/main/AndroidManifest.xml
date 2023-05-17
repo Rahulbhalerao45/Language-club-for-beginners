@@ -20,25 +20,25 @@
         android:theme="@style/Theme.MAJORPROJECT"
         tools:targetApi="31">
         <activity
-            android:name=".Links"
+            android:name="com.project.majorproject.Links"
             android:exported="false" />
         <activity
-            android:name=".Ranking"
+            android:name="com.project.majorproject.Ranking"
             android:exported="false" />
         <activity
-            android:name=".Submit1"
+            android:name="com.project.majorproject.Submit1"
             android:exported="false" />
         <activity
-            android:name=".Next1"
+            android:name="com.project.majorproject.Next1"
             android:exported="false" />
         <activity
-            android:name=".Next"
+            android:name="com.project.majorproject.Next"
             android:exported="false" />
         <activity
-            android:name=".SignupActivity"
+            android:name="com.project.majorproject.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name="com.project.majorproject.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,22 +51,22 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Profile"
+            android:name="com.project.majorproject.Profile"
             android:exported="false" />
         <activity
-            android:name=".Chatgroup"
+            android:name="com.project.majorproject.Chatgroup"
             android:exported="false" />
         <activity
-            android:name=".Quiz"
+            android:name="com.project.majorproject.Quiz"
             android:exported="false" />
         <activity
-            android:name=".Learning"
+            android:name="com.project.majorproject.Learning"
             android:exported="false" />
         <activity
-            android:name=".Translate"
+            android:name="com.project.majorproject.Translate"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.project.majorproject.MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -74,7 +74,7 @@
         </activity>
 
         <service
-            android:name=".MyFirebaseMessagingService"
+            android:name="com.project.majorproject.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

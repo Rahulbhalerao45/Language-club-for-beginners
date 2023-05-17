@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/background6"
-    tools:context=".Quiz">
+    tools:context="com.project.majorproject.Quiz">
 
         <TextView
             android:layout_width="400dp"
