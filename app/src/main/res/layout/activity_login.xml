@@ -66,21 +66,25 @@
                 android:textColor="@color/black"/>
             <CheckBox
                 android:id="@+id/show_password_checkbox"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="Show Password"
+                android:textStyle="bold"
+                android:drawablePadding="8dp"
                 android:drawableLeft="@drawable/baseline_remove_red_eye_24" />
 
             <CheckBox
                 android:id="@+id/remember_me_checkbox"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:text="Remember Me"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:drawablePadding="8dp"
                 android:drawableLeft="@drawable/baseline_person_24" />
-
-
-
-
 
             <Button
                 android:layout_width="wrap_content"
