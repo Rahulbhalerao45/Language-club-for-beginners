@@ -134,7 +134,7 @@ public class Next1 extends AppCompatActivity {
 
                     FirebaseDatabase Reference = FirebaseDatabase.getInstance();
 
-                    DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_one);
+                    DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_three);
 
                     quiz1Ref.addValueEventListener(new ValueEventListener() {
                         @Override
@@ -174,7 +174,7 @@ public class Next1 extends AppCompatActivity {
                 } else if (currentLearningPoint > 25) {
                     FirebaseDatabase Reference = FirebaseDatabase.getInstance();
 
-                    DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_one);
+                    DatabaseReference quiz1Ref = Reference.getReference("quiz").child(language_three);
 
                     quiz1Ref.addValueEventListener(new ValueEventListener() {
                         @Override

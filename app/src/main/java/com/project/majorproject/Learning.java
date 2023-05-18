@@ -55,26 +55,29 @@ public class Learning extends AppCompatActivity {
         language_view.setEnabled(false);
         language_view.setVisibility(View.INVISIBLE);
 
-        if (selectedLanguage1 == null || selectedLanguage1.isEmpty() ||
-                selectedLanguage2 == null || selectedLanguage2.isEmpty() ||
-                selectedLanguage3 == null || selectedLanguage3.isEmpty()) {
-            learningButton1.setEnabled(true);
-            Toast.makeText(this, "Please select three languages to start the quiz ", Toast.LENGTH_SHORT).show();
-        } else {
+
             learningButton1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(Learning.this, Quiz.class);
-                    intent.putExtra("USERNAME", username);
-                    intent.putExtra("LANGUAGE", language);
-                    intent.putExtra("LANGUAGE1", selectedLanguage1);
-                    intent.putExtra("LANGUAGE2", selectedLanguage2);
-                    intent.putExtra("LANGUAGE3", selectedLanguage3);
-                    intent.putExtra("SCORE", score);
-                    startActivity(intent);
+                    if (selectedLanguage1 == null || selectedLanguage1.isEmpty() ||
+                            selectedLanguage2 == null || selectedLanguage2.isEmpty() ||
+                            selectedLanguage3 == null || selectedLanguage3.isEmpty()) {
+                        learningButton1.setEnabled(true);
+                        Toast.makeText(Learning.this, "Please select three languages to start the quiz ", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Intent intent = new Intent(Learning.this, Quiz.class);
+                        intent.putExtra("USERNAME", username);
+                        intent.putExtra("LANGUAGE", language);
+                        intent.putExtra("LANGUAGE1", selectedLanguage1);
+                        intent.putExtra("LANGUAGE2", selectedLanguage2);
+                        intent.putExtra("LANGUAGE3", selectedLanguage3);
+                        intent.putExtra("SCORE", score);
+                        startActivity(intent);
+                    }
                 }
             });
-        }
+
+
 
         learningButton2.setOnClickListener(new View.OnClickListener() {
             @Override
